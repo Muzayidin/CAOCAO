@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+
+<html class="light" lang="id"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-surface": "#1c1b1b",
+                        "on-primary-fixed-variant": "#4b4643",
+                        "secondary": "#5a632e",
+                        "tertiary-fixed-dim": "#c6c6c6",
+                        "inverse-surface": "#313030",
+                        "surface-bright": "#fdf8f7",
+                        "primary-container": "#1f1b19",
+                        "cafe-50": "#F9F8F7",
+                        "on-primary": "#ffffff",
+                        "tertiary-fixed": "#e2e2e2",
+                        "inverse-on-surface": "#f4f0ef",
+                        "surface-tint": "#635d5a",
+                        "surface-container-lowest": "#ffffff",
+                        "on-primary-container": "#8a827f",
+                        "surface-dim": "#ddd9d8",
+                        "error-container": "#ffdad6",
+                        "earth-olive": "#4B5320",
+                        "outline": "#7f7570",
+                        "surface-container-high": "#ece7e6",
+                        "outline-variant": "#d0c4be",
+                        "on-error-container": "#93000a",
+                        "background": "#fdf8f7",
+                        "on-secondary-container": "#5f6732",
+                        "charcoal-text": "#121212",
+                        "on-secondary": "#ffffff",
+                        "on-tertiary-fixed-variant": "#454747",
+                        "secondary-fixed-dim": "#c3cc8c",
+                        "inverse-primary": "#cec5c1",
+                        "on-background": "#1c1b1b",
+                        "espresso-900": "#1A1614",
+                        "on-tertiary-fixed": "#1a1c1c",
+                        "error": "#ba1a1a",
+                        "surface-container": "#f1edec",
+                        "on-primary-fixed": "#1f1b19",
+                        "tertiary": "#000000",
+                        "on-secondary-fixed-variant": "#434b18",
+                        "on-tertiary": "#ffffff",
+                        "tertiary-container": "#1a1c1c",
+                        "on-error": "#ffffff",
+                        "primary-fixed": "#eae1dd",
+                        "on-surface-variant": "#4d4541",
+                        "surface-container-highest": "#e6e1e0",
+                        "cafe-200": "#E5E1DE",
+                        "secondary-fixed": "#dfe8a6",
+                        "primary": "#000000",
+                        "secondary-container": "#dce5a3",
+                        "surface": "#fdf8f7",
+                        "surface-container-low": "#f7f3f1",
+                        "on-tertiary-container": "#838484",
+                        "surface-variant": "#e6e1e0",
+                        "on-secondary-fixed": "#191e00",
+                        "primary-fixed-dim": "#cec5c1"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-mobile": "1rem",
+                        "touch-target-min": "48px",
+                        "gutter": "1.5rem",
+                        "touch-target-opt": "52px",
+                        "margin-desktop": "3rem",
+                        "margin-tablet": "2rem"
+                    },
+                    "fontFamily": {
+                        "body-md": ["Manrope"],
+                        "title-lg": ["Manrope"],
+                        "body-lg": ["Manrope"],
+                        "label-sm": ["Manrope"],
+                        "headline-md": ["Manrope"],
+                        "headline-lg": ["Manrope"],
+                        "headline-lg-mobile": ["Manrope"],
+                        "display-lg": ["Manrope"],
+                        "label-md": ["Manrope"]
+                    },
+                    "fontSize": {
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "title-lg": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "600"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                        "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "500"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        .order-card-pulse {
+            animation: border-pulse 2s infinite;
+        }
+        @keyframes border-pulse {
+            0% { border-color: transparent; }
+            50% { border-color: #f59e0b; }
+            100% { border-color: transparent; }
+        }
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #d0c4be; border-radius: 10px; }
+        .kanban-column { min-width: 320px; max-width: 400px; }
+    </style>
+<style>
+        body {
+            min-height: max(884px, 100dvh);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md selection:bg-cafe-200">
+<!-- Top Navigation Anchor -->
+<header class="bg-espresso-900 shadow-sm fixed top-0 w-full z-50 px-margin-mobile md:px-margin-desktop py-4 flex justify-between items-center backdrop-blur-sm">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-inverse-primary text-headline-md">local_cafe</span>
+<h1 class="text-headline-md font-headline-md font-bold text-inverse-primary tracking-tight">KDS Bar - Antrean Minuman</h1>
+</div>
+<div class="flex items-center gap-6">
+<div class="hidden md:flex flex-col items-end">
+<span class="text-on-primary font-label-md">Status: Online</span>
+<span class="text-on-primary-container text-label-sm">Shift Pagi - Barista A</span>
+</div>
+<button class="relative text-on-primary hover:bg-cafe-200/20 p-2 rounded-full transition-colors">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+<span class="absolute top-1 right-1 w-2 h-2 bg-error rounded-full"></span>
+</button>
+<div class="w-10 h-10 rounded-full bg-cafe-200 flex items-center justify-center overflow-hidden border border-outline-variant/30">
+<img alt="User Profile" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD2EnGwNqwfbXVAgbT7XYjlHlL2VQgbKBlF9BBef6EXq9XfpKA7ZlPDSTD9lNPpEuT6WJnCLbvks7w6IYMCxvjjyk8apV3OhJfmM0OpGekgKNbSXwfhYVoYeOhBYSagrRnQZkKoRjrn-uqSRzQ3UdMH2Bm3euS-xDPbmSn4TfH1_W4qeLsguaJf8bsXpmSB4pTrhJbN3bmwXOHjQu801pF_weD0vHo7GX23eKRvd4FRCQ4G4iKxCbCWzq1jLxxe4kmTGm64NTLvgaM"/>
+</div>
+</div>
+</header>
+<main class="pt-24 pb-32 min-h-screen px-margin-mobile md:px-margin-desktop">
+<!-- Dashboard Stats -->
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+<div class="bg-white p-4 rounded-3xl shadow-sm border border-cafe-200/50">
+<p class="text-on-surface-variant text-label-sm uppercase tracking-wider">Antrean</p>
+<h3 class="text-headline-md font-bold text-espresso-900">12</h3>
+</div>
+<div class="bg-white p-4 rounded-3xl shadow-sm border border-cafe-200/50">
+<p class="text-on-surface-variant text-label-sm uppercase tracking-wider">Sedang Dibuat</p>
+<h3 class="text-headline-md font-bold text-espresso-900">4</h3>
+</div>
+<div class="bg-white p-4 rounded-3xl shadow-sm border border-cafe-200/50">
+<p class="text-on-surface-variant text-label-sm uppercase tracking-wider">Rata-rata Servis</p>
+<h3 class="text-headline-md font-bold text-earth-olive">4.2m</h3>
+</div>
+<div class="bg-white p-4 rounded-3xl shadow-sm border border-cafe-200/50">
+<p class="text-on-surface-variant text-label-sm uppercase tracking-wider">Target 10m</p>
+<h3 class="text-headline-md font-bold text-error">92%</h3>
+</div>
+</div>
+<!-- Kanban Board -->
+<div class="flex gap-gutter overflow-x-auto pb-4 h-[calc(100vh-320px)] scroll-smooth">
+<!-- Column: Antrean Barista (Queue) -->
+<section class="kanban-column flex flex-col gap-4">
+<div class="flex items-center justify-between px-2">
+<h2 class="font-title-lg text-title-lg flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-outline-variant"></span>
+                        Antrean Barista
+                    </h2>
+<span class="bg-cafe-200 text-espresso-900 px-3 py-1 rounded-full text-label-sm font-bold">5</span>
+</div>
+<div class="flex-1 overflow-y-auto pr-2 space-y-4">
+<!-- Ticket 1 -->
+<div class="bg-white rounded-3xl p-5 shadow-sm border-2 border-transparent transition-all hover:shadow-md group active:scale-[0.98]">
+<div class="flex justify-between items-start mb-4">
+<div>
+<span class="text-label-sm font-bold text-on-surface-variant uppercase bg-cafe-50 px-2 py-0.5 rounded">T#04</span>
+<h4 class="text-body-lg font-bold text-espresso-900 mt-1">Meja Bar 1</h4>
+<p class="text-label-sm text-on-surface-variant">Pelayan: Budi</p>
+</div>
+<div class="text-right">
+<span class="text-label-sm font-bold text-espresso-900 bg-cafe-200 px-2 py-1 rounded-lg">3m lalu</span>
+</div>
+</div>
+<div class="space-y-3 mb-6">
+<div class="flex justify-between items-start">
+<div class="flex gap-3">
+<span class="font-bold text-espresso-900">1x</span>
+<div>
+<p class="font-bold text-espresso-900">V60 Gayo High</p>
+<p class="text-label-sm text-on-secondary-container bg-secondary-container/30 px-2 rounded-md inline-block">Hangat, Rendah Asam</p>
+</div>
+</div>
+</div>
+<div class="flex justify-between items-start">
+<div class="flex gap-3">
+<span class="font-bold text-espresso-900">1x</span>
+<div>
+<p class="font-bold text-espresso-900">Es Latte</p>
+<p class="text-label-sm text-on-secondary-container bg-secondary-container/30 px-2 rounded-md inline-block">Susu Gandum, Tanpa Gula</p>
+</div>
+</div>
+</div>
+</div>
+<button class="w-full bg-espresso-900 text-on-primary py-3 rounded-2xl font-bold flex items-center justify-center gap-2 active:scale-95 transition-transform" onclick="startProgress(this)">
+                            Mulai Buat
+                        </button>
+</div>
+<!-- Ticket 2 (Priority/Delayed) -->
+<div class="bg-white rounded-3xl p-5 shadow-sm border-2 border-amber-500 order-card-pulse transition-all hover:shadow-md">
+<div class="flex justify-between items-start mb-4">
+<div>
+<span class="text-label-sm font-bold text-on-surface-variant uppercase bg-cafe-50 px-2 py-0.5 rounded">T#09</span>
+<h4 class="text-body-lg font-bold text-espresso-900 mt-1">Area Sofa A2</h4>
+<p class="text-label-sm text-on-surface-variant">Pelayan: Siti</p>
+</div>
+<div class="text-right">
+<span class="text-label-sm font-bold text-error bg-error-container px-2 py-1 rounded-lg">11m lalu</span>
+</div>
+</div>
+<div class="space-y-3 mb-6">
+<div class="flex justify-between items-start">
+<div class="flex gap-3">
+<span class="font-bold text-espresso-900">2x</span>
+<div>
+<p class="font-bold text-espresso-900">Manual Brew Kalita</p>
+<p class="text-label-sm text-on-secondary-container bg-secondary-container/30 px-2 rounded-md inline-block">Java Preanger, Panas</p>
+</div>
+</div>
+</div>
+</div>
+<button class="w-full bg-espresso-900 text-on-primary py-3 rounded-2xl font-bold active:scale-95 transition-transform" onclick="startProgress(this)">
+                            Mulai Buat
+                        </button>
+</div>
+</div>
+</section>
+<!-- Column: Sedang Dibuat (Progress) -->
+<section class="kanban-column flex flex-col gap-4">
+<div class="flex items-center justify-between px-2">
+<h2 class="font-title-lg text-title-lg flex items-center gap-2 text-earth-olive">
+<span class="w-2 h-2 rounded-full bg-earth-olive"></span>
+                        Sedang Dibuat
+                    </h2>
+<span class="bg-secondary-container text-on-secondary-container px-3 py-1 rounded-full text-label-sm font-bold">2</span>
+</div>
+<div class="flex-1 overflow-y-auto pr-2 space-y-4">
+<div class="bg-white rounded-3xl p-5 shadow-sm border border-cafe-200/50">
+<div class="flex justify-between items-start mb-4">
+<div>
+<span class="text-label-sm font-bold text-on-surface-variant uppercase bg-cafe-50 px-2 py-0.5 rounded">T#12</span>
+<h4 class="text-body-lg font-bold text-espresso-900 mt-1">Ruang VIP</h4>
+<p class="text-label-sm text-on-surface-variant">Pelayan: Andre</p>
+</div>
+<div class="text-right">
+<span class="text-label-sm font-bold text-earth-olive bg-secondary-container px-2 py-1 rounded-lg">2m proses</span>
+</div>
+</div>
+<div class="space-y-3 mb-6">
+<div class="flex justify-between items-start">
+<div class="flex gap-3">
+<span class="font-bold text-espresso-900">4x</span>
+<div>
+<p class="font-bold text-espresso-900">Espresso Double</p>
+<p class="text-label-sm text-on-secondary-container bg-secondary-container/30 px-2 rounded-md inline-block">Racikan Rumah</p>
+</div>
+</div>
+</div>
+</div>
+<div class="flex gap-2">
+<button class="flex-1 bg-earth-olive text-on-primary py-3 rounded-2xl font-bold flex items-center justify-center gap-2 active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-[20px]" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                                Selesai
+                            </button>
+</div>
+</div>
+</div>
+</section>
+<!-- Column: Siap Sajikan (Ready) -->
+<section class="kanban-column flex flex-col gap-4">
+<div class="flex items-center justify-between px-2">
+<h2 class="font-title-lg text-title-lg flex items-center gap-2 text-on-surface-variant">
+<span class="w-2 h-2 rounded-full bg-outline"></span>
+                        Siap Sajikan
+                    </h2>
+</div>
+<div class="flex-1 flex flex-col items-center justify-center bg-cafe-50/50 rounded-3xl border-2 border-dashed border-cafe-200 p-8 text-center">
+<div class="w-24 h-24 bg-cafe-200/50 rounded-full flex items-center justify-center mb-4">
+<span class="material-symbols-outlined text-[48px] text-on-surface-variant" data-icon="coffee">coffee</span>
+</div>
+<h3 class="font-bold text-espresso-900 mb-2">Belum Ada Minuman Siap</h3>
+<p class="text-on-surface-variant text-label-md">Selesaikan pesanan di kolom proses untuk memindahkan ke sini.</p>
+</div>
+</section>
+</div>
+</main>
+<!-- Bottom Navigation Shell (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full h-[84px] bg-white/90 backdrop-blur-md flex justify-around items-center px-4 pb-safe shadow-[0_-4px_20px_0_rgba(0,0,0,0.03)] z-[100]">
+<button class="flex flex-col items-center justify-center bg-espresso-900 text-on-primary rounded-2xl px-6 py-2 transition-transform active:scale-90">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="text-label-sm font-label-sm">Dasbor</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant px-6 py-2 hover:bg-cafe-50 transition-all active:scale-90">
+<span class="material-symbols-outlined" data-icon="receipt_long">receipt_long</span>
+<span class="text-label-sm font-label-sm">Pesanan</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant px-6 py-2 hover:bg-cafe-50 transition-all active:scale-90">
+<span class="material-symbols-outlined" data-icon="table_restaurant">table_restaurant</span>
+<span class="text-label-sm font-label-sm">Meja</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant px-6 py-2 hover:bg-cafe-50 transition-all active:scale-90">
+<span class="material-symbols-outlined" data-icon="inventory_2">inventory_2</span>
+<span class="text-label-sm font-label-sm">Inventaris</span>
+</button>
+</nav>
+<script>
+        function startProgress(btn) {
+            const card = btn.closest('.bg-white');
+            card.classList.add('opacity-50', 'scale-95');
+            setTimeout(() => {
+                alert('Pesanan dipindahkan ke kolom "Sedang Dibuat"');
+                card.classList.remove('opacity-50', 'scale-95');
+            }, 300);
+        }
+
+        // Mock Dynamic Timer Simulation
+        let tickets = document.querySelectorAll('.text-right .text-label-sm');
+        tickets.forEach(t => {
+            if(t.innerText.includes('11m')) {
+                const card = t.closest('.bg-white');
+                if(card) card.classList.add('border-amber-500', 'order-card-pulse');
+            }
+        });
+    </script>
+</body></html>

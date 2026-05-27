@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import { 
   Settings, Coffee, Percent, Grid, Plus, Trash2, Save, 
-  ToggleLeft, ShieldCheck, ToggleRight, Sparkles, QrCode, RefreshCw
+  ToggleLeft, ToggleRight, Sparkles, QrCode, Smartphone, Timer, Trash 
 } from 'lucide-react';
 import { QRCodeSVG } from 'qrcode.react';
 import { api } from '@/lib/api-client';
@@ -12,10 +12,11 @@ export default function SettingsPage() {
   const [user, setUser] = useState<any>(null);
   const [invitationCode, setInvitationCode] = useState('CAO-STAFF-2026');
   const [registeredDevices, setRegisteredDevices] = useState<any[]>([]);
+  const [timerString, setTimerString] = useState('04:59');
   
   // Cafe profile state config (PPN, service charge)
   const [cafeConfig, setCafeConfig] = useState({
-    cafeName: 'Cafe CaoCao',
+    cafeName: 'Cafe CaoCao Central',
     address: 'Jakarta Selatan, Indonesia',
     phone: '081234567890',
     taxRate: 11, // PPN 11%
@@ -24,37 +25,49 @@ export default function SettingsPage() {
   });
 
   const [mergeBarCashier, setMergeBarCashier] = useState(false);
+  const [storeStatusOpen, setStoreStatusOpen] = useState(true);
 
   // Discounts settings state tokens list
   const [discounts, setDiscounts] = useState<any[]>([
-    { id: 'd1', code: 'SENJA10', type: 'PERCENTAGE', value: 10 },
-    { id: 'd2', code: 'PROMOCOFFEE', type: 'NOMINAL', value: 5000 },
+    { id: 'd1', code: 'MORNING15', type: 'PERCENTAGE', value: 15, usageLimit: 45 },
+    { id: 'd2', code: 'LOYALTY50', type: 'NOMINAL', value: 50000, usageLimit: 999 },
   ]);
 
   const [newDiscount, setNewDiscount] = useState({
     code: '',
     type: 'PERCENTAGE',
     value: '',
+    usageLimit: '100'
   });
 
   // Tables dynamic list state
   const [tables, setTables] = useState<any[]>([
-    { id: 't1', name: 'Meja 1', x: 1, y: 1, status: 'AVAILABLE' },
-    { id: 't2', name: 'Meja 2', x: 2, y: 1, status: 'OCCUPIED' },
-    { id: 't3', name: 'Meja 3', x: 3, y: 1, status: 'AVAILABLE' },
+    { id: 't1', name: 'Meja 01', seats: '2 Kursi', active: true },
+    { id: 't2', name: 'Meja 02', seats: '4 Kursi', active: true },
+    { id: 't3', name: 'Meja 03', seats: 'Bar Area', active: true },
+    { id: 't4', name: 'Meja 04', seats: '2 Kursi', active: false },
   ]);
 
   const [newTable, setNewTable] = useState({
     name: '',
-    x: 1,
-    y: 1,
+    seats: '2 Kursi',
   });
 
+  // 1. Initial State Sync
   useEffect(() => {
     const storedUser = localStorage.getItem('pos_user');
     if (storedUser) {
       setUser(JSON.parse(storedUser));
+    } else {
+      const defaultUser = {
+        name: 'Staff OWNER',
+        role: 'OWNER',
+        cafeName: 'Cafe CaoCao',
+      };
+      setUser(defaultUser);
+      localStorage.setItem('pos_user', JSON.stringify(defaultUser));
     }
+
     const savedCode = localStorage.getItem('pos_staff_invitation_code');
     if (savedCode) {
       setInvitationCode(savedCode);
@@ -67,10 +80,9 @@ export default function SettingsPage() {
     if (savedDevices) {
       setRegisteredDevices(JSON.parse(savedDevices));
     } else {
-      // Seed initial devices for premium mockup experience if empty
       const initialDevices = [
-        { id: 'dev-budi123', name: 'Xiaomi Budi (Barista)', dateConnected: '2026-05-25 14:20' },
-        { id: 'dev-siti456', name: 'iPhone Siti (Waitress)', dateConnected: '2026-05-25 15:45' }
+        { id: 'dev-budi123', name: 'Samsung Galaxy S23 Ultra', waiter: 'Budi', status: 'Aktif sekarang' },
+        { id: 'dev-siti456', name: 'iPhone 14 Pro', waiter: 'Siti', status: 'Terakhir aktif 2 jam lalu' }
       ];
       setRegisteredDevices(initialDevices);
       localStorage.setItem('pos_registered_devices', JSON.stringify(initialDevices));
@@ -87,22 +99,46 @@ export default function SettingsPage() {
       setMergeBarCashier(savedMerge === 'true');
     }
 
-    // Sync tables with API
+    // Sync tables with API or seed
     const loadTables = async () => {
       try {
         const data = await api.order.getTables();
         if (data && data.length > 0) {
-          setTables(data);
+          setTables(data.map((t: any) => ({
+            id: t.id,
+            name: t.name,
+            seats: t.seats || '4 Kursi',
+            active: t.status === 'AVAILABLE'
+          })));
         }
       } catch (e) {
-        console.log('Order API Server offline, using local tables.');
+        console.log('Order API offline, using seeded tables.');
       }
     };
     loadTables();
   }, []);
 
+  // 2. Ticking Countdown Timer for QR Sync Code
+  useEffect(() => {
+    let secondsLeft = 299; // 5 minutes
+    const interval = setInterval(() => {
+      if (secondsLeft <= 0) {
+        const newCode = 'CAO-' + Math.random().toString(36).slice(2, 6).toUpperCase() + '-' + Math.floor(1000 + Math.random() * 9000);
+        setInvitationCode(newCode);
+        localStorage.setItem('pos_staff_invitation_code', newCode);
+        secondsLeft = 299;
+      } else {
+        secondsLeft--;
+      }
+      const mins = Math.floor(secondsLeft / 60);
+      const secs = secondsLeft % 60;
+      setTimerString(`${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')}`);
+    }, 1000);
+    return () => clearInterval(interval);
+  }, []);
+
   const handleRevokeDevice = (deviceId: string) => {
-    if (confirm('Apakah Anda yakin ingin mencabut akses perangkat staf ini? Perangkat ini akan segera dikeluarkan dari Workspace.')) {
+    if (confirm('Apakah Anda yakin ingin mencabut akses perangkat staf ini? Perangkat ini akan segera dikeluarkan dari outlet.')) {
       const updated = registeredDevices.filter(d => d.id !== deviceId);
       setRegisteredDevices(updated);
       localStorage.setItem('pos_registered_devices', JSON.stringify(updated));
@@ -112,7 +148,7 @@ export default function SettingsPage() {
   };
 
   const handleSaveConfig = () => {
-    alert('Konfigurasi Cafe Profile berhasil disimpan!');
+    alert('Konfigurasi Profil Kafe berhasil disimpan secara lokal!');
   };
 
   const handleToggleMerge = () => {
@@ -120,6 +156,7 @@ export default function SettingsPage() {
     setMergeBarCashier(nextVal);
     localStorage.setItem('pos_merge_bar_cashier', String(nextVal));
     alert('Pengaturan penyatuan peran Bar & Kasir berhasil diperbarui!');
+    window.dispatchEvent(new Event('storage'));
   };
 
   const handleAddDiscount = (e: React.FormEvent) => {
@@ -131,13 +168,14 @@ export default function SettingsPage() {
       code: newDiscount.code.toUpperCase(),
       type: newDiscount.type,
       value: parseFloat(newDiscount.value),
+      usageLimit: parseInt(newDiscount.usageLimit) || 100
     };
 
     const updated = [...discounts, disc];
     setDiscounts(updated);
     localStorage.setItem('pos_discounts', JSON.stringify(updated));
-    setNewDiscount({ code: '', type: 'PERCENTAGE', value: '' });
-    alert('Token diskon baru ' + disc.code + ' berhasil ditambahkan!');
+    setNewDiscount({ code: '', type: 'PERCENTAGE', value: '', usageLimit: '100' });
+    alert('Voucher diskon ' + disc.code + ' berhasil ditambahkan!');
   };
 
   const handleDeleteDiscount = (id: string) => {
@@ -150,26 +188,17 @@ export default function SettingsPage() {
     e.preventDefault();
     if (!newTable.name) return;
 
-    const tblData = {
+    const tbl = {
+      id: 't-' + Math.random().toString(36).slice(2, 6),
       name: newTable.name,
-      x: parseInt(newTable.x as any),
-      y: parseInt(newTable.y as any),
-      status: 'AVAILABLE',
+      seats: newTable.seats,
+      active: true
     };
 
-    try {
-      const tbl = await api.order.createTable(tblData);
-      setTables([...tables, tbl]);
-    } catch (err) {
-      const tbl = {
-        id: 't-' + Math.random().toString(36).slice(2, 6),
-        ...tblData
-      };
-      setTables([...tables, tbl]);
-    }
-
-    setNewTable({ name: '', x: 1, y: 1 });
-    alert(newTable.name + ' berhasil ditambahkan!');
+    const updated = [...tables, tbl];
+    setTables(updated);
+    setNewTable({ name: '', seats: '2 Kursi' });
+    alert(tbl.name + ' berhasil ditambahkan!');
   };
 
   const handleDeleteTable = (id: string) => {
@@ -181,361 +210,457 @@ export default function SettingsPage() {
   const isOwner = user.role === 'OWNER';
 
   return (
-    <div className="space-y-6 max-w-6xl mx-auto">
+    <div className="space-y-8 max-w-7xl mx-auto px-1 py-4 font-sans text-on-background">
       
-      {/* Header section */}
-      <div className="flex items-center gap-3 border-b border-cafe-200 pb-4 justify-between">
-        <div className="flex items-center gap-3">
-          <div className="w-10 h-10 bg-cafe-800 text-cafe-100 rounded-xl flex items-center justify-center shadow">
-            <Settings className="w-5 h-5" />
-          </div>
-          <div>
-            <h2 className="text-xl font-bold text-cafe-900 font-sans">Pengaturan & Konfigurasi</h2>
-            <p className="text-xs text-cafe-500">Sesuaikan profil cafe, token diskon aktif, PPN pajak, dan denah meja kasir</p>
-          </div>
+      {/* Top Section Header */}
+      <section className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div>
+          <p className="text-[10px] font-black text-cafe-400 uppercase tracking-widest mb-1">
+            CAFE CONFIGURATION PANEL
+          </p>
+          <h2 className="text-3xl font-black text-espresso-900 tracking-tight">
+            Pengaturan Kafe
+          </h2>
         </div>
-      </div>
+      </section>
 
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+      {/* Main Split Grid */}
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
         
-        {/* Left Column: Cafe Profile configuration (restricted to OWNER or Admin with custom views) */}
-        <div className="lg:col-span-1 space-y-6">
-          <section className="bg-white rounded-3xl p-6 border border-cafe-200/50 shadow-premium">
-            <h3 className="font-extrabold text-cafe-900 text-base mb-4 flex items-center gap-2">
-              <Coffee className="w-4 h-4 text-cafe-600" /> Profil Cafe
-            </h3>
+        {/* Left Column: Business Profile & Quick Nav */}
+        <aside className="lg:col-span-4 space-y-6">
+          
+          {/* Logo & Cafe Profile card */}
+          <section className="bg-white rounded-3xl p-6 border border-cafe-200/40 shadow-sm flex flex-col items-center text-center">
             
-            {!isOwner && (
-              <div className="p-3 bg-amber-50 text-amber-700 border border-amber-200 rounded-xl text-[10px] font-semibold mb-4 flex gap-2">
-                <ShieldCheck className="w-4 h-4 shrink-0" />
-                <span>Pengaturan PPN & Service rate hanya dapat diubah oleh Owner.</span>
-              </div>
-            )}
+            {/* Custom Cafe Logo aspect frame */}
+            <div className="w-24 h-24 bg-cafe-50 rounded-2xl mb-4 flex items-center justify-center border-2 border-dashed border-cafe-200 relative group overflow-hidden">
+              <img 
+                alt="Cafe Logo" 
+                className="absolute inset-0 w-full h-full object-cover" 
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuABDIwGhvkM83Ae7zUp2gspbVLMdgfKq06hjW5xg5aWwpMzws1AQIi1FlmLE6vayxCgRrrEiUGV1wDRIlaSnKwfpvuYl8ZJf5ti7UbTLo1cxRSHHFrVtvmWJ3RjAasgaroEHDbkO31Dnw02JS330n7w1zKGI_pkdjWCVCM2skqdrKfEEe-6HMVyaBmWpUasKPOmd1oZd3gzF6KZRASEr1zDVaxIzgJZfAWBTMjRza-qRvEAOJs9NZUr5j3mZCVI1ijTtoEu9Q3dcH4" 
+              />
+            </div>
 
-            <div className="space-y-4">
-              <div className="space-y-1">
-                <label className="text-[10px] font-bold text-cafe-500 uppercase tracking-wider">Nama Cafe</label>
-                <input
-                  type="text"
-                  value={cafeConfig.cafeName}
-                  onChange={(e) => setCafeConfig({ ...cafeConfig, cafeName: e.target.value })}
-                  className="w-full px-3 py-2.5 rounded-xl border border-cafe-200 text-xs focus:outline-none focus:border-earth-olive bg-cafe-50/50 font-semibold"
-                />
-              </div>
+            <h2 className="text-lg font-black text-espresso-900">{cafeConfig.cafeName}</h2>
+            <p className="text-[10px] font-extrabold text-cafe-400 uppercase tracking-wider mb-6">
+              Profil Bisnis • Cabang Sudirman
+            </p>
 
-              <div className="space-y-1">
-                <label className="text-[10px] font-bold text-cafe-500 uppercase tracking-wider">Alamat Lengkap</label>
-                <input
-                  type="text"
-                  value={cafeConfig.address}
-                  onChange={(e) => setCafeConfig({ ...cafeConfig, address: e.target.value })}
-                  className="w-full px-3 py-2.5 rounded-xl border border-cafe-200 text-xs focus:outline-none focus:border-earth-olive bg-cafe-50/50 font-semibold"
-                />
+            <div className="w-full space-y-2">
+              <div 
+                onClick={() => setStoreStatusOpen(!storeStatusOpen)}
+                className="flex justify-between items-center p-3 bg-cafe-50 hover:bg-cafe-100/60 rounded-2xl cursor-pointer transition-all border border-cafe-200/50"
+              >
+                <span className="text-xs font-bold text-cafe-500">Status Toko</span>
+                <span className={`text-xs font-extrabold flex items-center gap-1.5 ${
+                  storeStatusOpen ? 'text-secondary' : 'text-red-500'
+                }`}>
+                  <span className={`w-2 h-2 rounded-full ${
+                    storeStatusOpen ? 'bg-secondary animate-pulse' : 'bg-red-500'
+                  }`} /> 
+                  {storeStatusOpen ? 'Buka' : 'Tutup'}
+                </span>
               </div>
+            </div>
+          </section>
 
-              <div className="grid grid-cols-2 gap-3">
-                <div className="space-y-1">
-                  <label className="text-[10px] font-bold text-cafe-500 uppercase tracking-wider">Pajak PPN (%)</label>
-                  <input
-                    type="number"
-                    disabled={!isOwner}
-                    value={cafeConfig.taxRate}
-                    onChange={(e) => setCafeConfig({ ...cafeConfig, taxRate: parseFloat(e.target.value) || 0 })}
-                    className="w-full px-3 py-2.5 rounded-xl border border-cafe-200 text-xs focus:outline-none focus:border-earth-olive bg-cafe-50/50 font-semibold disabled:opacity-50"
-                  />
+          {/* Quick Settings menu navigation mockup */}
+          <nav className="bg-white rounded-3xl p-2 border border-cafe-200/40 shadow-sm space-y-0.5">
+            <button className="w-full flex items-center gap-3 p-4 bg-secondary-container text-on-secondary-container rounded-2xl font-bold text-xs text-left">
+              <Settings className="w-4 h-4 text-earth-olive" />
+              <span>Pengaturan Kafe</span>
+            </button>
+            <button className="w-full flex items-center gap-3 p-4 text-cafe-500 hover:bg-cafe-50 hover:text-espresso-900 rounded-2xl font-bold text-xs text-left transition-colors">
+              <Percent className="w-4 h-4 text-cafe-400" />
+              <span>Pajak & Layanan</span>
+            </button>
+            <button className="w-full flex items-center gap-3 p-4 text-cafe-500 hover:bg-cafe-50 hover:text-espresso-900 rounded-2xl font-bold text-xs text-left transition-colors">
+              <Grid className="w-4 h-4 text-cafe-400" />
+              <span>Editor Denah Meja</span>
+            </button>
+            <button className="w-full flex items-center gap-3 p-4 text-cafe-500 hover:bg-cafe-50 hover:text-espresso-900 rounded-2xl font-bold text-xs text-left transition-colors">
+              <QrCode className="w-4 h-4 text-cafe-400" />
+              <span>Sinkronisasi Perangkat</span>
+            </button>
+          </nav>
+
+        </aside>
+
+        {/* Right Column: Settings configuration modules */}
+        <div className="lg:col-span-8 space-y-6">
+          
+          {/* Tax Rates & Charges Bento Split */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            
+            {/* Standalone PPN Tax Card */}
+            <section className="bg-white rounded-3xl p-6 border border-cafe-200/40 shadow-sm flex flex-col justify-between h-56">
+              <div>
+                <div className="flex items-center justify-between mb-3">
+                  <h3 className="text-sm font-black text-espresso-900">Tarif PPN (11%)</h3>
+                  <span className="p-2 bg-cafe-50 rounded-xl border border-cafe-200/55">
+                    <Percent className="w-4 h-4 text-cafe-400" />
+                  </span>
                 </div>
-                <div className="space-y-1">
-                  <label className="text-[10px] font-bold text-cafe-500 uppercase tracking-wider">Service Charge (%)</label>
-                  <input
+                <p className="text-[11px] text-cafe-450 leading-relaxed font-semibold">
+                  Pajak Pertambahan Nilai standar di Indonesia yang otomatis dibebankan pada struk belanja menu.
+                </p>
+              </div>
+              <div className="flex items-end justify-between border-t border-cafe-50 pt-4">
+                <span className="text-3xl font-black text-espresso-900">{cafeConfig.taxRate}%</span>
+                <input 
+                  type="number"
+                  disabled={!isOwner}
+                  value={cafeConfig.taxRate}
+                  onChange={(e) => setCafeConfig({ ...cafeConfig, taxRate: parseFloat(e.target.value) || 0 })}
+                  className="w-16 text-center py-1.5 border border-cafe-200 rounded-xl text-xs font-bold bg-cafe-50/50 disabled:opacity-50"
+                />
+              </div>
+            </section>
+
+            {/* Standalone Service Charge Card with Custom Switch */}
+            <section className="bg-white rounded-3xl p-6 border border-cafe-200/40 shadow-sm flex flex-col justify-between h-56">
+              <div>
+                <div className="flex items-center justify-between mb-3">
+                  <h3 className="text-sm font-black text-espresso-900">Service Charge</h3>
+                  <span className="p-2 bg-cafe-50 rounded-xl border border-cafe-200/55">
+                    <Coffee className="w-4 h-4 text-cafe-400" />
+                  </span>
+                </div>
+                <p className="text-[11px] text-cafe-450 leading-relaxed font-semibold">
+                  Biaya layanan opsional sebesar 5% untuk menunjang operasional kru dan makan di tempat (Dine-in).
+                </p>
+              </div>
+              
+              <div className="flex items-center justify-between border-t border-cafe-50 pt-4">
+                <div className="flex items-baseline gap-1">
+                  <span className="text-3xl font-black text-espresso-900">{cafeConfig.serviceRate}%</span>
+                </div>
+
+                <div className="flex items-center gap-3">
+                  {/* custom input */}
+                  <input 
                     type="number"
                     disabled={!isOwner}
                     value={cafeConfig.serviceRate}
                     onChange={(e) => setCafeConfig({ ...cafeConfig, serviceRate: parseFloat(e.target.value) || 0 })}
-                    className="w-full px-3 py-2.5 rounded-xl border border-cafe-200 text-xs focus:outline-none focus:border-earth-olive bg-cafe-50/50 font-semibold disabled:opacity-50"
+                    className="w-16 text-center py-1.5 border border-cafe-200 rounded-xl text-xs font-bold bg-cafe-50/50 disabled:opacity-50"
+                  />
+                  {/* Custom Toggle switch representation */}
+                  <button 
+                    onClick={() => setCafeConfig(c => ({ ...c, serviceRate: c.serviceRate === 5 ? 0 : 5 }))}
+                    className="text-earth-olive focus:outline-none shrink-0"
+                  >
+                    {cafeConfig.serviceRate > 0 ? (
+                      <ToggleRight className="w-8 h-8 text-secondary" />
+                    ) : (
+                      <ToggleLeft className="w-8 h-8 text-cafe-300" />
+                    )}
+                  </button>
+                </div>
+              </div>
+            </section>
+
+          </div>
+
+          {/* Device Sync & scannable QR Code section */}
+          <section className="bg-espresso-900 rounded-3xl p-6 md:p-8 text-white relative overflow-hidden shadow-md">
+            
+            <div className="relative z-10 grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
+              
+              <div className="md:col-span-8 space-y-4">
+                <h3 className="text-xl font-bold tracking-tight">Sinkronisasi Perangkat Staf</h3>
+                
+                <p className="text-xs text-white/70 leading-relaxed max-w-md">
+                  Hubungkan ponsel pramusaji atau tablet waiter baru secara instan. Pindai kode QR sementara ini dengan Aplikasi Staf CAOCAO untuk otorisasi akses cepat.
+                </p>
+                
+                <div className="flex items-center gap-2 text-secondary-container">
+                  <Timer className="w-4 h-4 animate-pulse" />
+                  <span className="text-[11px] font-bold">
+                    Kode QR kedaluwarsa dalam <span className="font-mono bg-white/10 px-1.5 py-0.5 rounded">{timerString}</span>
+                  </span>
+                </div>
+
+                <div className="flex flex-wrap gap-2 pt-2">
+                  <button 
+                    onClick={() => {
+                      const newCode = 'CAO-' + Math.random().toString(36).slice(2, 6).toUpperCase() + '-' + Math.floor(1000 + Math.random() * 9000);
+                      setInvitationCode(newCode);
+                      localStorage.setItem('pos_staff_invitation_code', newCode);
+                      alert('Kode sinkronisasi dan QR Code baru berhasil dibuat!');
+                    }}
+                    className="px-4 py-2.5 bg-secondary text-on-secondary rounded-xl font-extrabold text-xs hover:opacity-90 active:scale-95 transition-all shadow"
+                  >
+                    Buat Kode Baru
+                  </button>
+                  
+                  <div className="px-3 py-2 bg-white/15 border border-white/10 rounded-xl font-mono text-xs select-all text-white font-extrabold flex items-center">
+                    {invitationCode}
+                  </div>
+                </div>
+              </div>
+
+              {/* QR display block */}
+              <div className="md:col-span-4 flex justify-center">
+                <div className="bg-white p-3 rounded-2xl shadow-xl flex items-center justify-center shrink-0">
+                  <QRCodeSVG
+                    value={invitationCode}
+                    size={112}
+                    bgColor="#ffffff"
+                    fgColor="#1A1614"
+                    level="L"
                   />
                 </div>
               </div>
 
-              <div className="flex items-center justify-between py-2 border-t border-b border-cafe-100">
-                <span className="text-xs font-semibold text-cafe-700">Cetak struk belanja kasir otomatis</span>
-                <button 
-                  onClick={() => setCafeConfig({ ...cafeConfig, autoPrintReceipt: !cafeConfig.autoPrintReceipt })}
-                  className="text-earth-olive focus:outline-none"
-                >
-                  {cafeConfig.autoPrintReceipt ? <ToggleRight className="w-8 h-8" /> : <ToggleLeft className="w-8 h-8 text-cafe-400" />}
-                </button>
-              </div>
+            </div>
 
-              <div className="flex items-center justify-between py-2 border-b border-cafe-100">
-                <div>
-                  <span className="text-xs font-semibold text-cafe-700 block">Gabungkan Bar & Kasir</span>
-                  <span className="text-[9px] text-cafe-400 font-semibold block">Satukan peran barista dan kasir kafe</span>
+            {/* Premium backdrop glow filter */}
+            <div className="absolute -bottom-12 -right-12 w-48 h-48 bg-secondary/15 rounded-full blur-3xl pointer-events-none" />
+          </section>
+
+          {/* Dynamic Table Denah Map Layout */}
+          <section className="bg-white rounded-3xl p-6 border border-cafe-200/40 shadow-sm">
+            <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 gap-4">
+              <div>
+                <h3 className="text-lg font-bold text-espresso-900">Denah Tata Letak Meja</h3>
+                <p className="text-xs text-cafe-400 font-semibold mt-0.5">Atur layout koordinat meja di lantai utama kafe</p>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-5 gap-4">
+              {tables.map((t) => (
+                <div 
+                  key={t.id} 
+                  className={`aspect-square rounded-2xl border-2 p-3 flex flex-col items-center justify-center gap-1 transition-all group relative cursor-pointer select-none ${
+                    t.active 
+                      ? 'bg-white border-secondary hover:bg-secondary/5' 
+                      : 'bg-cafe-50 border-cafe-200'
+                  }`}
+                >
+                  <span className="text-[9px] font-bold text-cafe-400 uppercase tracking-widest">Meja</span>
+                  <span className="text-xl font-black text-espresso-900">{t.name.replace('Meja ', '')}</span>
+                  <span className="text-[9px] text-cafe-450 font-bold">{t.seats}</span>
+                  
+                  {/* Delete overlay */}
+                  <button 
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      handleDeleteTable(t.id);
+                    }}
+                    className="absolute top-2 right-2 opacity-0 group-hover:opacity-100 text-red-500 hover:text-red-700 transition-opacity p-0.5 bg-red-50 rounded"
+                    title="Hapus Meja"
+                  >
+                    <Trash className="w-3.5 h-3.5" />
+                  </button>
+
+                  {t.active && (
+                    <span className="absolute -top-2 -right-2 bg-secondary text-white text-[8px] px-1.5 py-0.5 rounded-full font-bold uppercase shadow-sm">
+                      AKTIF
+                    </span>
+                  )}
                 </div>
-                <button 
-                  onClick={handleToggleMerge}
-                  className="text-earth-olive focus:outline-none"
-                >
-                  {mergeBarCashier ? <ToggleRight className="w-8 h-8" /> : <ToggleLeft className="w-8 h-8 text-cafe-400" />}
-                </button>
-              </div>
+              ))}
 
-              <button
-                onClick={handleSaveConfig}
-                className="w-full py-3 bg-earth-olive text-cafe-50 rounded-xl text-xs font-bold btn-premium shadow-sm flex items-center justify-center gap-1.5"
-              >
-                <Save className="w-4 h-4" /> Simpan Profil
-              </button>
-            </div>
-          </section>
-
-          {/* Staff Invitation Device Code Section */}
-          <section className="bg-white rounded-3xl p-6 border border-cafe-200/50 shadow-premium mt-6">
-            <h3 className="font-extrabold text-cafe-900 text-base mb-2 flex items-center gap-2">
-              <QrCode className="w-4 h-4 text-cafe-650" /> Kode Unik Sinkronisasi Staf
-            </h3>
-            <p className="text-[10px] text-cafe-400 font-semibold mb-4 leading-relaxed">
-              Scan QR Code ini menggunakan HP Staf saat pertama kali membuka aplikasi untuk sinkronisasi perangkat otomatis dengan outlet kafe ini.
-            </p>
-            
-            <div className="flex flex-col gap-4 items-center bg-cafe-50 border border-cafe-200 p-5 rounded-2xl w-full">
-              {/* Real scannable QR Code */}
-              <div className="bg-white rounded-2xl border border-cafe-200 p-3 shadow-sm">
-                <QRCodeSVG
-                  value={invitationCode}
-                  size={148}
-                  bgColor="#ffffff"
-                  fgColor="#1a1008"
-                  level="M"
-                />
-              </div>
-
-              <div className="w-full text-center">
-                <span className="text-[9px] font-bold text-cafe-400 uppercase tracking-wider block">KODE SINKRONISASI OUTLET</span>
-                <span className="text-sm font-black text-cafe-900 tracking-wider font-mono uppercase bg-white border border-cafe-200 px-3 py-1.5 rounded-xl mt-1 inline-block select-all">
-                  {invitationCode}
-                </span>
-              </div>
-              
-              <button
+              {/* Add Table trigger block */}
+              <div 
                 onClick={() => {
-                  const newCode = 'CAO-' + Math.random().toString(36).slice(2, 6).toUpperCase() + '-' + Math.floor(1000 + Math.random() * 9000);
-                  localStorage.setItem('pos_staff_invitation_code', newCode);
-                  window.dispatchEvent(new Event('storage'));
-                  setInvitationCode(newCode);
+                  const num = String(tables.length + 1).padStart(2, '0');
+                  const seats = prompt('Masukkan kapasitas kursi (e.g. 2 Kursi, 4 Kursi, Bar Area):', '4 Kursi');
+                  if (seats) {
+                    setTables(prev => [...prev, {
+                      id: 't-' + Math.random().toString(36).substring(2,7),
+                      name: `Meja ${num}`,
+                      seats: seats,
+                      active: true
+                    }]);
+                  }
                 }}
-                className="w-full px-4 py-3 bg-cafe-800 hover:bg-cafe-950 text-white font-bold rounded-xl text-xs transition-all active:scale-95 shadow-sm flex items-center justify-center gap-1.5"
+                className="aspect-square border-2 border-dashed border-cafe-200 rounded-2xl flex flex-col items-center justify-center hover:bg-cafe-50 transition-all cursor-pointer hover:border-earth-olive group text-cafe-400"
               >
-                <RefreshCw className="w-3.5 h-3.5" /> Acak Kode &amp; QR Baru
-              </button>
+                <Plus className="w-5 h-5 mb-1 group-hover:scale-110 transition-transform" />
+                <span className="text-[10px] font-bold">Tambah Meja</span>
+              </div>
             </div>
           </section>
 
-          {/* Connected Staff Devices Management Card */}
-          <section className="bg-white rounded-3xl p-6 border border-cafe-200/50 shadow-premium mt-6">
-            <div className="flex items-center gap-2 mb-2">
-              <span className="w-2.5 h-2.5 rounded-full bg-green-500 animate-pulse" />
-              <h3 className="font-extrabold text-cafe-900 text-base">
-                Perangkat Staf Terhubung
-              </h3>
+          {/* Voucher Management lists */}
+          <section className="bg-white rounded-3xl p-6 border border-cafe-200/40 shadow-sm">
+            <div className="flex justify-between items-center mb-6">
+              <div>
+                <h3 className="text-lg font-bold text-espresso-900">Voucher Diskon Aktif</h3>
+                <p className="text-xs text-cafe-400 font-semibold mt-0.5">Manajemen program promosi outlet kafe</p>
+              </div>
             </div>
-            <p className="text-[10px] text-cafe-400 font-semibold mb-4 leading-relaxed">
-              Daftar smartphone staf yang terhubung ke workspace kafe ini. Anda dapat mencabut akses perangkat kapan saja secara instan.
+
+            <div className="space-y-3 mb-6">
+              {discounts.map((disc) => (
+                <div 
+                  key={disc.id} 
+                  className="p-4 rounded-2xl bg-cafe-50 border border-cafe-200/60 flex items-center justify-between hover:border-cafe-250 transition-all"
+                >
+                  <div className="flex items-center gap-4">
+                    <span className="w-10 h-10 bg-white rounded-xl flex items-center justify-center shadow-sm text-secondary">
+                      <Percent className="w-5 h-5" />
+                    </span>
+                    <div>
+                      <h4 className="text-xs font-black text-espresso-950 tracking-wide font-mono uppercase">
+                        {disc.code}
+                      </h4>
+                      <p className="text-[10px] text-cafe-450 font-bold mt-0.5">
+                        Potongan {disc.type === 'PERCENTAGE' ? `${disc.value}%` : `Rp ${disc.value.toLocaleString('id-ID')}`} • Sisa Kuota: {disc.usageLimit}
+                      </p>
+                    </div>
+                  </div>
+                  
+                  <div className="flex items-center gap-3">
+                    <span className="px-2 py-0.5 bg-secondary-container text-on-secondary-container text-[8px] font-extrabold rounded uppercase tracking-wider">
+                      AKTIF
+                    </span>
+                    <button 
+                      onClick={() => handleDeleteDiscount(disc.id)}
+                      className="text-cafe-400 hover:text-red-500 p-1 bg-white border border-cafe-200 rounded-lg active:scale-95 transition-all"
+                    >
+                      <Trash2 className="w-4 h-4" />
+                    </button>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Voucher input form inline */}
+            <form onSubmit={handleAddDiscount} className="grid grid-cols-1 sm:grid-cols-4 gap-2 pt-4 border-t border-cafe-50">
+              <input 
+                type="text"
+                required
+                placeholder="Kode (e.g. DISKON20)"
+                value={newDiscount.code}
+                onChange={(e) => setNewDiscount(n => ({ ...n, code: e.target.value }))}
+                className="px-3 py-2 bg-cafe-50 border border-cafe-200 rounded-xl text-xs font-bold uppercase focus:ring-0 focus:outline-none"
+              />
+              <select 
+                value={newDiscount.type}
+                onChange={(e) => setNewDiscount(n => ({ ...n, type: e.target.value }))}
+                className="px-3 py-2 bg-cafe-50 border border-cafe-200 rounded-xl text-xs font-bold focus:ring-0 focus:outline-none"
+              >
+                <option value="PERCENTAGE">Persentase (%)</option>
+                <option value="NOMINAL">Nominal (Rupiah)</option>
+              </select>
+              <input 
+                type="number"
+                required
+                placeholder="Nilai (e.g. 15)"
+                value={newDiscount.value}
+                onChange={(e) => setNewDiscount(n => ({ ...n, value: e.target.value }))}
+                className="px-3 py-2 bg-cafe-50 border border-cafe-200 rounded-xl text-xs font-bold focus:ring-0 focus:outline-none"
+              />
+              <button 
+                type="submit"
+                className="bg-espresso-900 text-white rounded-xl text-xs font-bold hover:opacity-95 active:scale-95 transition-all"
+              >
+                Tambah Voucher
+              </button>
+            </form>
+          </section>
+
+          {/* Linked devices management */}
+          <section className="bg-white rounded-3xl p-6 border border-cafe-200/40 shadow-sm">
+            <h3 className="text-lg font-bold text-espresso-900 mb-2">Perangkat Terhubung</h3>
+            <p className="text-xs text-cafe-400 font-semibold mb-4 leading-relaxed">
+              Daftar perangkat pramusaji yang aktif di bawah otorisasi kasir utama. Anda dapat mencabut akses perangkat untuk menghentikan sinkronisasi pesanan.
             </p>
 
-            <div className="space-y-3 max-h-[250px] overflow-y-auto pr-1">
+            <div className="divide-y divide-cafe-100">
               {registeredDevices.length === 0 ? (
-                <div className="text-center py-6 border border-dashed border-cafe-200 rounded-2xl text-[10px] font-semibold text-cafe-400">
-                  Belum ada perangkat staf yang terhubung.
+                <div className="text-center py-6 text-xs text-cafe-400 font-semibold">
+                  Belum ada perangkat pramusaji terhubung.
                 </div>
               ) : (
-                registeredDevices.map((device) => (
-                  <div key={device.id} className="p-3 bg-cafe-50 border border-cafe-200/60 rounded-2xl flex justify-between items-center text-xs font-semibold hover:border-cafe-300 transition-all">
-                    <div>
-                      <span className="block font-bold text-cafe-950">{device.name}</span>
-                      <span className="block text-[9px] text-cafe-400 mt-0.5">ID: {device.id}</span>
-                      <span className="block text-[8px] text-cafe-400 font-medium">Sinkron: {device.dateConnected}</span>
+                registeredDevices.map((dev) => (
+                  <div key={dev.id} className="py-4 flex items-center justify-between">
+                    <div className="flex items-center gap-4">
+                      <span className="w-10 h-10 rounded-full bg-cafe-50 border border-cafe-200 flex items-center justify-center shrink-0">
+                        <Smartphone className="w-5 h-5 text-cafe-500" />
+                      </span>
+                      <div>
+                        <p className="text-xs font-bold text-espresso-900">{dev.name}</p>
+                        <p className="text-[10px] text-cafe-400 font-semibold mt-0.5">
+                          {dev.status} • Waiter: {dev.waiter || 'Staf'}
+                        </p>
+                      </div>
                     </div>
-                    <button
-                      onClick={() => handleRevokeDevice(device.id)}
-                      className="p-1.5 rounded-lg bg-red-50 text-red-500 hover:bg-red-100 hover:text-red-700 transition-all active:scale-95"
-                      title="Cabut Akses Perangkat"
+                    <button 
+                      onClick={() => handleRevokeDevice(dev.id)}
+                      className="text-red-500 hover:text-red-700 text-xs font-bold hover:underline"
                     >
-                      <Trash2 className="w-3.5 h-3.5" />
+                      Cabut Akses
                     </button>
                   </div>
                 ))
               )}
             </div>
           </section>
-        </div>
 
-
-        {/* Center/Right Columns: Tables map config and Discount Tokens lists */}
-        <div className="lg:col-span-2 space-y-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            
-            {/* Discount setting tokens lists */}
-            <section className="bg-white rounded-3xl p-6 border border-cafe-200/50 shadow-premium flex flex-col justify-between">
-              <div>
-                <h3 className="font-extrabold text-cafe-900 text-base mb-4 flex items-center gap-2">
-                  <Percent className="w-4 h-4 text-cafe-600" /> Token Diskon Aktif
-                </h3>
-                
-                {/* List discounts */}
-                <div className="space-y-3 mb-6 max-h-[220px] overflow-y-auto pr-1">
-                  {discounts.map((disc) => (
-                    <div key={disc.id} className="p-3 bg-cafe-50/50 border border-cafe-200/40 rounded-2xl flex justify-between items-center text-xs font-bold">
-                      <div>
-                        <span className="px-2 py-0.5 bg-earth-olive text-cafe-50 rounded text-[9px] uppercase tracking-wider">{disc.code}</span>
-                        <p className="text-[10px] text-cafe-400 mt-1 font-semibold">
-                          Potongan: {disc.type === 'PERCENTAGE' ? `${disc.value}%` : `Rp ${disc.value.toLocaleString('id-ID')}`}
-                        </p>
-                      </div>
-                      <button 
-                        onClick={() => handleDeleteDiscount(disc.id)}
-                        className="text-red-500 hover:text-red-700 p-1"
-                      >
-                        <Trash2 className="w-4 h-4" />
-                      </button>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              {/* Add Discount Form */}
-              <form onSubmit={handleAddDiscount} className="space-y-3 border-t border-cafe-100 pt-4">
-                <span className="text-[10px] font-extrabold text-cafe-500 uppercase tracking-wider block">Tambah Kupon Baru</span>
-                
-                <div className="grid grid-cols-2 gap-2">
-                  <input
-                    type="text"
-                    required
-                    placeholder="Contoh: SENJA20"
-                    value={newDiscount.code}
-                    onChange={(e) => setNewDiscount({ ...newDiscount, code: e.target.value })}
-                    className="w-full px-3 py-2 rounded-xl border border-cafe-200 text-xs focus:outline-none focus:border-earth-olive bg-cafe-50/50 uppercase"
-                  />
-                  <select
-                    value={newDiscount.type}
-                    onChange={(e) => setNewDiscount({ ...newDiscount, type: e.target.value })}
-                    className="w-full px-3 py-2 rounded-xl border border-cafe-200 text-xs focus:outline-none focus:border-earth-olive bg-cafe-50/50"
-                  >
-                    <option value="PERCENTAGE">Persen %</option>
-                    <option value="NOMINAL">Nominal Rp</option>
-                  </select>
-                </div>
-
-                <div className="flex gap-2">
-                  <input
-                    type="number"
-                    required
-                    placeholder={newDiscount.type === 'PERCENTAGE' ? 'Nilai (Contoh: 20)' : 'Nilai (Contoh: 10000)'}
-                    value={newDiscount.value}
-                    onChange={(e) => setNewDiscount({ ...newDiscount, value: e.target.value })}
-                    className="w-full px-3 py-2 rounded-xl border border-cafe-200 text-xs focus:outline-none focus:border-earth-olive bg-cafe-50/50"
-                  />
-                  <button
-                    type="submit"
-                    className="px-4 py-2 bg-cafe-800 text-white rounded-xl text-xs font-bold flex items-center justify-center gap-1 transition-all active:scale-95 shadow-sm shrink-0"
-                  >
-                    <Plus className="w-4 h-4" /> Tambah
-                  </button>
-                </div>
-              </form>
-            </section>
-
-            {/* Table layout grid builder */}
-            <section className="bg-white rounded-3xl p-6 border border-cafe-200/50 shadow-premium flex flex-col justify-between">
-              <div>
-                <h3 className="font-extrabold text-cafe-900 text-base mb-4 flex items-center gap-2">
-                  <Grid className="w-4 h-4 text-cafe-600" /> Daftar Tata Letak Meja
-                </h3>
-                
-                {/* List Tables */}
-                <div className="space-y-3 mb-6 max-h-[220px] overflow-y-auto pr-1">
-                  {tables.map((tbl) => (
-                    <div key={tbl.id} className="p-3 bg-cafe-50/50 border border-cafe-200/40 rounded-2xl flex justify-between items-center text-xs font-semibold text-cafe-800">
-                      <div>
-                        <span className="font-bold">{tbl.name}</span>
-                        <span className="text-[10px] text-cafe-400 block mt-0.5">Koordinat Grid: ({tbl.x}, {tbl.y})</span>
-                      </div>
-                      <button 
-                        onClick={() => handleDeleteTable(tbl.id)}
-                        className="text-red-500 hover:text-red-700 p-1"
-                      >
-                        <Trash2 className="w-4 h-4" />
-                      </button>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              {/* Add Table Layout Form */}
-              <form onSubmit={handleAddTable} className="space-y-3 border-t border-cafe-100 pt-4">
-                <span className="text-[10px] font-extrabold text-cafe-500 uppercase tracking-wider block">Tambah Meja Dinamis</span>
-                
-                <div className="grid grid-cols-3 gap-2">
-                  <input
-                    type="text"
-                    required
-                    placeholder="Meja 6"
-                    value={newTable.name}
-                    onChange={(e) => setNewTable({ ...newTable, name: e.target.value })}
-                    className="w-full px-3 py-2 rounded-xl border border-cafe-200 text-xs focus:outline-none focus:border-earth-olive bg-cafe-50/50"
-                  />
-                  <input
-                    type="number"
-                    min="1"
-                    max="6"
-                    placeholder="Baris (1-6)"
-                    value={newTable.x || ''}
-                    onChange={(e) => setNewTable({ ...newTable, x: parseInt(e.target.value) || 1 })}
-                    className="w-full px-3 py-2 rounded-xl border border-cafe-200 text-xs focus:outline-none focus:border-earth-olive bg-cafe-50/50"
-                  />
-                  <input
-                    type="number"
-                    min="1"
-                    max="6"
-                    placeholder="Kolom (1-6)"
-                    value={newTable.y || ''}
-                    onChange={(e) => setNewTable({ ...newTable, y: parseInt(e.target.value) || 1 })}
-                    className="w-full px-3 py-2 rounded-xl border border-cafe-200 text-xs focus:outline-none focus:border-earth-olive bg-cafe-50/50"
-                  />
-                </div>
-
-                <button
-                  type="submit"
-                  className="w-full py-2 bg-cafe-800 text-white rounded-xl text-xs font-bold flex items-center justify-center gap-1 transition-all active:scale-95 shadow-sm"
-                >
-                  <Plus className="w-4 h-4" /> Tambah Meja ke Laci Grid
-                </button>
-              </form>
-            </section>
-
-          </div>
-
-          {/* Settings features modules configuration */}
-          <section className="bg-white rounded-3xl p-6 border border-cafe-200/50 shadow-premium">
-            <h3 className="font-extrabold text-cafe-900 text-base mb-4 flex items-center gap-2">
-              <Sparkles className="w-4 h-4 text-cafe-500" /> Integrasi Fitur Langganan Tenant
+          {/* Merge Roles & Auto Receipts */}
+          <section className="bg-white rounded-3xl p-6 border border-cafe-200/40 shadow-sm">
+            <h3 className="text-lg font-bold text-espresso-900 mb-4 flex items-center gap-2">
+              <Sparkles className="w-4 h-4 text-earth-olive" /> Modul Fitur Lanjutan
             </h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs font-bold text-cafe-800">
-              <div className="p-4 bg-cafe-50/50 border border-cafe-200/20 rounded-2xl flex justify-between items-center">
+            
+            <div className="divide-y divide-cafe-50 font-medium">
+              
+              <div className="flex items-center justify-between py-3">
                 <div>
-                  <h4>Modul Resep Bahan Baku (BOM)</h4>
-                  <p className="text-[10px] text-cafe-400 font-semibold mt-0.5">Potong otomatis biji kopi & fresh milk</p>
+                  <span className="text-xs font-bold text-espresso-950 block">Gabungkan Peran Bar & Kasir</span>
+                  <span className="text-[10px] text-cafe-400 mt-0.5 block leading-relaxed font-semibold">
+                    Barista merangkap kasir utama untuk penyesuaian operasional kafe kecil.
+                  </span>
                 </div>
-                <span className="px-2.5 py-1 bg-green-50 text-green-600 border border-green-100 rounded-full text-[9px]">Aktif</span>
+                <button 
+                  onClick={handleToggleMerge}
+                  className="text-earth-olive focus:outline-none"
+                >
+                  {mergeBarCashier ? (
+                    <ToggleRight className="w-8 h-8 text-secondary shrink-0" />
+                  ) : (
+                    <ToggleLeft className="w-8 h-8 text-cafe-300 shrink-0" />
+                  )}
+                </button>
               </div>
-              <div className="p-4 bg-cafe-50/50 border border-cafe-200/20 rounded-2xl flex justify-between items-center">
+
+              <div className="flex items-center justify-between py-3">
                 <div>
-                  <h4>Sistem Kas Drawer Kasir (Reconciliation)</h4>
-                  <p className="text-[10px] text-cafe-400 font-semibold mt-0.5">Pantau modal awal vs fisik drawer penutupan</p>
+                  <span className="text-xs font-bold text-espresso-950 block">Cetak Struk Belanja Otomatis</span>
+                  <span className="text-[10px] text-cafe-400 mt-0.5 block leading-relaxed font-semibold">
+                    Struk pembelian kasir langsung dicetak otomatis setelah transaksi dinyatakan selesai.
+                  </span>
                 </div>
-                <span className="px-2.5 py-1 bg-green-50 text-green-600 border border-green-100 rounded-full text-[9px]">Aktif</span>
+                <button 
+                  onClick={() => setCafeConfig(c => ({ ...c, autoPrintReceipt: !c.autoPrintReceipt }))}
+                  className="text-earth-olive focus:outline-none"
+                >
+                  {cafeConfig.autoPrintReceipt ? (
+                    <ToggleRight className="w-8 h-8 text-secondary shrink-0" />
+                  ) : (
+                    <ToggleLeft className="w-8 h-8 text-cafe-300 shrink-0" />
+                  )}
+                </button>
               </div>
+
             </div>
           </section>
+
+          {/* Sticky action saving bar simulation */}
+          <div className="pt-2 flex justify-end gap-3">
+            <button 
+              onClick={handleSaveConfig}
+              className="px-6 py-3.5 bg-espresso-900 text-white text-xs font-bold rounded-2xl flex items-center gap-2 hover:opacity-95 active:scale-95 transition-all shadow-md"
+            >
+              <Save className="w-4 h-4" /> SIMPAN KONFIGURASI
+            </button>
+          </div>
+
         </div>
 
       </div>
@@ -543,4 +668,3 @@ export default function SettingsPage() {
     </div>
   );
 }
-

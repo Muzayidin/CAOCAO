@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+
+<html class="light" lang="id"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>CAOCAO | Laporan Penjualan Mendalam</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "outline-variant": "#d0c4be",
+                    "on-primary-fixed-variant": "#4b4643",
+                    "surface": "#fdf8f7",
+                    "primary-fixed-dim": "#cec5c1",
+                    "surface-dim": "#ddd9d8",
+                    "on-secondary-fixed-variant": "#434b18",
+                    "on-tertiary-container": "#838484",
+                    "primary-fixed": "#eae1dd",
+                    "inverse-on-surface": "#f4f0ef",
+                    "error": "#ba1a1a",
+                    "surface-container-high": "#ece7e6",
+                    "on-tertiary-fixed-variant": "#454747",
+                    "primary": "#000000",
+                    "surface-container-highest": "#e6e1e0",
+                    "on-primary-container": "#8a827f",
+                    "on-primary-fixed": "#1f1b19",
+                    "error-container": "#ffdad6",
+                    "surface-container-low": "#f7f3f1",
+                    "surface-bright": "#fdf8f7",
+                    "inverse-surface": "#313030",
+                    "secondary-fixed-dim": "#c3cc8c",
+                    "on-surface-variant": "#4d4541",
+                    "on-secondary": "#ffffff",
+                    "surface-container": "#f1edec",
+                    "on-secondary-container": "#5f6732",
+                    "surface-variant": "#e6e1e0",
+                    "charcoal-text": "#121212",
+                    "secondary-fixed": "#dfe8a6",
+                    "on-primary": "#ffffff",
+                    "tertiary-fixed-dim": "#c6c6c6",
+                    "espresso-900": "#1A1614",
+                    "secondary": "#5a632e",
+                    "outline": "#7f7570",
+                    "on-surface": "#1c1b1b",
+                    "on-background": "#1c1b1b",
+                    "inverse-primary": "#cec5c1",
+                    "cafe-50": "#F9F8F7",
+                    "tertiary-fixed": "#e2e2e2",
+                    "secondary-container": "#dce5a3",
+                    "on-secondary-fixed": "#191e00",
+                    "surface-tint": "#635d5a",
+                    "cafe-200": "#E5E1DE",
+                    "on-tertiary-fixed": "#1a1c1c",
+                    "on-error-container": "#93000a",
+                    "tertiary": "#000000",
+                    "surface-container-lowest": "#ffffff",
+                    "on-tertiary": "#ffffff",
+                    "background": "#fdf8f7",
+                    "tertiary-container": "#1a1c1c",
+                    "primary-container": "#1f1b19",
+                    "on-error": "#ffffff",
+                    "earth-olive": "#4B5320"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "margin-tablet": "2rem",
+                    "margin-mobile": "1rem",
+                    "touch-target-opt": "52px",
+                    "touch-target-min": "48px",
+                    "gutter": "1.5rem",
+                    "margin-desktop": "3rem"
+            },
+            "fontFamily": {
+                    "headline-md": ["Manrope"],
+                    "headline-lg-mobile": ["Manrope"],
+                    "body-md": ["Manrope"],
+                    "label-sm": ["Manrope"],
+                    "label-md": ["Manrope"],
+                    "title-lg": ["Manrope"],
+                    "headline-lg": ["Manrope"],
+                    "body-lg": ["Manrope"],
+                    "display-lg": ["Manrope"]
+            },
+            "fontSize": {
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "600"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "500"}],
+                    "title-lg": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Manrope', sans-serif; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .glass-effect { background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(12px); border: 1px solid rgba(229, 225, 222, 0.5); }
+        .chart-bar { transition: height 1s ease-out; }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface min-h-screen pb-32">
+<!-- TopAppBar -->
+<header class="w-full top-0 sticky z-50 bg-surface shadow-sm flex justify-between items-center px-4 md:px-12 h-[72px]">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full overflow-hidden bg-cafe-200 flex items-center justify-center">
+<img alt="Owner profile photo" class="w-full h-full object-cover" data-alt="Professional portrait of a male business owner in a modern minimalist workspace, soft cinematic lighting, warm neutral tones, high-end photography style consistent with a premium cafe brand." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCaGXQg8ks3MjFgFxpTkLVh7O92rVGIQx9bQfnRnHPFB30Jp_iRLt8KtappUb7GHhB0ZEinOUKKwc6iPsoIttjvSEf-blMzChhsdxB22PduThpsckfD2j_dkhjE2PzFn9sjEyXBRxElWm-pi0Xm0_QePTaWfz7PEYRkgfGdws701kNyuMRq2tFnNmII5qmpd2v4uY4odxxBoeALkBewV-x5saF31R5NT7XtXQG7tC_mix9JGiKbqPTG3pNfORohPzEa7W_F_2RE91E"/>
+</div>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile md:font-headline-lg md:text-headline-lg font-bold text-espresso-900">CAOCAO</h1>
+</div>
+<div class="flex items-center gap-4">
+<button class="w-touch-target-opt h-touch-target-opt flex items-center justify-center rounded-full hover:bg-cafe-50 transition-colors active:scale-95 duration-200">
+<span class="material-symbols-outlined text-primary">notifications</span>
+</button>
+</div>
+</header>
+<main class="max-w-7xl mx-auto px-4 md:px-12 pt-8">
+<!-- Welcome & Date Filter Section -->
+<section class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
+<div>
+<p class="font-label-md text-label-md text-on-surface-variant mb-1 uppercase tracking-widest">Analytics Dashboard</p>
+<h2 class="font-headline-lg text-headline-lg text-espresso-900">Selamat Pagi, Owner</h2>
+</div>
+<div class="flex flex-wrap items-center gap-3">
+<div class="glass-effect rounded-2xl px-4 py-3 flex items-center gap-3">
+<span class="material-symbols-outlined text-on-surface-variant">calendar_today</span>
+<span class="font-label-md text-label-md">01 Jan 2024 - 31 Jan 2024</span>
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer">expand_more</span>
+</div>
+<button class="bg-espresso-900 text-white rounded-2xl px-6 py-3 font-label-md text-label-md flex items-center gap-2 active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-[18px]">download</span>
+                    Export PDF
+                </button>
+</div>
+</section>
+<!-- Bento Grid Layout for Visualizations -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-6 mb-12">
+<!-- Revenue Overview (Large Bento) -->
+<div class="md:col-span-8 bg-white rounded-3xl p-8 shadow-sm relative overflow-hidden flex flex-col justify-between min-h-[400px]">
+<div>
+<div class="flex justify-between items-start mb-8">
+<div>
+<h3 class="font-title-lg text-title-lg text-espresso-900">Ringkasan Pendapatan</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Pertumbuhan dibanding bulan lalu</p>
+</div>
+<div class="text-right">
+<span class="font-display-lg text-display-lg block text-espresso-900">Rp 142.5M</span>
+<span class="text-secondary font-label-md text-label-md flex items-center justify-end gap-1">
+<span class="material-symbols-outlined text-[16px]">trending_up</span> +12.5%
+                            </span>
+</div>
+</div>
+<!-- Simplified Visual Graph Placeholder -->
+<div class="w-full h-48 flex items-end gap-2 md:gap-4 mt-4">
+<div class="flex-1 bg-cafe-50 rounded-t-lg h-[40%] hover:bg-secondary-container transition-colors relative group">
+<div class="absolute -top-10 left-1/2 -translate-x-1/2 bg-espresso-900 text-white px-2 py-1 rounded text-[10px] opacity-0 group-hover:opacity-100 transition-opacity">12.2M</div>
+</div>
+<div class="flex-1 bg-cafe-50 rounded-t-lg h-[60%] hover:bg-secondary-container transition-colors"></div>
+<div class="flex-1 bg-cafe-50 rounded-t-lg h-[45%] hover:bg-secondary-container transition-colors"></div>
+<div class="flex-1 bg-espresso-900 rounded-t-lg h-[85%] relative">
+<div class="absolute -top-10 left-1/2 -translate-x-1/2 bg-espresso-900 text-white px-2 py-1 rounded text-[10px]">22.5M</div>
+</div>
+<div class="flex-1 bg-cafe-50 rounded-t-lg h-[55%] hover:bg-secondary-container transition-colors"></div>
+<div class="flex-1 bg-cafe-50 rounded-t-lg h-[70%] hover:bg-secondary-container transition-colors"></div>
+<div class="flex-1 bg-cafe-50 rounded-t-lg h-[50%] hover:bg-secondary-container transition-colors"></div>
+</div>
+<div class="flex justify-between mt-4 px-2 font-label-sm text-label-sm text-on-surface-variant">
+<span>Sen</span><span>Sel</span><span>Rab</span><span>Kam</span><span>Jum</span><span>Sab</span><span>Min</span>
+</div>
+</div>
+</div>
+<!-- Payment Methods (Square Bento) -->
+<div class="md:col-span-4 bg-white rounded-3xl p-8 shadow-sm flex flex-col justify-between">
+<div>
+<h3 class="font-title-lg text-title-lg text-espresso-900 mb-6">Metode Pembayaran</h3>
+<div class="space-y-6">
+<!-- QRIS -->
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-2xl bg-secondary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-on-secondary-container">qr_code_2</span>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-center mb-1">
+<span class="font-label-md text-label-md font-bold">QRIS (GOPAY/OVO)</span>
+<span class="font-label-md text-label-md">65%</span>
+</div>
+<div class="w-full h-2 bg-cafe-50 rounded-full overflow-hidden">
+<div class="h-full bg-secondary w-[65%] rounded-full"></div>
+</div>
+</div>
+</div>
+<!-- Debit -->
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-2xl bg-surface-container flex items-center justify-center">
+<span class="material-symbols-outlined text-on-surface-variant">credit_card</span>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-center mb-1">
+<span class="font-label-md text-label-md font-bold">Debit / Credit Card</span>
+<span class="font-label-md text-label-md">25%</span>
+</div>
+<div class="w-full h-2 bg-cafe-50 rounded-full overflow-hidden">
+<div class="h-full bg-espresso-900 w-[25%] rounded-full"></div>
+</div>
+</div>
+</div>
+<!-- Tunai -->
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-2xl bg-surface-container flex items-center justify-center">
+<span class="material-symbols-outlined text-on-surface-variant">payments</span>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-center mb-1">
+<span class="font-label-md text-label-md font-bold">Tunai</span>
+<span class="font-label-md text-label-md">10%</span>
+</div>
+<div class="w-full h-2 bg-cafe-50 rounded-full overflow-hidden">
+<div class="h-full bg-outline w-[10%] rounded-full"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p class="font-label-sm text-label-sm text-on-surface-variant italic mt-6">*Data mencakup seluruh kanal outlet</p>
+</div>
+<!-- Best Selling Items (Tall/Horizontal Bento) -->
+<div class="md:col-span-12 bg-espresso-900 text-white rounded-3xl p-8 shadow-sm flex flex-col md:flex-row gap-8 items-center">
+<div class="md:w-1/3">
+<h3 class="font-headline-md text-headline-md mb-2">Top 5 Best Selling Menu</h3>
+<p class="font-body-md text-body-md text-outline-variant">Pilihan pelanggan terfavorit bulan ini yang mendominasi 40% dari total pendapatan operasional.</p>
+</div>
+<div class="flex-1 w-full flex flex-nowrap overflow-x-auto gap-4 no-scrollbar pb-2">
+<!-- Top 1 -->
+<div class="min-w-[180px] bg-white/10 backdrop-blur-md rounded-2xl p-4 flex flex-col items-center text-center border border-white/5">
+<div class="w-20 h-20 rounded-full overflow-hidden mb-3 border-2 border-secondary">
+<img alt="Signature Latte" class="w-full h-full object-cover" data-alt="A premium latte coffee in a glass cup with intricate latte art, placed on a dark wooden surface with warm atmospheric lighting, high-end cafe branding style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAC6gYbA7qqCXUMIDlujTqjBcB_JRutP31_dIEG1VE__ThN_uRWS53Lv70h8Kd8lnIjWmyj5hBW-z0HypV-whfMxNa2rsUxzi69-xy0meOg2FwT2FQDzyqgHP1Eu_8YC1otxXuto_2tXmIFB8BHCgLlO1brwbFkL7RGXWSCEBWfM0BwHbAum6wYy-kqgfIcJ6fUZ2AsT3qCfbY4aAfCqtHDaLH8qUKV9FE0Jp4-ssxZicQ3k-Ka1dUQ7a0-dDjcr5JTt3y8Eapelro"/>
+</div>
+<span class="font-label-sm text-label-sm text-secondary-container uppercase mb-1">Rank #1</span>
+<h4 class="font-label-md text-label-md font-bold">Signature Latte</h4>
+<p class="font-label-sm text-label-sm opacity-60">1,240 Terjual</p>
+</div>
+<!-- Top 2 -->
+<div class="min-w-[180px] bg-white/5 rounded-2xl p-4 flex flex-col items-center text-center">
+<div class="w-20 h-20 rounded-full overflow-hidden mb-3">
+<img alt="Double Espresso" class="w-full h-full object-cover" data-alt="Glistening espresso being pulled into a white porcelain cup, steam rising softly, moody coffee house lighting, rich dark tones." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD8w3usI18dcn8ooK1X_AwmXcJ84ouxoTczx10upRjfaCPO83-TH5PmrYTR2xRnU49KiDx8ZnMEWjVH1M-CpJoj-cTFRAf3vRYs9Dss0S2dVBfWQTYQOo3uUGiRTSeGjiTVYLCSf0Skx9-SAqlh9tegU__wJ55o_II6ZSF2IOoxUi4_0F3QK7phDU1taRn1vVSWp4SbMmYv4COCQOCzBzWVCVpuLvvqpJPHKAI9OekxWg-FBI93yjQYy2848g3LWa-hDbJUU7_0Cio"/>
+</div>
+<span class="font-label-sm text-label-sm opacity-60 uppercase mb-1">Rank #2</span>
+<h4 class="font-label-md text-label-md font-bold">Double Espresso</h4>
+<p class="font-label-sm text-label-sm opacity-60">982 Terjual</p>
+</div>
+<!-- Top 3 -->
+<div class="min-w-[180px] bg-white/5 rounded-2xl p-4 flex flex-col items-center text-center">
+<div class="w-20 h-20 rounded-full overflow-hidden mb-3">
+<img alt="Artisan Croissant" class="w-full h-full object-cover" data-alt="A freshly baked gourmet croissant on a white ceramic plate, golden flaky texture, soft morning sunlight, minimalist breakfast setting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA4BtGzKwB8qVSQzIRNb09qBga07x-5RxgOtubIgwuwo-PfWsME8vt78n9FwdBatZu1ntuucn18PfEhfxmLLeAOn8so6j0NkXtLtgkLw8Bc1iiwSUFMNX9BSCVAe4XYt1ViHA1a2_hTq9FH9I4LkLf55wZMXgoFR83t_ymjg7RkLzPtxfvA5YPL-shke4De3GckFQRC7JdvbyOFN5YJfhf6bbTU8pGNY_NSAq7EsRDO-7Z94SQ0-shL3t4tk60PcEoqwa078_5YjAE"/>
+</div>
+<span class="font-label-sm text-label-sm opacity-60 uppercase mb-1">Rank #3</span>
+<h4 class="font-label-md text-label-md font-bold">Artisan Croissant</h4>
+<p class="font-label-sm text-label-sm opacity-60">845 Terjual</p>
+</div>
+<!-- Top 4 -->
+<div class="min-w-[180px] bg-white/5 rounded-2xl p-4 flex flex-col items-center text-center">
+<div class="w-20 h-20 rounded-full overflow-hidden mb-3">
+<img alt="Kyoto Matcha" class="w-full h-full object-cover" data-alt="Modern Japanese matcha latte with vibrant green foam, served in a handmade pottery bowl, zen-like aesthetic, soft natural lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCTJqht1sQD4GSxM7SM2NDynSDQ1jHlTWbJAO_NFkuqFHYTuWgDNQBQhgod8C5pWzcXHNBkht6idsdb40rSWFVNV_UxXKPIUENQKc-wlGWAmLgk6rExb0wpi_t0wIpD_jnymUQRRZ_PilI5YwZKwHgomHLywvczCNn_zpUafmwzyhTH_WsKMaDBuqjYKTHWMtKh2ih1dd-GD2W4OUbVAdJC9IxTlRkA0jhzAICHXJsWtcEpuENhPeg17wL0eBMvbuFDPDZ3Nwhrg4k"/>
+</div>
+<span class="font-label-sm text-label-sm opacity-60 uppercase mb-1">Rank #4</span>
+<h4 class="font-label-md text-label-md font-bold">Kyoto Matcha</h4>
+<p class="font-label-sm text-label-sm opacity-60">720 Terjual</p>
+</div>
+<!-- Top 5 -->
+<div class="min-w-[180px] bg-white/5 rounded-2xl p-4 flex flex-col items-center text-center">
+<div class="w-20 h-20 rounded-full overflow-hidden mb-3">
+<img alt="Avocado Sourdough" class="w-full h-full object-cover" data-alt="Delicious avocado toast with poached egg and chili flakes on artisan sourdough, bright fresh ingredients, contemporary brunch style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAoNxt7wqTM26VhORno_KzZeNo14WaO0rscL2qPdZbCD0vMTw2OyLP1tU6a43s8Bd5-D56vH7pqkClnkPdS_DdMPT0JOjI5QTQm-R4QgoPZcU1BnMeC7k21kyEh_Gw0cB54tr9gQT6IiTTCC52HctXthiXWLFi429eAGRo2cv-MARj4FIxwHgWsEGb7ey8LGxW_0cJZVcTzf8QLLOy67ZeNatyIqSDsnWUZxqNjwAXWfHVLQmqx_ca1oBh8Sj9iG4dkRRFeQa3rruI"/>
+</div>
+<span class="font-label-sm text-label-sm opacity-60 uppercase mb-1">Rank #5</span>
+<h4 class="font-label-md text-label-md font-bold">Avocado Toast</h4>
+<p class="font-label-sm text-label-sm opacity-60">610 Terjual</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Transaction Table Section -->
+<section class="bg-white rounded-3xl shadow-sm overflow-hidden">
+<div class="px-8 py-6 flex flex-col md:flex-row justify-between items-center gap-4 border-b border-cafe-50">
+<h3 class="font-title-lg text-title-lg text-espresso-900">Rincian Transaksi Harian</h3>
+<div class="flex items-center gap-3 w-full md:w-auto">
+<div class="flex-1 md:w-64 relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+<input class="w-full pl-10 pr-4 py-2 bg-cafe-50 border-none rounded-xl text-label-md focus:ring-1 focus:ring-espresso-900 transition-all" placeholder="Cari ID atau Kasir..." type="text"/>
+</div>
+<button class="w-touch-target-opt h-touch-target-opt flex items-center justify-center rounded-xl bg-cafe-50 hover:bg-cafe-200 transition-colors">
+<span class="material-symbols-outlined">filter_list</span>
+</button>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left">
+<thead class="bg-cafe-50/50">
+<tr>
+<th class="px-8 py-4 font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">ID Transaksi</th>
+<th class="px-8 py-4 font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Waktu</th>
+<th class="px-8 py-4 font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Kasir</th>
+<th class="px-8 py-4 font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Metode</th>
+<th class="px-8 py-4 font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider text-right">Total</th>
+<th class="px-8 py-4 font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Status</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-cafe-50">
+<!-- Row 1 -->
+<tr class="hover:bg-cafe-50 transition-colors">
+<td class="px-8 py-5 font-label-md text-label-md font-bold">#CC-2901-01</td>
+<td class="px-8 py-5 font-body-md text-body-md text-on-surface-variant">09:12 AM</td>
+<td class="px-8 py-5 font-body-md text-body-md">Siska Amelia</td>
+<td class="px-8 py-5">
+<span class="bg-secondary-container text-on-secondary-container px-3 py-1 rounded-full text-[10px] font-bold uppercase">QRIS</span>
+</td>
+<td class="px-8 py-5 font-label-md text-label-md font-bold text-right">Rp 85.000</td>
+<td class="px-8 py-5">
+<span class="flex items-center gap-1 text-secondary font-label-md text-label-md">
+<span class="w-2 h-2 rounded-full bg-secondary"></span> Selesai
+                                </span>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-cafe-50 transition-colors">
+<td class="px-8 py-5 font-label-md text-label-md font-bold">#CC-2901-02</td>
+<td class="px-8 py-5 font-body-md text-body-md text-on-surface-variant">09:45 AM</td>
+<td class="px-8 py-5 font-body-md text-body-md">Budi Setiawan</td>
+<td class="px-8 py-5">
+<span class="bg-surface-container text-on-surface-variant px-3 py-1 rounded-full text-[10px] font-bold uppercase">Tunai</span>
+</td>
+<td class="px-8 py-5 font-label-md text-label-md font-bold text-right">Rp 122.000</td>
+<td class="px-8 py-5">
+<span class="flex items-center gap-1 text-secondary font-label-md text-label-md">
+<span class="w-2 h-2 rounded-full bg-secondary"></span> Selesai
+                                </span>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-cafe-50 transition-colors">
+<td class="px-8 py-5 font-label-md text-label-md font-bold">#CC-2901-03</td>
+<td class="px-8 py-5 font-body-md text-body-md text-on-surface-variant">10:02 AM</td>
+<td class="px-8 py-5 font-body-md text-body-md">Siska Amelia</td>
+<td class="px-8 py-5">
+<span class="bg-surface-container text-on-surface-variant px-3 py-1 rounded-full text-[10px] font-bold uppercase">Debit</span>
+</td>
+<td class="px-8 py-5 font-label-md text-label-md font-bold text-right">Rp 45.000</td>
+<td class="px-8 py-5">
+<span class="flex items-center gap-1 text-secondary font-label-md text-label-md">
+<span class="w-2 h-2 rounded-full bg-secondary"></span> Selesai
+                                </span>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-cafe-50 transition-colors">
+<td class="px-8 py-5 font-label-md text-label-md font-bold">#CC-2901-04</td>
+<td class="px-8 py-5 font-body-md text-body-md text-on-surface-variant">10:15 AM</td>
+<td class="px-8 py-5 font-body-md text-body-md">Siska Amelia</td>
+<td class="px-8 py-5">
+<span class="bg-secondary-container text-on-secondary-container px-3 py-1 rounded-full text-[10px] font-bold uppercase">QRIS</span>
+</td>
+<td class="px-8 py-5 font-label-md text-label-md font-bold text-right">Rp 210.000</td>
+<td class="px-8 py-5">
+<span class="flex items-center gap-1 text-error font-label-md text-label-md">
+<span class="w-2 h-2 rounded-full bg-error"></span> Batal
+                                </span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="px-8 py-4 flex justify-between items-center bg-cafe-50/20">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Menampilkan 4 dari 150 transaksi</span>
+<div class="flex gap-2">
+<button class="w-10 h-10 flex items-center justify-center rounded-lg border border-cafe-200 hover:bg-white transition-colors">
+<span class="material-symbols-outlined text-[18px]">chevron_left</span>
+</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-lg bg-espresso-900 text-white font-label-sm text-label-sm">1</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-lg border border-cafe-200 hover:bg-white transition-colors font-label-sm text-label-sm">2</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-lg border border-cafe-200 hover:bg-white transition-colors">
+<span class="material-symbols-outlined text-[18px]">chevron_right</span>
+</button>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar (Shared Component) -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pt-2 pb-6 bg-white dark:bg-inverse-surface shadow-[0_-4px_12px_rgba(0,0,0,0.02)] rounded-t-3xl">
+<a class="flex flex-col items-center justify-center bg-secondary-container dark:bg-secondary text-on-secondary-container dark:text-on-secondary rounded-xl px-3 py-1 active:scale-95 transition-all duration-200" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">dashboard</span>
+<span class="font-label-sm text-label-sm">Dashboard</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant px-3 py-1 hover:opacity-80 transition-opacity active:scale-95" href="#">
+<span class="material-symbols-outlined">point_of_sale</span>
+<span class="font-label-sm text-label-sm">Orders</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant px-3 py-1 hover:opacity-80 transition-opacity active:scale-95" href="#">
+<span class="material-symbols-outlined">inventory_2</span>
+<span class="font-label-sm text-label-sm">Inventory</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant px-3 py-1 hover:opacity-80 transition-opacity active:scale-95" href="#">
+<span class="material-symbols-outlined">badge</span>
+<span class="font-label-sm text-label-sm">Staff</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant px-3 py-1 hover:opacity-80 transition-opacity active:scale-95" href="#">
+<span class="material-symbols-outlined">payments</span>
+<span class="font-label-sm text-label-sm">Payroll</span>
+</a>
+</nav>
+<script>
+        // Micro-interaction for bars
+        window.addEventListener('load', () => {
+            const bars = document.querySelectorAll('.flex-1.bg-cafe-50, .flex-1.bg-espresso-900');
+            bars.forEach((bar, index) => {
+                const originalHeight = bar.style.height || getComputedStyle(bar).height;
+                bar.style.height = '0px';
+                setTimeout(() => {
+                    bar.style.transition = 'height 1.2s cubic-bezier(0.16, 1, 0.3, 1)';
+                    bar.style.height = originalHeight;
+                }, 100 * index);
+            });
+        });
+    </script>
+</body></html>

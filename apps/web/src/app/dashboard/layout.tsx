@@ -242,7 +242,7 @@ export default function DashboardLayout({
 
   // STRICT RBAC FEATURE ACCESS MAPPING WITH MERGE CONTROLS:
   const menuItems = [
-    { name: 'Analytics Laporan', icon: BarChart3, href: '/dashboard/analytics', visible: mergeAdminOwner ? ['OWNER', 'ADMIN'] : ['OWNER'] },
+    { name: 'Laporan Penjualan', icon: BarChart3, href: '/dashboard/sales-report', visible: mergeAdminOwner ? ['OWNER', 'ADMIN'] : ['OWNER'] },
     { name: 'POS Kasir', icon: ShoppingCart, href: '/dashboard/cashier', visible: mergeAdminOwner ? ['OWNER', 'ADMIN', 'CASHIER'] : ['ADMIN', 'CASHIER'] },
     { name: 'Presensi Staf', icon: Clock, href: '/dashboard/attendance', visible: ['OWNER', 'ADMIN', 'CASHIER', 'KITCHEN', 'BAR'] },
     { name: 'KDS Kitchen', icon: ChefHat, href: '/dashboard/kitchen', visible: mergeAdminOwner ? ['OWNER', 'ADMIN', 'KITCHEN'] : ['ADMIN', 'KITCHEN'] },

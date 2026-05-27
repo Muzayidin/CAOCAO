@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+
+<html class="light" lang="id"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            font-family: 'Manrope', sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(229, 225, 222, 0.5);
+        }
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "outline": "#7f7570",
+                        "inverse-primary": "#cec5c1",
+                        "tertiary": "#000000",
+                        "surface-dim": "#ddd9d8",
+                        "error": "#ba1a1a",
+                        "on-tertiary-fixed": "#1a1c1c",
+                        "inverse-on-surface": "#f4f0ef",
+                        "surface-container-lowest": "#ffffff",
+                        "background": "#fdf8f7",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary-fixed-variant": "#434b18",
+                        "surface-container": "#f1edec",
+                        "tertiary-fixed-dim": "#c6c6c6",
+                        "tertiary-container": "#1a1c1c",
+                        "surface": "#fdf8f7",
+                        "on-tertiary-fixed-variant": "#454747",
+                        "primary-fixed": "#eae1dd",
+                        "on-primary-fixed": "#1f1b19",
+                        "outline-variant": "#d0c4be",
+                        "surface-bright": "#fdf8f7",
+                        "on-primary": "#ffffff",
+                        "surface-container-high": "#ece7e6",
+                        "surface-tint": "#635d5a",
+                        "secondary-container": "#dce5a3",
+                        "primary": "#000000",
+                        "surface-variant": "#e6e1e0",
+                        "charcoal-text": "#121212",
+                        "tertiary-fixed": "#e2e2e2",
+                        "secondary-fixed": "#dfe8a6",
+                        "on-surface-variant": "#4d4541",
+                        "cafe-50": "#F9F8F7",
+                        "secondary-fixed-dim": "#c3cc8c",
+                        "on-primary-container": "#8a827f",
+                        "on-error": "#ffffff",
+                        "on-background": "#1c1b1b",
+                        "on-secondary-container": "#5f6732",
+                        "espresso-900": "#1A1614",
+                        "secondary": "#5a632e",
+                        "inverse-surface": "#313030",
+                        "error-container": "#ffdad6",
+                        "earth-olive": "#4B5320",
+                        "on-secondary-fixed": "#191e00",
+                        "primary-container": "#1f1b19",
+                        "surface-container-highest": "#e6e1e0",
+                        "on-tertiary-container": "#838484",
+                        "on-primary-fixed-variant": "#4b4643",
+                        "surface-container-low": "#f7f3f1",
+                        "on-surface": "#1c1b1b",
+                        "cafe-200": "#E5E1DE",
+                        "primary-fixed-dim": "#cec5c1",
+                        "on-secondary": "#ffffff",
+                        "on-error-container": "#93000a"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-tablet": "2rem",
+                        "touch-target-min": "48px",
+                        "margin-desktop": "3rem",
+                        "margin-mobile": "1rem",
+                        "gutter": "1.5rem",
+                        "touch-target-opt": "52px"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["Manrope"],
+                        "display-lg": ["Manrope"],
+                        "body-lg": ["Manrope"],
+                        "label-md": ["Manrope"],
+                        "headline-lg-mobile": ["Manrope"],
+                        "label-sm": ["Manrope"],
+                        "body-md": ["Manrope"],
+                        "title-lg": ["Manrope"],
+                        "headline-md": ["Manrope"]
+                    },
+                    "fontSize": {
+                        "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "500"}],
+                        "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "title-lg": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body {
+            min-height: max(884px, 100dvh);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen pb-32">
+<!-- TopAppBar -->
+<header class="w-full top-0 sticky z-40 bg-surface shadow-sm flex justify-between items-center px-margin-mobile h-touch-target-opt md:px-margin-desktop">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full overflow-hidden border border-outline-variant active:scale-95 transition-transform duration-200">
+<img alt="Owner profile photo" class="w-full h-full object-cover" data-alt="A professional close-up portrait of a cafe owner with a friendly expression. The lighting is warm and natural, suggesting a bright morning in a high-end espresso bar. The background is softly blurred, showing hints of polished wood and copper coffee equipment. The overall aesthetic is clean, sophisticated, and inviting, matching a modern warm neutral design system." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCKuVmkLJ1Qpy4kXHlPMoP0n0S8wYm8BJkecR9P9g-Thr3fduSG3dCTJLoTtoCTB7FKHAcfpbyLCVgLGRSuWY40yJ31a_T87tJOnR_IjMVmnO6pyxyzYvHi1zb6nByVoTfqt5_O1tBf7TPLx5INohsTHrQHXrMjHWYL-4a7qcHP4nAr_4ezTtuqYnElT6fg5jwJg5qFH0c1gkXjSX1_k2JTnHAiy6kQ_8jFtlxWeneRxTRavH4XSYxCh86saSWV1hCuAqZFPkE9BsM"/>
+</div>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile font-bold text-espresso-900 md:text-headline-lg md:font-headline-lg">CAOCAO</h1>
+</div>
+<button class="material-symbols-outlined text-on-surface-variant p-2 rounded-full hover:bg-cafe-50 transition-colors active:scale-95">notifications</button>
+</header>
+<main class="max-w-7xl mx-auto px-margin-mobile md:px-margin-desktop py-8 grid grid-cols-1 md:grid-cols-12 gap-gutter">
+<!-- Left Column: Navigation & Profile -->
+<aside class="md:col-span-4 space-y-6">
+<!-- Business Profile Card -->
+<section class="bg-white rounded-3xl p-6 shadow-sm border border-cafe-200/50">
+<div class="flex flex-col items-center text-center">
+<div class="w-24 h-24 bg-cafe-50 rounded-3xl mb-4 flex items-center justify-center border-2 border-dashed border-outline-variant relative group cursor-pointer overflow-hidden">
+<img alt="Cafe Logo" class="absolute inset-0 w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity" data-alt="A minimalist and elegant brand logo for CAOCAO coffee house, displayed on a clean white surface. The logo features a stylized coffee bean icon with geometric precision. The setting is bright and professional, utilizing a palette of deep espresso browns and soft cream tones. Soft morning light creates gentle shadows, emphasizing a premium, modern F&amp;B identity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuABDIwGhvkM83Ae7zUp2gspbVLMdgfKq06hjW5xg5aWwpMzws1AQIi1FlmLE6vayxCgRrrEiUGV1wDRIlaSnKwfpvuYl8ZJf5ti7UbTLo1cxRSHHFrVtvmWJ3RjAasgaroEHDbkO31Dnw02JS330n7w1zKGI_pkdjWCVCM2skqdrKfEEe-6HMVyaBmWpUasKPOmd1oZd3gzF6KZRASEr1zDVaxIzgJZfAWBTMjRza-qRvEAOJs9NZUr5j3mZCVI1ijTtoEu9Q3dcH4"/>
+<span class="material-symbols-outlined text-outline relative z-10 group-hover:text-espresso-900">add_a_photo</span>
+</div>
+<h2 class="font-title-lg text-title-lg text-espresso-900">CAOCAO Central</h2>
+<p class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider mb-6">Profil Bisnis • Cabang Sudirman</p>
+<div class="w-full space-y-2">
+<div class="flex justify-between p-3 bg-cafe-50 rounded-xl">
+<span class="font-label-md text-label-md text-on-surface-variant">Status Toko</span>
+<span class="font-label-md text-label-md text-secondary font-bold flex items-center gap-1">
+<span class="w-2 h-2 rounded-full bg-secondary animate-pulse"></span> Buka
+                        </span>
+</div>
+</div>
+</div>
+</section>
+<!-- Quick Settings Menu -->
+<nav class="bg-white rounded-3xl p-2 shadow-sm border border-cafe-200/50 space-y-1">
+<a class="flex items-center gap-3 p-4 bg-secondary-container text-on-secondary-container rounded-2xl transition-all" href="#">
+<span class="material-symbols-outlined">settings_suggest</span>
+<span class="font-label-md text-label-md">Pengaturan Kafe</span>
+</a>
+<a class="flex items-center gap-3 p-4 text-on-surface-variant hover:bg-cafe-50 rounded-2xl transition-all" href="#">
+<span class="material-symbols-outlined">payments</span>
+<span class="font-label-md text-label-md">Pajak &amp; Layanan</span>
+</a>
+<a class="flex items-center gap-3 p-4 text-on-surface-variant hover:bg-cafe-50 rounded-2xl transition-all" href="#">
+<span class="material-symbols-outlined">table_restaurant</span>
+<span class="font-label-md text-label-md">Editor Denah Meja</span>
+</a>
+<a class="flex items-center gap-3 p-4 text-on-surface-variant hover:bg-cafe-50 rounded-2xl transition-all" href="#">
+<span class="material-symbols-outlined">qr_code_2</span>
+<span class="font-label-md text-label-md">Sinkronisasi Perangkat</span>
+</a>
+</nav>
+</aside>
+<!-- Right Column: Settings Content -->
+<div class="md:col-span-8 space-y-8">
+<!-- Tax & Rates Bento -->
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+<section class="bg-white rounded-3xl p-6 shadow-sm border border-cafe-200/50 flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between mb-4">
+<h3 class="font-title-lg text-title-lg text-espresso-900">Tarif PPN (11%)</h3>
+<span class="material-symbols-outlined text-outline">receipt_long</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant mb-6">Pajak Pertambahan Nilai standar yang berlaku untuk makanan dan minuman.</p>
+</div>
+<div class="flex items-end justify-between">
+<span class="font-display-lg text-display-lg text-espresso-900">11%</span>
+<button class="h-10 px-4 rounded-xl bg-cafe-50 text-on-surface font-label-md hover:bg-cafe-200 transition-colors">Ubah</button>
+</div>
+</section>
+<section class="bg-white rounded-3xl p-6 shadow-sm border border-cafe-200/50 flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between mb-4">
+<h3 class="font-title-lg text-title-lg text-espresso-900">Service Charge</h3>
+<span class="material-symbols-outlined text-outline">room_service</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant mb-6">Biaya layanan opsional untuk operasional makan di tempat.</p>
+</div>
+<div class="flex items-end justify-between">
+<div class="flex items-center gap-3 h-10">
+<span class="font-display-lg text-display-lg text-espresso-900">5%</span>
+<!-- Custom Toggle -->
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-cafe-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-secondary"></div>
+</label>
+</div>
+</div>
+</section>
+</div>
+<!-- Device Management / Staff Sync QR Section -->
+<section class="bg-espresso-900 rounded-3xl p-8 text-white relative overflow-hidden shadow-xl">
+<div class="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+<div class="space-y-4">
+<h3 class="font-headline-md text-headline-md">Sinkronisasi Perangkat Staf</h3>
+<p class="font-body-md text-body-md text-white/70">Hubungkan ponsel pramusaji baru secara instan. Pindai kode QR sementara ini dengan Aplikasi Staf CAOCAO untuk otorisasi.</p>
+<div class="flex items-center gap-2 text-secondary-fixed">
+<span class="material-symbols-outlined">timer</span>
+<span class="font-label-sm text-label-sm">Kode QR kedaluwarsa dalam 04:59</span>
+</div>
+<div class="flex gap-3">
+<button class="mt-4 px-6 py-3 bg-secondary text-on-secondary rounded-2xl font-label-md hover:opacity-90 active:scale-95 transition-all">Buat Kode Baru</button>
+<button class="mt-4 px-6 py-3 bg-white/10 text-white border border-white/20 rounded-2xl font-label-md hover:bg-white/20 transition-all">Perangkat Terhubung</button>
+</div>
+</div>
+<div class="flex justify-center md:justify-end">
+<div class="bg-white p-4 rounded-3xl shadow-2xl">
+<div class="w-40 h-40 bg-gray-100 rounded-xl flex items-center justify-center">
+<span class="material-symbols-outlined text-6xl text-espresso-900">qr_code_2</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Abstract pattern bg -->
+<div class="absolute -bottom-10 -right-10 w-64 h-64 bg-secondary/10 rounded-full blur-3xl"></div>
+</section>
+<!-- Table Mapping Section -->
+<section class="bg-white rounded-3xl p-8 shadow-sm border border-cafe-200/50">
+<div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-8 gap-4">
+<div>
+<h3 class="font-headline-md text-headline-md text-espresso-900">Denah Meja Dinamis</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Atur dan kelola tata letak meja di kafe Anda.</p>
+</div>
+<button class="flex items-center gap-2 px-6 py-3 bg-earth-olive text-white rounded-2xl font-label-md hover:opacity-90 active:scale-95 transition-all">
+<span class="material-symbols-outlined">add</span>
+                    Tambah Meja
+                </button>
+</div>
+<div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-5 gap-4">
+<!-- Table Items -->
+<div class="aspect-square bg-cafe-50 border-2 border-cafe-200 rounded-3xl flex flex-col items-center justify-center gap-1 hover:border-secondary hover:bg-secondary/5 transition-all cursor-move group relative">
+<span class="font-label-sm text-label-sm text-on-surface-variant">MEJA</span>
+<span class="font-headline-md text-headline-md text-espresso-900">01</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">2 Kursi</span>
+<button class="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity material-symbols-outlined text-on-surface-variant text-sm">edit</button>
+</div>
+<div class="aspect-square bg-cafe-50 border-2 border-cafe-200 rounded-3xl flex flex-col items-center justify-center gap-1 hover:border-secondary hover:bg-secondary/5 transition-all cursor-move group relative">
+<span class="font-label-sm text-label-sm text-on-surface-variant">MEJA</span>
+<span class="font-headline-md text-headline-md text-espresso-900">02</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">4 Kursi</span>
+<button class="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity material-symbols-outlined text-on-surface-variant text-sm">edit</button>
+</div>
+<div class="aspect-square bg-white border-2 border-secondary rounded-3xl flex flex-col items-center justify-center gap-1 shadow-md cursor-move group relative">
+<span class="font-label-sm text-label-sm text-on-secondary-container">MEJA</span>
+<span class="font-headline-md text-headline-md text-espresso-900">03</span>
+<span class="font-label-sm text-label-sm text-on-secondary-container">Bar</span>
+<span class="absolute -top-2 -right-2 bg-secondary text-white text-[10px] px-2 py-0.5 rounded-full font-bold uppercase">AKTIF</span>
+</div>
+<div class="aspect-square bg-cafe-50 border-2 border-cafe-200 rounded-3xl flex flex-col items-center justify-center gap-1 hover:border-secondary hover:bg-secondary/5 transition-all cursor-move group relative">
+<span class="font-label-sm text-label-sm text-on-surface-variant">MEJA</span>
+<span class="font-headline-md text-headline-md text-espresso-900">04</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">2 Kursi</span>
+<button class="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity material-symbols-outlined text-on-surface-variant text-sm">edit</button>
+</div>
+<div class="aspect-square border-2 border-dashed border-cafe-200 rounded-3xl flex items-center justify-center hover:bg-cafe-50 transition-all cursor-pointer">
+<span class="material-symbols-outlined text-cafe-200">add_circle</span>
+</div>
+</div>
+</section>
+<!-- Voucher Management -->
+<section class="bg-white rounded-3xl p-8 shadow-sm border border-cafe-200/50">
+<h3 class="font-headline-md text-headline-md text-espresso-900 mb-6">Voucher Diskon</h3>
+<div class="space-y-4">
+<div class="p-4 rounded-2xl bg-cafe-50 border border-cafe-200/50 flex items-center justify-between">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 bg-white rounded-xl flex items-center justify-center shadow-sm">
+<span class="material-symbols-outlined text-secondary">local_activity</span>
+</div>
+<div>
+<h4 class="font-title-lg text-title-lg text-espresso-900">MORNING15</h4>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Diskon 15% sebelum jam 10 Pagi • Sisa 45</p>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<span class="px-3 py-1 bg-secondary-container text-on-secondary-container text-[10px] font-bold rounded-full uppercase">AKTIF</span>
+<button class="material-symbols-outlined text-on-surface-variant">more_vert</button>
+</div>
+</div>
+<div class="p-4 rounded-2xl bg-cafe-50 border border-cafe-200/50 flex items-center justify-between">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 bg-white rounded-xl flex items-center justify-center shadow-sm">
+<span class="material-symbols-outlined text-outline">local_activity</span>
+</div>
+<div>
+<h4 class="font-title-lg text-title-lg text-espresso-900">LOYALTY50</h4>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Potongan Rp 50.000 • Tanpa Batas</p>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<span class="px-3 py-1 bg-surface-variant text-on-surface-variant text-[10px] font-bold rounded-full uppercase">KEDALUWARSA</span>
+<button class="material-symbols-outlined text-on-surface-variant">more_vert</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Connected Devices List (Specific to Indonesia edit request) -->
+<section class="bg-white rounded-3xl p-8 shadow-sm border border-cafe-200/50">
+<h3 class="font-headline-md text-headline-md text-espresso-900 mb-6">Perangkat Terhubung</h3>
+<div class="divide-y divide-cafe-200/50">
+<div class="py-4 flex items-center justify-between">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 bg-cafe-50 rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-on-surface-variant">smartphone</span>
+</div>
+<div>
+<p class="font-label-md text-label-md text-espresso-900">Samsung Galaxy S23 Ultra</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Aktif sekarang • Pramusaji: Budi</p>
+</div>
+</div>
+<button class="text-error font-label-sm text-label-sm hover:underline">Cabut Akses</button>
+</div>
+<div class="py-4 flex items-center justify-between">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 bg-cafe-50 rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-on-surface-variant">smartphone</span>
+</div>
+<div>
+<p class="font-label-md text-label-md text-espresso-900">iPhone 14 Pro</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Terakhir aktif 2 jam lalu • Pramusaji: Siti</p>
+</div>
+</div>
+<button class="text-error font-label-sm text-label-sm hover:underline">Cabut Akses</button>
+</div>
+</div>
+</section>
+</div>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pt-2 pb-6 bg-white shadow-[0_-4px_12px_rgba(0,0,0,0.02)] rounded-t-3xl border-t border-cafe-200/50">
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1 hover:opacity-80 transition-opacity active:scale-95" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-sm text-label-sm">Beranda</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1 hover:opacity-80 transition-opacity active:scale-95" href="#">
+<span class="material-symbols-outlined">point_of_sale</span>
+<span class="font-label-sm text-label-sm">Pesanan</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1 hover:opacity-80 transition-opacity active:scale-95" href="#">
+<span class="material-symbols-outlined">inventory_2</span>
+<span class="font-label-sm text-label-sm">Stok</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-xl px-3 py-1 active:scale-95 transition-all" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-sm text-label-sm">Pengaturan</span>
+</a>
+</nav>
+<script>
+    // Simple micro-interaction for table dragging feel
+    const tables = document.querySelectorAll('.aspect-square.cursor-move');
+    tables.forEach(table => {
+        table.addEventListener('mousedown', () => {
+            table.classList.add('scale-95', 'opacity-80');
+        });
+        table.addEventListener('mouseup', () => {
+            table.classList.remove('scale-95', 'opacity-80');
+        });
+        table.addEventListener('mouseleave', () => {
+            table.classList.remove('scale-95', 'opacity-80');
+        });
+    });
+
+    // Toggle handling
+    const toggles = document.querySelectorAll('input[type="checkbox"]');
+    toggles.forEach(toggle => {
+        toggle.addEventListener('change', (e) => {
+            console.log('Setting updated:', e.target.checked);
+        });
+    });
+</script>
+</body></html>

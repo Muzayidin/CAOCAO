@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>CAOCAO - Espresso Blend Detail</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "outline-variant": "#d0c4be",
+                    "on-primary-fixed-variant": "#4b4643",
+                    "surface": "#fdf8f7",
+                    "primary-fixed-dim": "#cec5c1",
+                    "surface-dim": "#ddd9d8",
+                    "on-secondary-fixed-variant": "#434b18",
+                    "on-tertiary-container": "#838484",
+                    "primary-fixed": "#eae1dd",
+                    "inverse-on-surface": "#f4f0ef",
+                    "error": "#ba1a1a",
+                    "surface-container-high": "#ece7e6",
+                    "on-tertiary-fixed-variant": "#454747",
+                    "primary": "#000000",
+                    "surface-container-highest": "#e6e1e0",
+                    "on-primary-container": "#8a827f",
+                    "on-primary-fixed": "#1f1b19",
+                    "error-container": "#ffdad6",
+                    "surface-container-low": "#f7f3f1",
+                    "surface-bright": "#fdf8f7",
+                    "inverse-surface": "#313030",
+                    "secondary-fixed-dim": "#c3cc8c",
+                    "on-surface-variant": "#4d4541",
+                    "on-secondary": "#ffffff",
+                    "surface-container": "#f1edec",
+                    "on-secondary-container": "#5f6732",
+                    "surface-variant": "#e6e1e0",
+                    "charcoal-text": "#121212",
+                    "secondary-fixed": "#dfe8a6",
+                    "on-primary": "#ffffff",
+                    "tertiary-fixed-dim": "#c6c6c6",
+                    "espresso-900": "#1A1614",
+                    "secondary": "#5a632e",
+                    "outline": "#7f7570",
+                    "on-surface": "#1c1b1b",
+                    "on-background": "#1c1b1b",
+                    "inverse-primary": "#cec5c1",
+                    "cafe-50": "#F9F8F7",
+                    "tertiary-fixed": "#e2e2e2",
+                    "secondary-container": "#dce5a3",
+                    "on-secondary-fixed": "#191e00",
+                    "surface-tint": "#635d5a",
+                    "cafe-200": "#E5E1DE",
+                    "on-tertiary-fixed": "#1a1c1c",
+                    "on-error-container": "#93000a",
+                    "tertiary": "#000000",
+                    "surface-container-lowest": "#ffffff",
+                    "on-tertiary": "#ffffff",
+                    "background": "#fdf8f7",
+                    "tertiary-container": "#1a1c1c",
+                    "primary-container": "#1f1b19",
+                    "on-error": "#ffffff",
+                    "earth-olive": "#4B5320"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "margin-tablet": "2rem",
+                    "margin-mobile": "1rem",
+                    "touch-target-opt": "52px",
+                    "touch-target-min": "48px",
+                    "gutter": "1.5rem",
+                    "margin-desktop": "3rem"
+            },
+            "fontFamily": {
+                    "headline-md": ["Manrope"],
+                    "headline-lg-mobile": ["Manrope"],
+                    "body-md": ["Manrope"],
+                    "label-sm": ["Manrope"],
+                    "label-md": ["Manrope"],
+                    "title-lg": ["Manrope"],
+                    "headline-lg": ["Manrope"],
+                    "body-lg": ["Manrope"],
+                    "display-lg": ["Manrope"]
+            },
+            "fontSize": {
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "600"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "500"}],
+                    "title-lg": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Manrope', sans-serif; -webkit-tap-highlight-color: transparent; }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+        }
+        .scroll-hide::-webkit-scrollbar { display: none; }
+        .scroll-hide { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background selection:bg-secondary-container selection:text-on-secondary-container">
+<!-- Top App Bar -->
+<header class="bg-surface dark:bg-surface-dim shadow-sm w-full top-0 sticky flex justify-between items-center px-margin-mobile h-touch-target-opt w-full z-50">
+<div class="flex items-center gap-4">
+<button class="active:scale-95 transition-transform duration-200 text-on-surface-variant flex items-center justify-center h-10 w-10">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile font-bold text-espresso-900 dark:text-inverse-primary">CAOCAO</h1>
+</div>
+<div class="flex items-center gap-3">
+<div class="h-10 w-10 rounded-full bg-cafe-200 overflow-hidden border border-outline-variant">
+<img alt="Profile" class="w-full h-full object-cover" data-alt="A professional headshot of a boutique cafe owner with a friendly expression. The lighting is warm and cinematic, featuring a soft bokeh background of a modern coffee shop interior. The style is clean, high-end, and minimalist, echoing a premium hospitality brand's aesthetic with natural earth tones and sophisticated atmosphere." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCpFZZT2A_RPcs8mUtElJeAIzdqfoylxitXmXoI27dfvfjJM7nXqy8W9p1KbSWFgeG8cuHkjY_tX7AvFUh8kf5fTb9jzeecyL272n4jtxG4b8KoNH0CbbS5MgJ3f4ztqtJzLqsSAYyhOjRKz3sQXJgtGKV01IE3oUeCc_hKmrtTW8NRwFmr_pXhpbwL-MijLFg9IUhyFFq_x8z8ujNLTJhSg47DCtyYOs5IAnFPsc7QMgtRGYGVTBFVhIRqH6omPU41oUX7KxNTN2Q"/>
+</div>
+<span class="material-symbols-outlined text-primary dark:text-inverse-primary">notifications</span>
+</div>
+</header>
+<main class="max-w-5xl mx-auto px-margin-mobile md:px-margin-desktop py-8 mb-24">
+<!-- Hero Section: Item Identity -->
+<div class="flex flex-col md:flex-row gap-8 items-start mb-10">
+<div class="w-full md:w-1/3 aspect-square rounded-3xl overflow-hidden shadow-sm border border-cafe-200/50">
+<img alt="Espresso Beans" class="w-full h-full object-cover" data-alt="A close-up, high-detail macro shot of premium roasted espresso coffee beans. The beans are dark, oily, and rich, glistening under soft, diffused warm studio lighting. The background is a clean, neutral cafe-50 tone, creating a minimalist and sophisticated organic look. The composition is artistic and focuses on the tactile texture of the coffee." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAqWfZgnWOGBIlaTR3PhA2KCFDJz0RAD-y1rX0uX1feWZmSxaa7D8nA801R0e1FH8szQcISpcnFwvSqTuqul-c7axD7t6bOSetrtCzqBrBe_RA0c4psqeXR83MqSiRHkjxOSWP8iJvx-MOMX2EiJANzVTX8qB3Hs8qAJVTupRgCg5OvpxfXDHPTeSFbgO5JE11Jwz1ATdw7kgpcmXT1YALFKsAErKUOvvCz__5yTPxB-zW4bjwb6hHq8Vth22vExXAeT4_LM9DFCKk"/>
+</div>
+<div class="flex-1 flex flex-col justify-center h-full pt-4">
+<div class="flex flex-wrap items-center gap-2 mb-2">
+<span class="bg-secondary-container text-on-secondary-container px-3 py-1 rounded-full font-label-sm text-label-sm">Raw Material</span>
+<span class="bg-cafe-50 text-outline px-3 py-1 rounded-full font-label-sm text-label-sm border border-cafe-200">ID: INV-ESP-001</span>
+</div>
+<h2 class="font-display-lg text-display-lg text-espresso-900 mb-4">Espresso Blend</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-xl mb-6">Signature house blend consisting of 70% Arabica Gayo and 30% Robusta Temanggung. Medium-dark roast profile for optimal crema and chocolatey notes.</p>
+<!-- Stock Summary Bento Cell -->
+<div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+<div class="bg-white rounded-3xl p-6 shadow-sm border border-cafe-200/50 flex flex-col justify-center">
+<span class="font-label-md text-label-md text-on-surface-variant mb-1 uppercase tracking-wider">Current Stock</span>
+<div class="flex items-baseline gap-1">
+<span class="font-headline-lg text-headline-lg text-espresso-900">4,250</span>
+<span class="font-title-lg text-title-lg text-on-surface-variant">g</span>
+</div>
+</div>
+<div class="bg-white rounded-3xl p-6 shadow-sm border border-cafe-200/50 flex flex-col justify-center">
+<span class="font-label-md text-label-md text-on-surface-variant mb-1 uppercase tracking-wider">Min Threshold</span>
+<div class="flex items-baseline gap-1">
+<span class="font-headline-lg text-headline-lg text-error">1,500</span>
+<span class="font-title-lg text-title-lg text-on-surface-variant">g</span>
+</div>
+</div>
+<div class="col-span-2 md:col-span-1 bg-earth-olive rounded-3xl p-6 shadow-sm flex flex-col justify-center text-white cursor-pointer active:scale-95 transition-all" onclick="openAdjustmentModal()">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md uppercase tracking-wider opacity-90">Quick Action</span>
+<span class="material-symbols-outlined">add_circle</span>
+</div>
+<span class="font-title-lg text-title-lg mt-1">Adjust Stock</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Insights Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-10">
+<!-- Usage Trend Chart (Visualized with CSS) -->
+<div class="lg:col-span-2 bg-white rounded-3xl p-8 shadow-sm border border-cafe-200/50">
+<div class="flex justify-between items-center mb-8">
+<div>
+<h3 class="font-headline-md text-headline-md text-espresso-900">Usage Trends</h3>
+<p class="font-label-md text-label-md text-on-surface-variant">Last 7 Days Consumption</p>
+</div>
+<div class="flex gap-2">
+<button class="h-8 w-8 rounded-full flex items-center justify-center bg-cafe-50 border border-cafe-200 hover:bg-cafe-200 transition-colors">
+<span class="material-symbols-outlined text-[18px]">download</span>
+</button>
+</div>
+</div>
+<div class="h-48 w-full flex items-end justify-between gap-2 px-2">
+<!-- Day 1 -->
+<div class="flex-1 flex flex-col items-center gap-3 group">
+<div class="w-full bg-cafe-50 rounded-t-xl relative h-32 overflow-hidden">
+<div class="absolute bottom-0 w-full bg-earth-olive/20 h-[60%] group-hover:h-[65%] transition-all duration-500"></div>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Mon</span>
+</div>
+<!-- Day 2 -->
+<div class="flex-1 flex flex-col items-center gap-3 group">
+<div class="w-full bg-cafe-50 rounded-t-xl relative h-32 overflow-hidden">
+<div class="absolute bottom-0 w-full bg-earth-olive/20 h-[85%] group-hover:h-[90%] transition-all duration-500"></div>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Tue</span>
+</div>
+<!-- Day 3 -->
+<div class="flex-1 flex flex-col items-center gap-3 group">
+<div class="w-full bg-cafe-50 rounded-t-xl relative h-32 overflow-hidden">
+<div class="absolute bottom-0 w-full bg-earth-olive/20 h-[45%] group-hover:h-[50%] transition-all duration-500"></div>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Wed</span>
+</div>
+<!-- Day 4 -->
+<div class="flex-1 flex flex-col items-center gap-3 group">
+<div class="w-full bg-cafe-50 rounded-t-xl relative h-32 overflow-hidden">
+<div class="absolute bottom-0 w-full bg-earth-olive/20 h-[95%] group-hover:h-full transition-all duration-500"></div>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Thu</span>
+</div>
+<!-- Day 5 -->
+<div class="flex-1 flex flex-col items-center gap-3 group">
+<div class="w-full bg-cafe-50 rounded-t-xl relative h-32 overflow-hidden">
+<div class="absolute bottom-0 w-full bg-earth-olive/20 h-[70%] group-hover:h-[75%] transition-all duration-500"></div>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Fri</span>
+</div>
+<!-- Day 6 -->
+<div class="flex-1 flex flex-col items-center gap-3 group">
+<div class="w-full bg-earth-olive rounded-t-xl relative h-32 overflow-hidden">
+<div class="absolute bottom-0 w-full bg-earth-olive h-full opacity-100"></div>
+</div>
+<span class="font-label-sm text-label-sm text-espresso-900 font-bold">Sat</span>
+</div>
+<!-- Day 7 -->
+<div class="flex-1 flex flex-col items-center gap-3 group">
+<div class="w-full bg-cafe-50 rounded-t-xl relative h-32 overflow-hidden">
+<div class="absolute bottom-0 w-full bg-earth-olive/20 h-[80%] group-hover:h-[85%] transition-all duration-500"></div>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Sun</span>
+</div>
+</div>
+</div>
+<!-- Health Status -->
+<div class="bg-white rounded-3xl p-8 shadow-sm border border-cafe-200/50 flex flex-col">
+<h3 class="font-headline-md text-headline-md text-espresso-900 mb-6">Inventory Health</h3>
+<div class="flex-1 flex flex-col justify-center space-y-6">
+<div class="flex items-center gap-4">
+<div class="h-12 w-12 rounded-full bg-secondary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-on-secondary-container">trending_down</span>
+</div>
+<div>
+<p class="font-body-md text-body-md text-espresso-900">Run out in ~4 days</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Based on recent velocity</p>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="h-12 w-12 rounded-full bg-cafe-50 border border-cafe-200 flex items-center justify-center">
+<span class="material-symbols-outlined text-outline">history</span>
+</div>
+<div>
+<p class="font-body-md text-body-md text-espresso-900">Last restock: Oct 12</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">+20,000g received</p>
+</div>
+</div>
+<button class="w-full mt-4 py-4 rounded-2xl bg-cafe-50 border border-cafe-200 font-label-md text-label-md text-espresso-900 hover:bg-cafe-200 transition-colors">
+                        SET ALERT THRESHOLD
+                    </button>
+</div>
+</div>
+</div>
+<!-- Stock Logs Section -->
+<div class="bg-white rounded-3xl p-8 shadow-sm border border-cafe-200/50">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
+<h3 class="font-headline-md text-headline-md text-espresso-900">Stock Logs</h3>
+<div class="flex gap-2">
+<div class="relative">
+<select class="appearance-none bg-cafe-50 border border-cafe-200 rounded-xl px-4 py-2 pr-10 font-label-md text-label-md focus:ring-0 outline-none">
+<option>All Activities</option>
+<option>Inbound</option>
+<option>Outbound</option>
+<option>Adjustment</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-on-surface-variant">expand_more</span>
+</div>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left">
+<thead>
+<tr class="border-b border-cafe-200">
+<th class="pb-4 font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Date &amp; Time</th>
+<th class="pb-4 font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Type</th>
+<th class="pb-4 font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Adjustment</th>
+<th class="pb-4 font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Current Stock</th>
+<th class="pb-4 font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">User</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-cafe-50">
+<!-- Log Item 1 -->
+<tr class="group hover:bg-cafe-50 transition-colors">
+<td class="py-4 font-body-md text-body-md text-espresso-900">Today, 10:45 AM</td>
+<td class="py-4">
+<span class="bg-cafe-200/50 text-on-surface-variant px-3 py-1 rounded-full font-label-sm text-label-sm">System (Sale)</span>
+</td>
+<td class="py-4 font-body-md text-body-md text-error">-180g</td>
+<td class="py-4 font-body-md text-body-md">4,250g</td>
+<td class="py-4 font-body-md text-body-md text-on-surface-variant">POS Terminal 1</td>
+</tr>
+<!-- Log Item 2 -->
+<tr class="group hover:bg-cafe-50 transition-colors">
+<td class="py-4 font-body-md text-body-md text-espresso-900">Today, 07:12 AM</td>
+<td class="py-4">
+<span class="bg-secondary-container text-on-secondary-container px-3 py-1 rounded-full font-label-sm text-label-sm">Manual Adj.</span>
+</td>
+<td class="py-4 font-body-md text-body-md text-earth-olive">+500g</td>
+<td class="py-4 font-body-md text-body-md">4,430g</td>
+<td class="py-4 font-body-md text-body-md text-on-surface-variant">Manager Aris</td>
+</tr>
+<!-- Log Item 3 -->
+<tr class="group hover:bg-cafe-50 transition-colors">
+<td class="py-4 font-body-md text-body-md text-espresso-900">Yesterday, 09:30 PM</td>
+<td class="py-4">
+<span class="bg-cafe-200/50 text-on-surface-variant px-3 py-1 rounded-full font-label-sm text-label-sm">Waste Log</span>
+</td>
+<td class="py-4 font-body-md text-body-md text-error">-45g</td>
+<td class="py-4 font-body-md text-body-md">3,930g</td>
+<td class="py-4 font-body-md text-body-md text-on-surface-variant">Barista Kevin</td>
+</tr>
+<!-- Log Item 4 -->
+<tr class="group hover:bg-cafe-50 transition-colors">
+<td class="py-4 font-body-md text-body-md text-espresso-900">Oct 12, 02:15 PM</td>
+<td class="py-4">
+<span class="bg-earth-olive text-white px-3 py-1 rounded-full font-label-sm text-label-sm">Inbound</span>
+</td>
+<td class="py-4 font-body-md text-body-md text-earth-olive">+20,000g</td>
+<td class="py-4 font-body-md text-body-md">3,975g</td>
+<td class="py-4 font-body-md text-body-md text-on-surface-variant">Vendor: RoastCo</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="mt-8 flex justify-center">
+<button class="font-label-md text-label-md text-on-surface-variant hover:text-espresso-900 transition-colors flex items-center gap-2">
+                    View Full Transaction History <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</button>
+</div>
+</div>
+</main>
+<!-- Stock Adjustment Modal (Hidden by default) -->
+<div class="fixed inset-0 z-[100] hidden items-center justify-center p-4" id="adjustmentModal">
+<div class="absolute inset-0 bg-espresso-900/40 backdrop-blur-sm" onclick="closeAdjustmentModal()"></div>
+<div class="relative bg-white w-full max-w-lg rounded-3xl p-8 shadow-2xl animate-in fade-in zoom-in duration-300">
+<div class="flex justify-between items-center mb-6">
+<h2 class="font-headline-md text-headline-md text-espresso-900">Manual Adjustment</h2>
+<button class="h-10 w-10 rounded-full flex items-center justify-center hover:bg-cafe-50" onclick="closeAdjustmentModal()">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+<div class="space-y-6">
+<div>
+<label class="block font-label-md text-label-md text-on-surface-variant mb-2">ADJUSTMENT TYPE</label>
+<div class="grid grid-cols-2 gap-3">
+<button class="py-3 rounded-xl border-2 border-earth-olive bg-secondary-container text-on-secondary-container font-label-md text-label-md flex items-center justify-center gap-2">
+<span class="material-symbols-outlined">add</span> ADD STOCK
+                        </button>
+<button class="py-3 rounded-xl border border-cafe-200 bg-white text-on-surface-variant font-label-md text-label-md flex items-center justify-center gap-2">
+<span class="material-symbols-outlined">remove</span> REDUCE STOCK
+                        </button>
+</div>
+</div>
+<div>
+<label class="block font-label-md text-label-md text-on-surface-variant mb-2">AMOUNT (GRAMS)</label>
+<input class="w-full h-touch-target-opt rounded-2xl border-cafe-200 bg-cafe-50 font-display-lg text-display-lg text-center focus:ring-earth-olive focus:border-earth-olive outline-none" placeholder="0" type="number"/>
+</div>
+<div>
+<label class="block font-label-md text-label-md text-on-surface-variant mb-2">REASON / NOTE</label>
+<textarea class="w-full rounded-2xl border-cafe-200 bg-cafe-50 p-4 font-body-md text-body-md focus:ring-earth-olive focus:border-earth-olive outline-none" placeholder="e.g. Received weekly shipment from Roastery..." rows="3"></textarea>
+</div>
+<div class="flex gap-3 pt-4">
+<button class="flex-1 h-touch-target-opt rounded-2xl border border-cafe-200 text-on-surface-variant font-label-md text-label-md active:scale-95 transition-transform" onclick="closeAdjustmentModal()">CANCEL</button>
+<button class="flex-1 h-touch-target-opt rounded-2xl bg-espresso-900 text-white font-label-md text-label-md active:scale-95 transition-transform shadow-md">CONFIRM UPDATE</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Navigation Shell (Bottom Bar for Mobile) -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pt-2 pb-6 bg-white dark:bg-inverse-surface shadow-[0_-4px_12px_rgba(0,0,0,0.02)] md:hidden">
+<div class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant px-3 py-1">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-sm text-label-sm">Dashboard</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant px-3 py-1">
+<span class="material-symbols-outlined">point_of_sale</span>
+<span class="font-label-sm text-label-sm">Orders</span>
+</div>
+<div class="flex flex-col items-center justify-center bg-secondary-container dark:bg-secondary text-on-secondary-container dark:text-on-secondary rounded-xl px-3 py-1">
+<span class="material-symbols-outlined">inventory_2</span>
+<span class="font-label-sm text-label-sm">Inventory</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant px-3 py-1">
+<span class="material-symbols-outlined">badge</span>
+<span class="font-label-sm text-label-sm">Staff</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant px-3 py-1">
+<span class="material-symbols-outlined">payments</span>
+<span class="font-label-sm text-label-sm">Payroll</span>
+</div>
+</nav>
+<script>
+        function openAdjustmentModal() {
+            const modal = document.getElementById('adjustmentModal');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeAdjustmentModal() {
+            const modal = document.getElementById('adjustmentModal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+            document.body.style.overflow = '';
+        }
+
+        // Escape key listener for modal
+        window.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeAdjustmentModal();
+        });
+    </script>
+</body></html>

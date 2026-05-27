@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+
+<html class="light" lang="id"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Dirty Matcha Latte - Detail</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-secondary-fixed-variant": "#434b18",
+                    "on-primary": "#ffffff",
+                    "on-surface": "#1c1b1b",
+                    "secondary-fixed": "#dfe8a6",
+                    "inverse-surface": "#313030",
+                    "inverse-on-surface": "#f4f0ef",
+                    "primary-fixed": "#eae1dd",
+                    "on-surface-variant": "#4d4541",
+                    "on-primary-fixed": "#1f1b19",
+                    "surface-container-low": "#f7f3f1",
+                    "on-primary-container": "#8a827f",
+                    "on-tertiary-container": "#838484",
+                    "primary-fixed-dim": "#cec5c1",
+                    "on-secondary-fixed": "#191e00",
+                    "surface-container-lowest": "#ffffff",
+                    "primary": "#000000",
+                    "outline": "#7f7570",
+                    "secondary-fixed-dim": "#c3cc8c",
+                    "tertiary": "#000000",
+                    "surface-bright": "#fdf8f7",
+                    "primary-container": "#1f1b19",
+                    "surface-container": "#f1edec",
+                    "tertiary-fixed-dim": "#c6c6c6",
+                    "surface-variant": "#e6e1e0",
+                    "on-background": "#1c1b1b",
+                    "on-error-container": "#93000a",
+                    "cafe-200": "#E5E1DE",
+                    "on-error": "#ffffff",
+                    "outline-variant": "#d0c4be",
+                    "espresso-900": "#1A1614",
+                    "on-secondary-container": "#5f6732",
+                    "cafe-50": "#F9F8F7",
+                    "on-tertiary-fixed": "#1a1c1c",
+                    "on-primary-fixed-variant": "#4b4643",
+                    "earth-olive": "#4B5320",
+                    "inverse-primary": "#cec5c1",
+                    "surface-tint": "#635d5a",
+                    "on-tertiary": "#ffffff",
+                    "secondary-container": "#dce5a3",
+                    "tertiary-fixed": "#e2e2e2",
+                    "on-secondary": "#ffffff",
+                    "background": "#fdf8f7",
+                    "surface-dim": "#ddd9d8",
+                    "surface-container-high": "#ece7e6",
+                    "secondary": "#5a632e",
+                    "on-tertiary-fixed-variant": "#454747",
+                    "error-container": "#ffdad6",
+                    "surface-container-highest": "#e6e1e0",
+                    "surface": "#fdf8f7",
+                    "tertiary-container": "#1a1c1c",
+                    "error": "#ba1a1a",
+                    "charcoal-text": "#121212"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "margin-tablet": "2rem",
+                    "margin-desktop": "3rem",
+                    "touch-target-opt": "52px",
+                    "touch-target-min": "48px",
+                    "gutter": "1.5rem",
+                    "margin-mobile": "1rem"
+            },
+            "fontFamily": {
+                    "label-md": ["Manrope"],
+                    "headline-lg": ["Manrope"],
+                    "body-lg": ["Manrope"],
+                    "headline-md": ["Manrope"],
+                    "body-md": ["Manrope"],
+                    "display-lg": ["Manrope"],
+                    "label-sm": ["Manrope"],
+                    "title-lg": ["Manrope"],
+                    "headline-lg-mobile": ["Manrope"]
+            },
+            "fontSize": {
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "500"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "600"}],
+                    "title-lg": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Manrope', sans-serif; -webkit-tap-highlight-color: transparent; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .custom-scrollbar::-webkit-scrollbar { width: 4px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #E5E1DE; border-radius: 10px; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-cafe-50 text-on-surface min-h-screen pb-32">
+<!-- Top Navigation Bar -->
+<header class="w-full top-0 sticky z-50 bg-cafe-50/80 backdrop-blur-md">
+<div class="flex justify-between items-center px-margin-mobile h-touch-target-opt">
+<button class="p-2 text-espresso-900 active:scale-95 duration-200" onclick="history.back()">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<h1 class="font-headline-md text-headline-md font-bold text-espresso-900">Pengalaman Kafe</h1>
+<div class="flex items-center gap-2">
+<div class="w-10 h-10 rounded-full bg-cafe-200 flex items-center justify-center overflow-hidden border border-cafe-200">
+<img alt="Profil Tamu" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCU9Abhy3Xd7pjdQKm1IbJwHJajRT4uiYJZHx4qKO5iLwuKGVLMCyw_mUU_1Ypq-Q73RoTuOwAvP3n-Jk5yZ0v4F_pUMZYxzo3n3H8NpCb8LOHfabB6w5EeFx4UL9zP9OUAZkfFAXa3Ya8OwCpEGe2DnJPMnwIBTl8vdZnxg2IFw5HAJn48rgDXhzcH0IYFrDPYTG-C4AucukQQipeYsS5oOdMU5XHG9bOUF-fIpCwzTOQkh4H9zPpVchYdZBSu235KfdMTUBF2XNc"/>
+</div>
+</div>
+</div>
+</header>
+<main class="max-w-4xl mx-auto px-margin-mobile md:px-margin-desktop mt-4">
+<!-- Hero Section: Bento Inspired Layout -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-6 mb-12">
+<!-- Image Card -->
+<div class="md:col-span-7 rounded-3xl overflow-hidden shadow-sm bg-white aspect-[4/5] md:aspect-square relative group">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="A premium Dirty Matcha Latte presented in a clear glass on a white marble surface within a minimalist sun-drenched cafe. Swirls of deep green ceremonial matcha blend organically with creamy white milk and a rich, dark espresso shot sinking to the bottom. Soft, high-key natural lighting creates a calm, professional atmosphere with subtle shadows and warm neutral tones of cafe-50 and espresso-900." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDt-iguf9Tw5QZS4-KuFf1scJPHOV92XWJPmWopAZ32hkbjXw5rTQWtD3hHBDmOvpTIwPc5yBAzcWs0X3ndD_wg_1854wxW9mRLkfmP9jtBlbe8DGl3-ybqb_c0tpxgheThPTCNAi5fefCpcHY-FrMO-HjwwIGDtRXXskFd1o5YJndVB7p7CobtwxGjyjN3vklnlcTXz4oKwu81eJOVyJ9bTQthxKrSnqcPdEWxGHVYMSwMfBI4LNvQq7rPkGEI8Apzutl1Zsp8_xQ"/>
+<div class="absolute top-4 right-4 bg-white/90 backdrop-blur-md px-4 py-2 rounded-full shadow-sm">
+<span class="font-label-md text-label-md text-earth-olive flex items-center gap-1">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
+                    4.9
+                </span>
+</div>
+</div>
+<!-- Content Card -->
+<div class="md:col-span-5 flex flex-col justify-center space-y-6">
+<div>
+<h2 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-espresso-900 mb-2">Dirty Matcha Latte</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">
+                    Matcha kualitas seremonial khas kami, dikocok sempurna, dipadukan dengan susu lembut dan suntikan ristretto espresso house blend kami yang kuat. Sebuah pengalaman berlapis untuk selera yang cerdas.
+                </p>
+</div>
+<div class="flex items-center gap-4">
+<span class="font-headline-md text-headline-md text-espresso-900">Rp 45.000</span>
+<div class="flex gap-2">
+<span class="px-3 py-1 bg-cafe-200/50 rounded-full font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Organik</span>
+<span class="px-3 py-1 bg-cafe-200/50 rounded-full font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Kafein</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Customization Sections -->
+<section class="space-y-10">
+<!-- Milk Choice -->
+<div>
+<div class="flex justify-between items-end mb-4">
+<h3 class="font-title-lg text-title-lg text-espresso-900">Pilihan Susu</h3>
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase">Wajib</span>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+<button class="option-btn-milk group relative flex items-center justify-between p-4 bg-white border border-cafe-200 rounded-3xl transition-all duration-200 active:scale-95 h-touch-target-opt" onclick="selectOption('milk', 'Oat')">
+<span class="font-body-md text-body-md group-[.active]:font-bold transition-all">Gandum (Oat)</span>
+<div class="w-5 h-5 rounded-full border-2 border-cafe-200 flex items-center justify-center group-[.active]:border-espresso-900 group-[.active]:bg-espresso-900">
+<span class="material-symbols-outlined text-white text-[14px] hidden group-[.active]:block">check</span>
+</div>
+</button>
+<button class="option-btn-milk group relative flex items-center justify-between p-4 bg-white border border-cafe-200 rounded-3xl transition-all duration-200 active:scale-95 h-touch-target-opt" onclick="selectOption('milk', 'Almond')">
+<span class="font-body-md text-body-md group-[.active]:font-bold transition-all">Almond</span>
+<div class="w-5 h-5 rounded-full border-2 border-cafe-200 flex items-center justify-center group-[.active]:border-espresso-900 group-[.active]:bg-espresso-900">
+<span class="material-symbols-outlined text-white text-[14px] hidden group-[.active]:block">check</span>
+</div>
+</button>
+<button class="option-btn-milk active group relative flex items-center justify-between p-4 bg-white border border-espresso-900 rounded-3xl transition-all duration-200 active:scale-95 h-touch-target-opt" onclick="selectOption('milk', 'Regular')">
+<span class="font-body-md text-body-md font-bold">Biasa (Regular)</span>
+<div class="w-5 h-5 rounded-full border-2 border-espresso-900 bg-espresso-900 flex items-center justify-center">
+<span class="material-symbols-outlined text-white text-[14px]">check</span>
+</div>
+</button>
+</div>
+</div>
+<!-- Sweetness -->
+<div>
+<div class="flex justify-between items-end mb-4">
+<h3 class="font-title-lg text-title-lg text-espresso-900">Tingkat Kemanisan</h3>
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase">Wajib</span>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+<button class="option-btn-sweetness group relative flex items-center justify-between p-4 bg-white border border-cafe-200 rounded-3xl transition-all duration-200 active:scale-95 h-touch-target-opt" onclick="selectOption('sweetness', 'Less')">
+<span class="font-body-md text-body-md group-[.active]:font-bold transition-all">Kurang Manis</span>
+<div class="w-5 h-5 rounded-full border-2 border-cafe-200 flex items-center justify-center group-[.active]:border-espresso-900 group-[.active]:bg-espresso-900">
+<span class="material-symbols-outlined text-white text-[14px] hidden group-[.active]:block">check</span>
+</div>
+</button>
+<button class="option-btn-sweetness active group relative flex items-center justify-between p-4 bg-white border border-espresso-900 rounded-3xl transition-all duration-200 active:scale-95 h-touch-target-opt" onclick="selectOption('sweetness', 'Normal')">
+<span class="font-body-md text-body-md font-bold">Normal</span>
+<div class="w-5 h-5 rounded-full border-2 border-espresso-900 bg-espresso-900 flex items-center justify-center">
+<span class="material-symbols-outlined text-white text-[14px]">check</span>
+</div>
+</button>
+</div>
+</div>
+<!-- Special Note -->
+<div>
+<h3 class="font-title-lg text-title-lg text-espresso-900 mb-4">Catatan Khusus</h3>
+<textarea class="w-full min-h-[120px] bg-white border border-cafe-200 rounded-3xl p-4 focus:ring-0 focus:border-espresso-900 transition-colors font-body-md text-body-md resize-none" placeholder="Ada permintaan khusus untuk barista kami?"></textarea>
+</div>
+</section>
+</main>
+<!-- Bottom Action Area -->
+<footer class="fixed bottom-0 w-full z-50 bg-white/80 backdrop-blur-md rounded-t-3xl shadow-[0_-4px_20px_0_rgba(0,0,0,0.05)]">
+<div class="max-w-4xl mx-auto px-margin-mobile h-24 flex items-center justify-between gap-6">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Subtotal</span>
+<span class="font-headline-md text-headline-md text-espresso-900">Rp 45.000</span>
+</div>
+<button class="flex-1 bg-espresso-900 text-white rounded-full h-14 font-title-lg text-title-lg flex items-center justify-center gap-2 hover:opacity-90 active:scale-95 transition-all">
+            Tambah ke Pesanan
+            <span class="material-symbols-outlined">add_shopping_cart</span>
+</button>
+</div>
+</footer>
+<script>
+    function selectOption(type, value) {
+        const btns = document.querySelectorAll(`.option-btn-${type}`);
+        btns.forEach(btn => {
+            btn.classList.remove('active', 'border-espresso-900');
+            btn.classList.add('border-cafe-200');
+            
+            const span = btn.querySelector('.font-body-md');
+            span.classList.remove('font-bold');
+
+            const circle = btn.querySelector('.w-5');
+            circle.classList.remove('border-espresso-900', 'bg-espresso-900');
+            circle.classList.add('border-cafe-200');
+
+            const check = btn.querySelector('.material-symbols-outlined');
+            check.classList.add('hidden');
+        });
+
+        const activeBtn = event.currentTarget;
+        activeBtn.classList.add('active', 'border-espresso-900');
+        activeBtn.classList.remove('border-cafe-200');
+
+        const activeSpan = activeBtn.querySelector('.font-body-md');
+        activeSpan.classList.add('font-bold');
+
+        const activeCircle = activeBtn.querySelector('.w-5');
+        activeCircle.classList.add('border-espresso-900', 'bg-espresso-900');
+        activeCircle.classList.remove('border-cafe-200');
+
+        const activeCheck = activeBtn.querySelector('.material-symbols-outlined');
+        activeCheck.classList.remove('hidden');
+    }
+</script>
+</body></html>

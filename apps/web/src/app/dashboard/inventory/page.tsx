@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import Link from 'next/link';
 import { 
   LayoutDashboard, AlertTriangle, Scale, Plus, Flame, 
   Sparkles, Coffee, Trash2, ArrowRight, DollarSign, Award, UtensilsCrossed, Info, X, Settings, TrendingUp 
@@ -653,23 +654,27 @@ export default function InventoryBOM() {
                   const isLow = ing.stockLevel <= ing.safetyThreshold;
 
                   return (
-                    <div key={ing.id} className="bg-white rounded-3xl p-5 border border-cafe-200/20 hover:border-espresso-900/20 transition-all group flex flex-col justify-between">
+                    <div key={ing.id} className="bg-white rounded-3xl p-5 border border-cafe-200/20 hover:border-espresso-900/20 hover:shadow-sm transition-all group flex flex-col justify-between">
                       <div>
                         <div className="flex justify-between items-start mb-4">
-                          <div className="w-16 h-16 rounded-2xl bg-cafe-50 flex items-center justify-center overflow-hidden border border-cafe-200/50">
+                          <Link href={`/dashboard/inventory/${ing.id}`} className="w-16 h-16 rounded-2xl bg-cafe-50 flex items-center justify-center overflow-hidden border border-cafe-200/50 cursor-pointer block">
                             {ing.imageUrl ? (
                               <img alt={ing.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src={ing.imageUrl} />
                             ) : (
                               ing.category === 'BAR' ? <Coffee className="w-8 h-8 text-cafe-300" /> : <UtensilsCrossed className="w-8 h-8 text-cafe-300" />
                             )}
-                          </div>
+                          </Link>
                           <span className={`px-3 py-1 rounded-full text-[9px] font-bold uppercase tracking-wider ${
                             isLow ? 'bg-error-container text-on-error-container animate-pulse' : 'bg-secondary-container text-on-secondary-container'
                           }`}>
                             {isLow ? 'Low Stock' : 'Optimal'}
                           </span>
                         </div>
-                        <h3 className="text-base font-bold text-espresso-900 mb-1">{ing.name}</h3>
+                        <Link href={`/dashboard/inventory/${ing.id}`} className="group-hover:text-earth-olive transition-colors">
+                          <h3 className="text-base font-bold text-espresso-900 mb-1 flex items-center gap-1.5 hover:underline">
+                            {ing.name} <ArrowRight className="w-3.5 h-3.5 opacity-0 group-hover:opacity-100 transition-all text-earth-olive" />
+                          </h3>
+                        </Link>
                         <p className="text-[11px] font-semibold text-on-surface-variant mb-4">{ing.description || `${ing.category} Material`}</p>
                       </div>
 
