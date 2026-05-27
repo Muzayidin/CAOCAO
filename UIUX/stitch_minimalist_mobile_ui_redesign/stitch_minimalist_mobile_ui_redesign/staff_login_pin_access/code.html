@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface": "#fdf8f7",
+                    "surface-container-highest": "#e6e1e0",
+                    "tertiary-container": "#1a1c1c",
+                    "error": "#ba1a1a",
+                    "charcoal-text": "#121212",
+                    "surface-dim": "#ddd9d8",
+                    "surface-container-high": "#ece7e6",
+                    "secondary": "#5a632e",
+                    "on-tertiary-fixed-variant": "#454747",
+                    "error-container": "#ffdad6",
+                    "background": "#fdf8f7",
+                    "tertiary-fixed": "#e2e2e2",
+                    "on-secondary": "#ffffff",
+                    "secondary-container": "#dce5a3",
+                    "on-primary-fixed-variant": "#4b4643",
+                    "inverse-primary": "#cec5c1",
+                    "earth-olive": "#4B5320",
+                    "on-tertiary": "#ffffff",
+                    "surface-tint": "#635d5a",
+                    "outline-variant": "#d0c4be",
+                    "espresso-900": "#1A1614",
+                    "on-tertiary-fixed": "#1a1c1c",
+                    "on-secondary-container": "#5f6732",
+                    "cafe-50": "#F9F8F7",
+                    "on-error-container": "#93000a",
+                    "on-error": "#ffffff",
+                    "cafe-200": "#E5E1DE",
+                    "surface-container": "#f1edec",
+                    "tertiary-fixed-dim": "#c6c6c6",
+                    "on-background": "#1c1b1b",
+                    "surface-variant": "#e6e1e0",
+                    "primary": "#000000",
+                    "outline": "#7f7570",
+                    "surface-container-lowest": "#ffffff",
+                    "surface-bright": "#fdf8f7",
+                    "tertiary": "#000000",
+                    "secondary-fixed-dim": "#c3cc8c",
+                    "primary-container": "#1f1b19",
+                    "on-tertiary-container": "#838484",
+                    "primary-fixed-dim": "#cec5c1",
+                    "on-secondary-fixed": "#191e00",
+                    "inverse-surface": "#313030",
+                    "inverse-on-surface": "#f4f0ef",
+                    "secondary-fixed": "#dfe8a6",
+                    "on-surface-variant": "#4d4541",
+                    "primary-fixed": "#eae1dd",
+                    "on-primary-fixed": "#1f1b19",
+                    "surface-container-low": "#f7f3f1",
+                    "on-primary-container": "#8a827f",
+                    "on-primary": "#ffffff",
+                    "on-surface": "#1c1b1b",
+                    "on-secondary-fixed-variant": "#434b18"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "margin-tablet": "2rem",
+                    "touch-target-opt": "52px",
+                    "margin-desktop": "3rem",
+                    "gutter": "1.5rem",
+                    "touch-target-min": "48px",
+                    "margin-mobile": "1rem"
+            },
+            "fontFamily": {
+                    "body-lg": ["Manrope"],
+                    "label-md": ["Manrope"],
+                    "headline-lg": ["Manrope"],
+                    "title-lg": ["Manrope"],
+                    "headline-lg-mobile": ["Manrope"],
+                    "label-sm": ["Manrope"],
+                    "display-lg": ["Manrope"],
+                    "headline-md": ["Manrope"],
+                    "body-md": ["Manrope"]
+            },
+            "fontSize": {
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "500"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                    "title-lg": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "600"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            font-family: 'Manrope', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .pin-dot {
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .pin-dot.filled {
+            background-color: #1A1614;
+            transform: scale(1.1);
+        }
+        .key-tap:active {
+            transform: scale(0.92);
+            background-color: #E5E1DE;
+        }
+        .glass-blur-circle {
+            filter: blur(80px);
+            opacity: 0.4;
+        }
+        .switcher-transition {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-cafe-50 text-on-surface min-h-screen flex flex-col items-center justify-between relative overflow-hidden">
+<!-- Atmospheric Background Circles -->
+<div class="absolute -top-20 -left-20 w-64 h-64 rounded-full bg-secondary-container/40 glass-blur-circle z-0"></div>
+<div class="absolute -bottom-20 -right-20 w-80 h-80 rounded-full bg-cafe-200 glass-blur-circle z-0"></div>
+<!-- Top App Bar -->
+<header class="flex justify-between items-center w-full px-margin-mobile h-touch-target-opt z-50 bg-cafe-50/80 backdrop-blur-sm fixed top-0">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-cafe-200 flex items-center justify-center overflow-hidden border border-outline-variant">
+<span class="material-symbols-outlined text-[18px] text-espresso-900" style="font-variation-settings: 'FILL' 1;">person</span>
+</div>
+<span class="text-label-md font-label-md text-on-surface-variant">Staff Portal</span>
+</div>
+<div class="text-headline-md font-headline-md font-bold tracking-tight text-espresso-900">CAOCAO</div>
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-cafe-200/50 active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-espresso-900" data-icon="sync">sync</span>
+</button>
+</header>
+<!-- Main Content -->
+<main class="flex-1 w-full max-w-md flex flex-col justify-center items-center px-6 pt-20 pb-12 z-10">
+<!-- Login Card -->
+<div class="w-full bg-white rounded-[32px] shadow-sm p-8 flex flex-col items-center border border-cafe-200/50">
+<!-- Brand Logo -->
+<div class="flex flex-col items-center gap-2 mb-8">
+<div class="w-14 h-14 bg-espresso-900 rounded-2xl flex items-center justify-center text-white mb-2 shadow-lg">
+<span class="material-symbols-outlined text-3xl" style="font-variation-settings: 'FILL' 1;">coffee</span>
+</div>
+<h1 class="text-headline-md font-headline-md text-espresso-900 tracking-tight">CAOCAO</h1>
+</div>
+<!-- Portal Switcher -->
+<div class="w-full bg-cafe-50 rounded-2xl p-1 flex mb-10 relative">
+<div class="absolute top-1 left-1 w-[calc(50%-4px)] h-[calc(100%-8px)] bg-white rounded-xl shadow-sm switcher-transition" id="switcher-bg"></div>
+<button class="flex-1 py-3 text-label-md font-label-md z-10 text-on-surface-variant transition-colors" id="btn-admin" onclick="switchPortal('admin')">Owner / Admin</button>
+<button class="flex-1 py-3 text-label-md font-label-md z-10 text-espresso-900 font-bold transition-colors" id="btn-staff" onclick="switchPortal('staff')">Staff Roster</button>
+</div>
+<!-- PIN Visualization -->
+<div class="flex gap-4 mb-10" id="pin-display">
+<div class="pin-dot w-4 h-4 rounded-full border-2 border-cafe-200"></div>
+<div class="pin-dot w-4 h-4 rounded-full border-2 border-cafe-200"></div>
+<div class="pin-dot w-4 h-4 rounded-full border-2 border-cafe-200"></div>
+<div class="pin-dot w-4 h-4 rounded-full border-2 border-cafe-200"></div>
+</div>
+<!-- Numpad Grid -->
+<div class="grid grid-cols-3 gap-y-4 gap-x-8 w-full">
+<!-- Row 1 -->
+<button class="key-tap w-full aspect-square rounded-full flex items-center justify-center bg-cafe-50 text-title-lg font-title-lg text-espresso-900 transition-all" onclick="pressKey('1')">1</button>
+<button class="key-tap w-full aspect-square rounded-full flex items-center justify-center bg-cafe-50 text-title-lg font-title-lg text-espresso-900 transition-all" onclick="pressKey('2')">2</button>
+<button class="key-tap w-full aspect-square rounded-full flex items-center justify-center bg-cafe-50 text-title-lg font-title-lg text-espresso-900 transition-all" onclick="pressKey('3')">3</button>
+<!-- Row 2 -->
+<button class="key-tap w-full aspect-square rounded-full flex items-center justify-center bg-cafe-50 text-title-lg font-title-lg text-espresso-900 transition-all" onclick="pressKey('4')">4</button>
+<button class="key-tap w-full aspect-square rounded-full flex items-center justify-center bg-cafe-50 text-title-lg font-title-lg text-espresso-900 transition-all" onclick="pressKey('5')">5</button>
+<button class="key-tap w-full aspect-square rounded-full flex items-center justify-center bg-cafe-50 text-title-lg font-title-lg text-espresso-900 transition-all" onclick="pressKey('6')">6</button>
+<!-- Row 3 -->
+<button class="key-tap w-full aspect-square rounded-full flex items-center justify-center bg-cafe-50 text-title-lg font-title-lg text-espresso-900 transition-all" onclick="pressKey('7')">7</button>
+<button class="key-tap w-full aspect-square rounded-full flex items-center justify-center bg-cafe-50 text-title-lg font-title-lg text-espresso-900 transition-all" onclick="pressKey('8')">8</button>
+<button class="key-tap w-full aspect-square rounded-full flex items-center justify-center bg-cafe-50 text-title-lg font-title-lg text-espresso-900 transition-all" onclick="pressKey('9')">9</button>
+<!-- Row 4 -->
+<div class="w-full aspect-square"></div>
+<button class="key-tap w-full aspect-square rounded-full flex items-center justify-center bg-cafe-50 text-title-lg font-title-lg text-espresso-900 transition-all" onclick="pressKey('0')">0</button>
+<button class="key-tap w-full aspect-square rounded-full flex items-center justify-center text-espresso-900 transition-all" onclick="pressKey('back')">
+<span class="material-symbols-outlined" data-icon="backspace">backspace</span>
+</button>
+</div>
+<!-- Forgot Action -->
+<button class="mt-8 text-label-md font-label-md text-outline hover:text-espresso-900 transition-colors">Forgot PIN?</button>
+</div>
+</main>
+<!-- Bottom Status Bar -->
+<footer class="w-full h-12 bg-white/50 backdrop-blur-md flex items-center justify-center gap-2 z-50">
+<div class="w-2 h-2 rounded-full bg-secondary animate-pulse"></div>
+<span class="text-label-sm font-label-sm text-on-surface-variant tracking-wide uppercase">Terminal 04 — Connected</span>
+</footer>
+<script>
+        let pin = "";
+        const maxPinLength = 4;
+        const dots = document.querySelectorAll('.pin-dot');
+        const switcherBg = document.getElementById('switcher-bg');
+        const btnAdmin = document.getElementById('btn-admin');
+        const btnStaff = document.getElementById('btn-staff');
+
+        function pressKey(val) {
+            if (val === 'back') {
+                pin = pin.slice(0, -1);
+            } else if (pin.length < maxPinLength) {
+                pin += val;
+                // Add a small tactile vibrate feel via JS if possible on mobile
+                if (window.navigator && window.navigator.vibrate) {
+                    window.navigator.vibrate(5);
+                }
+            }
+            updateDots();
+            
+            if (pin.length === maxPinLength) {
+                setTimeout(() => {
+                    // Feedback simulation
+                    const card = document.querySelector('.bg-white');
+                    card.classList.add('border-secondary');
+                    setTimeout(() => {
+                        alert("Accessing " + (currentPortal === 'admin' ? 'Management Dashboard' : 'Staff Roster') + "...");
+                        pin = "";
+                        updateDots();
+                        card.classList.remove('border-secondary');
+                    }, 500);
+                }, 200);
+            }
+        }
+
+        function updateDots() {
+            dots.forEach((dot, index) => {
+                if (index < pin.length) {
+                    dot.classList.add('filled', 'border-espresso-900');
+                } else {
+                    dot.classList.remove('filled', 'border-espresso-900');
+                }
+            });
+        }
+
+        let currentPortal = 'staff';
+        function switchPortal(type) {
+            currentPortal = type;
+            pin = "";
+            updateDots();
+            
+            if (type === 'admin') {
+                switcherBg.style.left = '4px';
+                btnAdmin.classList.add('text-espresso-900', 'font-bold');
+                btnAdmin.classList.remove('text-on-surface-variant');
+                btnStaff.classList.add('text-on-surface-variant');
+                btnStaff.classList.remove('text-espresso-900', 'font-bold');
+            } else {
+                switcherBg.style.left = 'calc(50% + 0px)';
+                btnStaff.classList.add('text-espresso-900', 'font-bold');
+                btnStaff.classList.remove('text-on-surface-variant');
+                btnAdmin.classList.add('text-on-surface-variant');
+                btnAdmin.classList.remove('text-espresso-900', 'font-bold');
+            }
+        }
+
+        // Initialize state
+        window.onload = () => switchPortal('staff');
+    </script>
+</body></html>

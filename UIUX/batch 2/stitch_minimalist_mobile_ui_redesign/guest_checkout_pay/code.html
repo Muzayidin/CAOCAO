@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-secondary-fixed-variant": "#434b18",
+                    "on-primary": "#ffffff",
+                    "on-surface": "#1c1b1b",
+                    "secondary-fixed": "#dfe8a6",
+                    "inverse-surface": "#313030",
+                    "inverse-on-surface": "#f4f0ef",
+                    "primary-fixed": "#eae1dd",
+                    "on-surface-variant": "#4d4541",
+                    "on-primary-fixed": "#1f1b19",
+                    "surface-container-low": "#f7f3f1",
+                    "on-primary-container": "#8a827f",
+                    "on-tertiary-container": "#838484",
+                    "primary-fixed-dim": "#cec5c1",
+                    "on-secondary-fixed": "#191e00",
+                    "surface-container-lowest": "#ffffff",
+                    "primary": "#000000",
+                    "outline": "#7f7570",
+                    "secondary-fixed-dim": "#c3cc8c",
+                    "tertiary": "#000000",
+                    "surface-bright": "#fdf8f7",
+                    "primary-container": "#1f1b19",
+                    "surface-container": "#f1edec",
+                    "tertiary-fixed-dim": "#c6c6c6",
+                    "surface-variant": "#e6e1e0",
+                    "on-background": "#1c1b1b",
+                    "on-error-container": "#93000a",
+                    "cafe-200": "#E5E1DE",
+                    "on-error": "#ffffff",
+                    "outline-variant": "#d0c4be",
+                    "espresso-900": "#1A1614",
+                    "on-secondary-container": "#5f6732",
+                    "cafe-50": "#F9F8F7",
+                    "on-tertiary-fixed": "#1a1c1c",
+                    "on-primary-fixed-variant": "#4b4643",
+                    "earth-olive": "#4B5320",
+                    "inverse-primary": "#cec5c1",
+                    "surface-tint": "#635d5a",
+                    "on-tertiary": "#ffffff",
+                    "secondary-container": "#dce5a3",
+                    "tertiary-fixed": "#e2e2e2",
+                    "on-secondary": "#ffffff",
+                    "background": "#fdf8f7",
+                    "surface-dim": "#ddd9d8",
+                    "surface-container-high": "#ece7e6",
+                    "secondary": "#5a632e",
+                    "on-tertiary-fixed-variant": "#454747",
+                    "error-container": "#ffdad6",
+                    "surface-container-highest": "#e6e1e0",
+                    "surface": "#fdf8f7",
+                    "tertiary-container": "#1a1c1c",
+                    "error": "#ba1a1a",
+                    "charcoal-text": "#121212"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "margin-tablet": "2rem",
+                    "margin-desktop": "3rem",
+                    "touch-target-opt": "52px",
+                    "touch-target-min": "48px",
+                    "gutter": "1.5rem",
+                    "margin-mobile": "1rem"
+            },
+            "fontFamily": {
+                    "label-md": ["Manrope"],
+                    "headline-lg": ["Manrope"],
+                    "body-lg": ["Manrope"],
+                    "headline-md": ["Manrope"],
+                    "body-md": ["Manrope"],
+                    "display-lg": ["Manrope"],
+                    "label-sm": ["Manrope"],
+                    "title-lg": ["Manrope"],
+                    "headline-lg-mobile": ["Manrope"]
+            },
+            "fontSize": {
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "500"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "600"}],
+                    "title-lg": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Manrope', sans-serif; -webkit-font-smoothing: antialiased; }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(229, 225, 222, 0.5);
+        }
+        .custom-scrollbar::-webkit-scrollbar { width: 4px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #E5E1DE; border-radius: 10px; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-cafe-50 text-on-surface min-h-screen">
+<!-- Top Navigation (Shell Implementation) -->
+<header class="w-full top-0 sticky z-40 bg-cafe-50 flex justify-between items-center px-margin-mobile h-touch-target-opt shadow-sm">
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-espresso-900 active:scale-95 duration-200" data-icon="arrow_back">arrow_back</button>
+<h1 class="font-headline-md text-headline-md font-bold text-espresso-900">Cafe Experience</h1>
+</div>
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-full bg-cafe-200 flex items-center justify-center overflow-hidden">
+<img alt="Guest Profile" class="w-full h-full object-cover" data-alt="A professional headshot of a friendly individual in a modern, brightly lit environment. The person has a warm expression and is set against a soft, out-of-focus cafe background with warm neutral tones of espresso and cream. The lighting is soft and cinematic, emphasizing a premium and hospitable atmosphere consistent with high-end digital design." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAApZL0DU1JVHRVejcal9WMlNYBMIy4Kk8pX7V6NWzwdCGdgCAmhJn2fcOdA1O-kueBnGtkzX4NMNeOHhrbHcOBp4FLo6F-edRiX2ygTuTSgZIFyG18293QI-_fq6eneoextiXYUMkJH22TVp61tYV6zaPDCO5drQ9pO16Zj_kAJyxBL3YK_SqVKwM2hfi44UpvioUubXsTxnj9dgDXgd-RfbaofGMMVeN5N-rVNA6K4Y_5UN5bKbC6LRSJCUqNXEpsDGleka6jH9U"/>
+</div>
+</div>
+</header>
+<main class="max-w-4xl mx-auto px-margin-mobile pt-8 pb-32">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
+<!-- Left Column: Order Summary -->
+<div class="md:col-span-7 space-y-6">
+<section>
+<h2 class="font-title-lg text-title-lg text-espresso-900 mb-4">Review Your Order</h2>
+<div class="space-y-3">
+<!-- Item 1 -->
+<div class="glass-card rounded-3xl p-4 flex gap-4 items-center">
+<div class="w-20 h-20 rounded-2xl overflow-hidden flex-shrink-0">
+<img alt="Dirty Matcha Latte" class="w-full h-full object-cover" data-alt="A high-angle, close-up shot of a dirty matcha latte in a clean glass cup. The drink features distinct layers of vibrant green matcha and rich brown espresso swirling into creamy white milk. The setting is a minimalist white marble tabletop with soft, natural morning light. The aesthetic is clean, premium, and organic, using a warm neutral palette." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDivVBI6XH7HdmCiVa5pD_OVMnr_QNiNHK0BNoVL_3E18jDEySZiCXokRz5JZ7GaklPCkFrOGHxvfAuXTwDyE_gS-zW00wX3cheL55N1PnKN0vlMFOjGzNb-8oCdtp6pU7s47iWuoJ6d-_b0vU8MUfLxmOEB_-3MyeHDdZj_eKrwtyI38iFhiWMlmdXIPvPy1Q0SmqUgg-zK21tiDMEnErQDshiDhyoxk3swMY1eEKFT2ZNnNIBzk6RYCzKHLKaG_NEQTC8IePkvZE"/>
+</div>
+<div class="flex-grow">
+<p class="font-title-lg text-body-md font-bold text-espresso-900">Dirty Matcha Latte</p>
+<p class="font-body-md text-label-md text-on-surface-variant">Oat Milk, Iced</p>
+</div>
+<div class="text-right">
+<p class="font-title-lg text-body-md font-bold text-espresso-900">$6.50</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Qty: 1</p>
+</div>
+</div>
+<!-- Item 2 -->
+<div class="glass-card rounded-3xl p-4 flex gap-4 items-center">
+<div class="w-20 h-20 rounded-2xl overflow-hidden flex-shrink-0">
+<img alt="Butter Croissant" class="w-full h-full object-cover" data-alt="A golden-brown, flaky butter croissant resting on a textured ceramic plate. The pastry has a beautiful laminated texture with visible layers. The lighting is warm and directional, casting soft shadows on a rustic wooden cafe table. The overall mood is artisanal and inviting, fitting a premium professional food environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuATVmPM3-dtXdirMHkwpNzuVTVK1AESDh2-iTu9rSZQClSPadhU9tWNr-zVL0-KZ6LK47NltQg35_qofaf32NJ0DWQwksF8OKUQrxY1eKNS3UXkHvXUZzAnm_PXux8b4g0A-VhDx4bb1yWFTijKiF3AMuZWhAyv35ta4uwjwMB4DfuXADEFuxaQjtIqBTt5dxWSqI7aAWmATnJXDHCW17N7pOs-uN1Gp3R50nPgDT7imVPo3bfbEYtRsGielVJsrO3LZNkZCDqWFIQ"/>
+</div>
+<div class="flex-grow">
+<p class="font-title-lg text-body-md font-bold text-espresso-900">Butter Croissant</p>
+<p class="font-body-md text-label-md text-on-surface-variant">Warmed</p>
+</div>
+<div class="text-right">
+<p class="font-title-lg text-body-md font-bold text-espresso-900">$4.25</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Qty: 1</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Billing Section -->
+<section class="glass-card rounded-3xl p-6">
+<h3 class="font-title-lg text-title-lg text-espresso-900 mb-4">Payment Summary</h3>
+<div class="space-y-3">
+<div class="flex justify-between items-center">
+<span class="font-body-md text-body-md text-on-surface-variant">Subtotal</span>
+<span class="font-body-md text-body-md text-espresso-900">$10.75</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="font-body-md text-body-md text-on-surface-variant">Tax (8%)</span>
+<span class="font-body-md text-body-md text-espresso-900">$0.86</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="font-body-md text-body-md text-on-surface-variant">Service Fee</span>
+<span class="font-body-md text-body-md text-espresso-900">$1.50</span>
+</div>
+<div class="pt-3 border-t border-cafe-200/50 flex justify-between items-center">
+<span class="font-title-lg text-title-lg font-bold text-espresso-900">Total</span>
+<span class="font-display-lg text-title-lg font-bold text-espresso-900">$13.11</span>
+</div>
+</div>
+</section>
+</div>
+<!-- Right Column: Payment & Action -->
+<div class="md:col-span-5">
+<div class="sticky top-24 space-y-6">
+<section>
+<h2 class="font-title-lg text-title-lg text-espresso-900 mb-4">Select Payment</h2>
+<div class="space-y-3">
+<!-- QRIS Option -->
+<label class="relative block cursor-pointer group">
+<input checked="" class="peer sr-only" name="payment" type="radio" value="qris"/>
+<div class="glass-card rounded-3xl p-4 flex items-center gap-4 border-2 border-transparent peer-checked:border-espresso-900 transition-all active:scale-[0.98]">
+<div class="w-12 h-12 rounded-xl bg-cafe-50 flex items-center justify-center">
+<span class="material-symbols-outlined text-espresso-900" data-icon="qr_code_2">qr_code_2</span>
+</div>
+<div class="flex-grow">
+<p class="font-title-lg text-body-md font-bold text-espresso-900">QRIS</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Instant scan &amp; pay</p>
+</div>
+<div class="w-6 h-6 rounded-full border-2 border-cafe-200 peer-checked:bg-espresso-900 flex items-center justify-center">
+<div class="w-2 h-2 rounded-full bg-white opacity-0 peer-checked:opacity-100 transition-opacity"></div>
+</div>
+</div>
+</label>
+<!-- E-Wallet Option -->
+<label class="relative block cursor-pointer group">
+<input class="peer sr-only" name="payment" type="radio" value="wallet"/>
+<div class="glass-card rounded-3xl p-4 flex items-center gap-4 border-2 border-transparent peer-checked:border-espresso-900 transition-all active:scale-[0.98]">
+<div class="w-12 h-12 rounded-xl bg-cafe-50 flex items-center justify-center">
+<span class="material-symbols-outlined text-espresso-900" data-icon="account_balance_wallet">account_balance_wallet</span>
+</div>
+<div class="flex-grow">
+<p class="font-title-lg text-body-md font-bold text-espresso-900">E-Wallets</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">GoPay, OVO, Dana</p>
+</div>
+<div class="w-6 h-6 rounded-full border-2 border-cafe-200 flex items-center justify-center">
+<div class="w-2 h-2 rounded-full bg-white opacity-0 transition-opacity"></div>
+</div>
+</div>
+</label>
+<!-- Credit Card Option -->
+<label class="relative block cursor-pointer group">
+<input class="peer sr-only" name="payment" type="radio" value="card"/>
+<div class="glass-card rounded-3xl p-4 flex items-center gap-4 border-2 border-transparent peer-checked:border-espresso-900 transition-all active:scale-[0.98]">
+<div class="w-12 h-12 rounded-xl bg-cafe-50 flex items-center justify-center">
+<span class="material-symbols-outlined text-espresso-900" data-icon="credit_card">credit_card</span>
+</div>
+<div class="flex-grow">
+<p class="font-title-lg text-body-md font-bold text-espresso-900">Credit Card</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Visa, Mastercard, JCB</p>
+</div>
+<div class="w-6 h-6 rounded-full border-2 border-cafe-200 flex items-center justify-center">
+<div class="w-2 h-2 rounded-full bg-white opacity-0 transition-opacity"></div>
+</div>
+</div>
+</label>
+</div>
+</section>
+<div class="pt-4">
+<button class="w-full h-touch-target-opt bg-espresso-900 text-on-primary rounded-3xl font-title-lg text-body-lg flex items-center justify-center gap-2 hover:opacity-90 active:scale-95 transition-all shadow-lg" id="pay-btn">
+<span class="material-symbols-outlined" data-icon="lock" style="font-variation-settings: 'FILL' 1;">lock</span>
+                            Pay Now $13.11
+                        </button>
+<p class="text-center font-label-sm text-label-sm text-on-surface-variant mt-4 px-6 leading-relaxed">
+                            Your payment is secured with bank-grade encryption and 24/7 fraud monitoring.
+                        </p>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Success Modal (Hidden by default) -->
+<div class="fixed inset-0 z-50 flex items-center justify-center p-6 bg-espresso-900/40 backdrop-blur-sm hidden" id="success-modal">
+<div class="glass-card max-w-sm w-full rounded-[40px] p-8 text-center scale-95 opacity-0 transition-all duration-300 transform" id="modal-content">
+<div class="w-20 h-20 bg-earth-olive rounded-full flex items-center justify-center mx-auto mb-6">
+<span class="material-symbols-outlined text-white text-4xl" data-icon="check_circle">check_circle</span>
+</div>
+<h2 class="font-headline-md text-headline-md text-espresso-900 mb-2">Order Confirmed!</h2>
+<p class="font-body-md text-body-md text-on-surface-variant mb-8">We've started brewing your Dirty Matcha Latte. We'll notify you when it's ready.</p>
+<button class="w-full py-4 bg-espresso-900 text-white rounded-3xl font-bold" onclick="window.location.reload()">Back to Menu</button>
+</div>
+</div>
+<!-- Bottom Nav (Shell Implementation - Cart Active) -->
+<nav class="md:hidden fixed bottom-0 w-full z-50 rounded-t-3xl bg-surface/80 backdrop-blur-sm border-t border-cafe-200/50 flex justify-around items-center h-20 px-4 pb-safe shadow-sm">
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:opacity-80 transition-opacity active:scale-95" href="#">
+<span class="material-symbols-outlined" data-icon="restaurant_menu">restaurant_menu</span>
+<span class="font-label-md text-label-md">Menu</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-full px-4 py-1 active:scale-95 duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="shopping_bag" style="font-variation-settings: 'FILL' 1;">shopping_bag</span>
+<span class="font-label-md text-label-md">Cart</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:opacity-80 transition-opacity active:scale-95" href="#">
+<span class="material-symbols-outlined" data-icon="receipt_long">receipt_long</span>
+<span class="font-label-md text-label-md">Orders</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:opacity-80 transition-opacity active:scale-95" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-label-md text-label-md">Profile</span>
+</a>
+</nav>
+<script>
+        // Simple Interaction logic
+        const payBtn = document.getElementById('pay-btn');
+        const modal = document.getElementById('success-modal');
+        const modalContent = document.getElementById('modal-content');
+        const paymentOptions = document.querySelectorAll('input[name="payment"]');
+
+        payBtn.addEventListener('click', () => {
+            payBtn.innerHTML = `<span class="material-symbols-outlined animate-spin" data-icon="progress_activity">progress_activity</span> Processing...`;
+            payBtn.classList.add('opacity-80', 'pointer-events-none');
+            
+            setTimeout(() => {
+                modal.classList.remove('hidden');
+                setTimeout(() => {
+                    modalContent.classList.remove('scale-95', 'opacity-0');
+                    modalContent.classList.add('scale-100', 'opacity-100');
+                }, 50);
+            }, 1500);
+        });
+
+        paymentOptions.forEach(option => {
+            option.addEventListener('change', (e) => {
+                // Remove visual state from all
+                document.querySelectorAll('input[name="payment"] + div .w-6').forEach(dotContainer => {
+                    dotContainer.classList.remove('bg-espresso-900');
+                    dotContainer.querySelector('div').classList.add('opacity-0');
+                });
+                
+                // Add visual state to selected
+                const selectedContainer = e.target.nextElementSibling;
+                const dotContainer = selectedContainer.querySelector('.w-6');
+                dotContainer.classList.add('bg-espresso-900');
+                dotContainer.querySelector('div').classList.remove('opacity-0');
+            });
+        });
+    </script>
+</body></html>

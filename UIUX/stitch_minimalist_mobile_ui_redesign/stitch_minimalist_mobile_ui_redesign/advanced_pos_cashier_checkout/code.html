@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+
+<html class="light" lang="id"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-surface": "#1c1b1b",
+                        "on-primary-fixed-variant": "#4b4643",
+                        "secondary": "#5a632e",
+                        "tertiary-fixed-dim": "#c6c6c6",
+                        "inverse-surface": "#313030",
+                        "surface-bright": "#fdf8f7",
+                        "primary-container": "#1f1b19",
+                        "cafe-50": "#F9F8F7",
+                        "on-primary": "#ffffff",
+                        "tertiary-fixed": "#e2e2e2",
+                        "inverse-on-surface": "#f4f0ef",
+                        "surface-tint": "#635d5a",
+                        "surface-container-lowest": "#ffffff",
+                        "on-primary-container": "#8a827f",
+                        "surface-dim": "#ddd9d8",
+                        "error-container": "#ffdad6",
+                        "earth-olive": "#4B5320",
+                        "outline": "#7f7570",
+                        "surface-container-high": "#ece7e6",
+                        "outline-variant": "#d0c4be",
+                        "on-error-container": "#93000a",
+                        "background": "#fdf8f7",
+                        "on-secondary-container": "#5f6732",
+                        "charcoal-text": "#121212",
+                        "on-secondary": "#ffffff",
+                        "on-tertiary-fixed-variant": "#454747",
+                        "secondary-fixed-dim": "#c3cc8c",
+                        "inverse-primary": "#cec5c1",
+                        "on-background": "#1c1b1b",
+                        "espresso-900": "#1A1614",
+                        "on-tertiary-fixed": "#1a1c1c",
+                        "error": "#ba1a1a",
+                        "surface-container": "#f1edec",
+                        "on-primary-fixed": "#1f1b19",
+                        "tertiary": "#000000",
+                        "on-secondary-fixed-variant": "#434b18",
+                        "on-tertiary": "#ffffff",
+                        "tertiary-container": "#1a1c1c",
+                        "on-error": "#ffffff",
+                        "primary-fixed": "#eae1dd",
+                        "on-surface-variant": "#4d4541",
+                        "surface-container-highest": "#e6e1e0",
+                        "cafe-200": "#E5E1DE",
+                        "secondary-fixed": "#dfe8a6",
+                        "primary": "#000000",
+                        "secondary-container": "#dce5a3",
+                        "surface": "#fdf8f7",
+                        "surface-container-low": "#f7f3f1",
+                        "on-tertiary-container": "#838484",
+                        "surface-variant": "#e6e1e0",
+                        "on-secondary-fixed": "#191e00",
+                        "primary-fixed-dim": "#cec5c1"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "2xl": "1rem",
+                        "3xl": "1.5rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-mobile": "1rem",
+                        "touch-target-min": "48px",
+                        "gutter": "1.5rem",
+                        "touch-target-opt": "52px",
+                        "margin-desktop": "3rem",
+                        "margin-tablet": "2rem"
+                    },
+                    "fontFamily": {
+                        "body-md": ["Manrope"],
+                        "title-lg": ["Manrope"],
+                        "body-lg": ["Manrope"],
+                        "label-sm": ["Manrope"],
+                        "headline-md": ["Manrope"],
+                        "headline-lg": ["Manrope"]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #E5E1DE; border-radius: 10px; }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(8px);
+        }
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            gap: 1rem;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface font-body-md overflow-hidden h-screen flex flex-col">
+<!-- Top Navigation Bar (Shared Component Strategy) -->
+<header class="flex justify-between items-center w-full px-margin-mobile md:px-margin-desktop py-4 bg-surface/80 backdrop-blur-sm shadow-sm z-30">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-cafe-200 overflow-hidden">
+<img alt="Kasir" class="w-full h-full object-cover" data-alt="A close-up professional headshot of a friendly young man in a minimalist barista apron, standing in a brightly lit modern cafe environment. The background is softly blurred with warm neutral tones of wood and stone, reflecting a high-end hospitality aesthetic. The lighting is soft and even, highlighting a clean and approachable professional appearance." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCILUtSHjtucuQ_5n86SSyFEcPcnu-K_kMNBv8xOtJNT8-hZ_yuBIlgEzr4Bm43ntdSj88sV55DpW628MkyCyKL2jxNJcvHG-Ritr1tk1niPe-gZ7j30h927Xben47-WqjMHzy5gB_MnR4wKhZJa1LgxxYDysK692NPFPEUBdbghTRp7lssDMdzInuX0_NyNULYdgMgrZQZ06Y05q_r75hqnwt_iWeMZyBqMWLcidERDHZm2w7ztKuqXfPSnhbjwo715MDtJl89whM"/>
+</div>
+<div>
+<h1 class="text-headline-md font-headline-md font-bold text-espresso-900 leading-tight">CAOCAO</h1>
+<p class="text-label-sm font-label-sm text-on-surface-variant">Terminal Kasir Utama</p>
+</div>
+</div>
+<div class="hidden md:flex items-center gap-6">
+<button class="flex flex-col items-center justify-center bg-espresso-900 text-on-primary rounded-2xl px-6 py-2 transition-transform active:scale-95">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="text-label-sm font-label-sm">Dashboard</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-cafe-50 rounded-2xl px-6 py-2 transition-all">
+<span class="material-symbols-outlined" data-icon="table_restaurant">table_restaurant</span>
+<span class="text-label-sm font-label-sm">Tables</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-cafe-50 rounded-2xl px-6 py-2 transition-all">
+<span class="material-symbols-outlined" data-icon="receipt_long">receipt_long</span>
+<span class="text-label-sm font-label-sm">Orders</span>
+</button>
+</div>
+<div class="flex items-center gap-4">
+<div class="relative">
+<span class="material-symbols-outlined text-on-surface cursor-pointer p-2 hover:bg-cafe-50 rounded-full" data-icon="notifications">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-error rounded-full"></span>
+</div>
+</div>
+</header>
+<main class="flex-1 flex overflow-hidden">
+<!-- Left Content: Tables & Menu -->
+<section class="flex-1 flex flex-col p-6 overflow-y-auto space-y-8">
+<!-- Table Map Section -->
+<div>
+<div class="flex justify-between items-end mb-4">
+<div>
+<h2 class="text-title-lg font-title-lg text-espresso-900">Pilih Meja &amp; Pesanan</h2>
+<p class="text-body-md text-on-surface-variant">Klik meja untuk memulai pesanan baru</p>
+</div>
+<div class="flex gap-4 text-label-sm font-label-sm">
+<div class="flex items-center gap-2"><span class="w-3 h-3 rounded-full bg-cafe-200"></span> Tersedia</div>
+<div class="flex items-center gap-2"><span class="w-3 h-3 rounded-full bg-espresso-900"></span> Terisi</div>
+<div class="flex items-center gap-2"><span class="w-3 h-3 rounded-full bg-earth-olive"></span> Billing</div>
+</div>
+</div>
+<div class="bento-grid">
+<!-- Table Items -->
+<button class="aspect-square rounded-3xl bg-white shadow-sm border border-cafe-200/50 flex flex-col items-center justify-center gap-1 transition-all active:scale-95 hover:border-espresso-900/20">
+<span class="text-label-md font-label-md">Meja 01</span>
+<span class="text-label-sm text-on-surface-variant">4 Kursi</span>
+</button>
+<button class="aspect-square rounded-3xl bg-espresso-900 text-white shadow-sm flex flex-col items-center justify-center gap-1 transition-all active:scale-95">
+<span class="text-label-md font-label-md">Meja 02</span>
+<span class="text-label-sm opacity-80">Occupied</span>
+</button>
+<button class="aspect-square rounded-3xl bg-white shadow-sm border border-cafe-200/50 flex flex-col items-center justify-center gap-1 transition-all active:scale-95">
+<span class="text-label-md font-label-md">Meja 03</span>
+<span class="text-label-sm text-on-surface-variant">2 Kursi</span>
+</button>
+<button class="aspect-square rounded-3xl bg-earth-olive text-white shadow-sm flex flex-col items-center justify-center gap-1 transition-all active:scale-95">
+<span class="text-label-md font-label-md">Meja 04</span>
+<span class="text-label-sm opacity-80">Bill Printed</span>
+</button>
+<button class="aspect-square rounded-3xl bg-white shadow-sm border border-cafe-200/50 flex flex-col items-center justify-center gap-1 transition-all active:scale-95">
+<span class="text-label-md font-label-md">Meja 05</span>
+<span class="text-label-sm text-on-surface-variant">6 Kursi</span>
+</button>
+<button class="aspect-square rounded-3xl bg-white shadow-sm border border-cafe-200/50 flex flex-col items-center justify-center gap-1 transition-all active:scale-95">
+<span class="text-label-md font-label-md">Meja 06</span>
+<span class="text-label-sm text-on-surface-variant">2 Kursi</span>
+</button>
+</div>
+</div>
+<!-- Menu Catalog -->
+<div class="flex-1 flex flex-col">
+<div class="sticky top-0 bg-background z-10 py-2 space-y-4">
+<div class="flex items-center gap-4">
+<div class="flex-1 relative">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline" data-icon="search">search</span>
+<input class="w-full pl-12 pr-4 py-3 bg-white border border-cafe-200 rounded-2xl focus:ring-1 focus:ring-espresso-900 outline-none transition-all" placeholder="Cari menu favorit..." type="text"/>
+</div>
+<button class="p-3 bg-white border border-cafe-200 rounded-2xl">
+<span class="material-symbols-outlined" data-icon="tune">tune</span>
+</button>
+</div>
+<div class="flex gap-2 overflow-x-auto pb-2 no-scrollbar">
+<button class="px-6 py-2 bg-espresso-900 text-white rounded-full text-label-md font-label-md whitespace-nowrap">All</button>
+<button class="px-6 py-2 bg-white border border-cafe-200 text-on-surface rounded-full text-label-md font-label-md whitespace-nowrap hover:bg-cafe-50 transition-colors">Food</button>
+<button class="px-6 py-2 bg-white border border-cafe-200 text-on-surface rounded-full text-label-md font-label-md whitespace-nowrap hover:bg-cafe-50 transition-colors">Drink</button>
+<button class="px-6 py-2 bg-white border border-cafe-200 text-on-surface rounded-full text-label-md font-label-md whitespace-nowrap hover:bg-cafe-50 transition-colors">Add-ons</button>
+<button class="px-6 py-2 bg-white border border-cafe-200 text-on-surface rounded-full text-label-md font-label-md whitespace-nowrap hover:bg-cafe-50 transition-colors">Pastry</button>
+</div>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 mt-4">
+<!-- Product Card 1 -->
+<div class="bg-white p-4 rounded-3xl shadow-sm border border-cafe-200/50 group cursor-pointer hover:shadow-md transition-all active:scale-[0.98]">
+<div class="relative h-32 w-full rounded-2xl overflow-hidden mb-3">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A top-down view of a creamy caffe latte in a minimalist ceramic cup, featuring professional latte art. The setting is a clean, bright cafe table with soft natural light and a warm neutral color palette. The aesthetic is sophisticated and calm, with focus on the texture of the milk foam and the rich espresso base." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBL48ompUxJGv8yjaW_OqOVGJdjm-D2FNsUUEPZxaMXS_WFTLAr3pAILPxkIXvOlpFu3a5syjnEX5YjO4899TucInFT3KumfSNbsWR_cXZYvx_mKFqJ8UsexVIYU0mfOyn67jWb_zRm1TNqb_X5Sr-iJyTF8B8aNRqfWk-CK_EVSlIT6O-sDL38S35lifIYkEJKC07w6b5eQxmZ7jIgn_z0qPu-rY7iF8sSOv53o2rRqnthEEIfjHQ-t3HZ2zqHz-fvctgaNfag_-I"/>
+<div class="absolute top-2 left-2 flex gap-1">
+<span class="bg-earth-olive text-white text-[10px] px-2 py-0.5 rounded-full font-bold">BOM</span>
+</div>
+</div>
+<h3 class="text-body-md font-title-lg text-espresso-900">Dirty Matcha Latte</h3>
+<div class="flex justify-between items-end mt-2">
+<p class="text-label-md font-bold text-on-surface-variant">Rp 38.000</p>
+<span class="w-8 h-8 bg-cafe-50 rounded-xl flex items-center justify-center text-espresso-900 group-hover:bg-espresso-900 group-hover:text-white transition-colors">
+<span class="material-symbols-outlined text-[20px]" data-icon="add">add</span>
+</span>
+</div>
+</div>
+<!-- Product Card 2 -->
+<div class="bg-white p-4 rounded-3xl shadow-sm border border-cafe-200/50 group cursor-pointer hover:shadow-md transition-all active:scale-[0.98]">
+<div class="relative h-32 w-full rounded-2xl overflow-hidden mb-3">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A close-up of a premium croissant on a matte black plate, showcasing its golden-brown flaky layers and buttery texture. The lighting is dramatic yet soft, highlighting the craftsmanship of the pastry in a high-end bakery setting. The overall mood is warm, inviting, and emphasizes artisanal quality." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAFRJQrgSlD-nlZ9nA2Lj_zB3LmDJhRs8AOo82YZ1XcOjQVtdMKwZ5XZ5o5UH082ciWHn3naxqW-jk3-VkQ7oj_lpOPyCiT__yn64FV-espQpSSUOavNMEdL-CinPB1wlncn7gd6RHSVDl4TWCbthSlKEilxmD14cORyfMZHicKExthhWYcOxCzQnQk6-A764Pt30JBeFFMubQ2rHJWF9DHW2BgJazOMnMwdgP9hQSAR0F2xIaY5ADn_ihTRdcmx3Ug6IJ7hlPyiK8"/>
+<div class="absolute top-2 left-2 flex gap-1">
+<span class="bg-earth-olive text-white text-[10px] px-2 py-0.5 rounded-full font-bold">BOM</span>
+</div>
+</div>
+<h3 class="text-body-md font-title-lg text-espresso-900">Butter Croissant</h3>
+<div class="flex justify-between items-end mt-2">
+<p class="text-label-md font-bold text-on-surface-variant">Rp 22.000</p>
+<span class="w-8 h-8 bg-cafe-50 rounded-xl flex items-center justify-center text-espresso-900 group-hover:bg-espresso-900 group-hover:text-white transition-colors">
+<span class="material-symbols-outlined text-[20px]" data-icon="add">add</span>
+</span>
+</div>
+</div>
+<!-- Product Card 3 -->
+<div class="bg-white p-4 rounded-3xl shadow-sm border border-cafe-200/50 group cursor-pointer hover:shadow-md transition-all active:scale-[0.98]">
+<div class="relative h-32 w-full rounded-2xl overflow-hidden mb-3">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="An artisanal avocado toast topped with a perfectly poached egg and micro-greens, served on a rustic stone plate. The setting is a minimalist, modern breakfast cafe with soft morning light. The color palette features fresh greens against neutral earthy tones, creating a high-end, healthy dining visual." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDR3v4QZH5nWVhFjTQh6FBWMNvelMBT-bkwdVvWYB6f2SgdSOhxj9e3aI5HEpggxvLQRA4EuCwmSwcxDXAmYYV8H3NJ2O20wWNdfrq1oPLolZSNe5_ycgpCL2zHHMzJhXB-huNmcTy0GIr1pCaJqDeyF40aIG1eOy3RXWno0cPz-oUZVYGJfDuqk8OsKsJkPDpuYF8f-OGUmz15DQsoO-8A6VgSKHTZCgFlKLSVXaq1_PD6XAUoHcat6vW4coRbevvzM0N3ddHJu9o"/>
+</div>
+<h3 class="text-body-md font-title-lg text-espresso-900">Avocado Poached Egg</h3>
+<div class="flex justify-between items-end mt-2">
+<p class="text-label-md font-bold text-on-surface-variant">Rp 55.000</p>
+<span class="w-8 h-8 bg-cafe-50 rounded-xl flex items-center justify-center text-espresso-900 group-hover:bg-espresso-900 group-hover:text-white transition-colors">
+<span class="material-symbols-outlined text-[20px]" data-icon="add">add</span>
+</span>
+</div>
+</div>
+<!-- Product Card 4 -->
+<div class="bg-white p-4 rounded-3xl shadow-sm border border-cafe-200/50 group cursor-pointer hover:shadow-md transition-all active:scale-[0.98]">
+<div class="relative h-32 w-full rounded-2xl overflow-hidden mb-3">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A refreshing iced cold brew coffee with a clear distinction between the dark coffee and ice cubes, served in a sleek, minimalist tall glass. The background is a clean white marble surface with subtle hints of cafe greenery. The lighting is bright and airy, conveying a sense of crisp, cool energy." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDxQeeSrWzvT8-sIhOCHGmZ7yD7AbjQS_suGZAZj1EUKQglV5MTwVqW2A-t0bYLLP-2kIvYKmQSmeY3_dpoKLBdWdqOBc370GP8vjrJJm7uxqD3rPbTI3gytgiP0W5k21v4WxCH1Xp4lAXoFhdAZ8qx1sP1AYOug3n9MSHs-0m1MVmUNuPYjET1o_YLdgyBbyCVaDUr1njaIWNvK3McmN_0PXDECNijKe6t_TqrtXo7VVvbxmNEdybOzZXNbx8iQtkrNHBRejlL_Bs"/>
+<div class="absolute top-2 left-2 flex gap-1">
+<span class="bg-earth-olive text-white text-[10px] px-2 py-0.5 rounded-full font-bold">BOM</span>
+</div>
+</div>
+<h3 class="text-body-md font-title-lg text-espresso-900">Cold Brew Black</h3>
+<div class="flex justify-between items-end mt-2">
+<p class="text-label-md font-bold text-on-surface-variant">Rp 32.000</p>
+<span class="w-8 h-8 bg-cafe-50 rounded-xl flex items-center justify-center text-espresso-900 group-hover:bg-espresso-900 group-hover:text-white transition-colors">
+<span class="material-symbols-outlined text-[20px]" data-icon="add">add</span>
+</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Right Side: Order Summary / Floating Cart -->
+<aside class="w-full max-w-md bg-white border-l border-cafe-200 flex flex-col z-20">
+<div class="p-6 border-b border-cafe-200">
+<div class="flex justify-between items-center mb-6">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-espresso-900" data-icon="shopping_basket">shopping_basket</span>
+<h2 class="text-title-lg font-title-lg">Pesanan Aktif</h2>
+</div>
+<span class="px-3 py-1 bg-cafe-50 rounded-full text-label-sm font-label-sm text-espresso-900">Meja 02</span>
+</div>
+<!-- Order Items -->
+<div class="space-y-4 max-h-[353px] overflow-y-auto pr-2 custom-scrollbar">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-xl bg-cafe-50 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Close up of latte foam" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBrlHFZQuGVzayaH8-YjvYktk3XD8znpxpaVX7ZSDVvKPnNfuS3pqAk_JFv7Ys6TGvazvNjoB1yLYIaLTKvM_1sh4OpWxe4vJlvp29l-ZmbCIXpxOigiCMBhR6n6VjJ7ZXeqdBnbU1Lwq3Um6Gq8UvIyjVWBBKpatpEDkscWb0aHRlz6FRbw355LVh-C-nt4QNz2v1RzBVda11TP9YuG3ziFfC6KMyA7G1L7pgQGnKPha7skWSvNrTiO9lQTvvplcG7DuL_PteOHBM"/>
+</div>
+<div class="flex-1">
+<h4 class="text-label-md font-bold text-espresso-900">Dirty Matcha Latte</h4>
+<p class="text-label-sm text-on-surface-variant">Less Sugar, Oat Milk</p>
+</div>
+<div class="text-right">
+<p class="text-label-md font-bold">Rp 38.000</p>
+<div class="flex items-center gap-2 mt-1">
+<button class="w-6 h-6 border border-cafe-200 rounded-md flex items-center justify-center text-label-sm">-</button>
+<span class="text-label-sm font-bold">1</span>
+<button class="w-6 h-6 border border-cafe-200 rounded-md flex items-center justify-center text-label-sm">+</button>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-xl bg-cafe-50 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Close up of croissant" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC19hpp8xUoVGx1Hj6pya02lB3ljQJ3wbJHtsXKgWfmJPRlUmSz7AVM02KnRZVmxqIovaIpvvIwys3VLl8VhdGNb9C7vL2P1l57jYJ-2JVATEm0ZScy6k2KJIVl1KgjR6ert9_ZG87TmaZAJYWUp9uNltMXSUGRZW3E18CHMZz6OSAU96Ukm-A9jyv9iE6qB5BQFOuYtgxQBOzwNge6ULkBTDeKOBkRAeKQRLx1foq4mmMjNyfFkSqe7aXOXqMGqhDkB9dIK-L_yqw"/>
+</div>
+<div class="flex-1">
+<h4 class="text-label-md font-bold text-espresso-900">Butter Croissant</h4>
+<p class="text-label-sm text-on-surface-variant">Heated</p>
+</div>
+<div class="text-right">
+<p class="text-label-md font-bold">Rp 44.000</p>
+<div class="flex items-center gap-2 mt-1">
+<button class="w-6 h-6 border border-cafe-200 rounded-md flex items-center justify-center text-label-sm">-</button>
+<span class="text-label-sm font-bold">2</span>
+<button class="w-6 h-6 border border-cafe-200 rounded-md flex items-center justify-center text-label-sm">+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="p-6 flex-1 flex flex-col justify-end gap-6">
+<!-- Payment Method -->
+<div>
+<p class="text-label-sm font-bold text-on-surface-variant mb-3 uppercase tracking-wider">Metode Pembayaran</p>
+<div class="grid grid-cols-3 gap-2">
+<button class="flex flex-col items-center gap-1 p-3 border border-espresso-900 bg-cafe-50 rounded-2xl transition-all">
+<span class="material-symbols-outlined text-[20px]" data-icon="payments">payments</span>
+<span class="text-[10px] font-bold">Cash</span>
+</button>
+<button class="flex flex-col items-center gap-1 p-3 border border-cafe-200 rounded-2xl hover:border-espresso-900/40 transition-all">
+<span class="material-symbols-outlined text-[20px]" data-icon="qr_code_2">qr_code_2</span>
+<span class="text-[10px] font-bold">QRIS</span>
+</button>
+<button class="flex flex-col items-center gap-1 p-3 border border-cafe-200 rounded-2xl hover:border-espresso-900/40 transition-all">
+<span class="material-symbols-outlined text-[20px]" data-icon="credit_card">credit_card</span>
+<span class="text-[10px] font-bold">Debit</span>
+</button>
+</div>
+</div>
+<!-- Price Summary -->
+<div class="space-y-2 border-t border-dashed border-cafe-200 pt-6">
+<div class="flex justify-between text-label-md">
+<span class="text-on-surface-variant">Subtotal</span>
+<span>Rp 82.000</span>
+</div>
+<div class="flex justify-between text-label-md">
+<span class="text-on-surface-variant">Diskon (0%)</span>
+<span>- Rp 0</span>
+</div>
+<div class="flex justify-between text-label-md">
+<span class="text-on-surface-variant">Tax (11%)</span>
+<span>Rp 9.020</span>
+</div>
+<div class="flex justify-between text-label-md">
+<span class="text-on-surface-variant">Service Charge (5%)</span>
+<span>Rp 4.100</span>
+</div>
+<div class="flex justify-between text-headline-md font-bold text-espresso-900 pt-2">
+<span>Total Net Pay</span>
+<span>Rp 95.120</span>
+</div>
+</div>
+<!-- Action Button -->
+<button class="w-full h-touch-target-opt bg-espresso-900 text-on-primary rounded-2xl font-bold flex items-center justify-center gap-2 shadow-lg shadow-espresso-900/20 active:scale-95 transition-transform">
+<span>Proses Pembayaran</span>
+<span class="material-symbols-outlined" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+</aside>
+</main>
+<!-- Bottom Nav for Mobile Responsive (Shared Component Strategy) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full h-[84px] flex justify-around items-center px-4 pb-safe bg-white/90 backdrop-blur-md shadow-[0_-4px_20px_0_rgba(0,0,0,0.03)] rounded-t-3xl z-50">
+<button class="flex flex-col items-center justify-center bg-espresso-900 text-on-primary rounded-2xl px-6 py-2 transition-transform active:scale-90">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="text-label-sm font-label-sm">Dashboard</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant px-6 py-2 transition-all">
+<span class="material-symbols-outlined" data-icon="receipt_long">receipt_long</span>
+<span class="text-label-sm font-label-sm">Orders</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant px-6 py-2 transition-all">
+<span class="material-symbols-outlined" data-icon="table_restaurant">table_restaurant</span>
+<span class="text-label-sm font-label-sm">Tables</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant px-6 py-2 transition-all">
+<span class="material-symbols-outlined" data-icon="inventory_2">inventory_2</span>
+<span class="text-label-sm font-label-sm">Inventory</span>
+</button>
+</nav>
+<script>
+        // Simple Interaction logic for demo
+        document.querySelectorAll('button').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                // Tactical feedback logic could go here
+            });
+        });
+    </script>
+</body></html>

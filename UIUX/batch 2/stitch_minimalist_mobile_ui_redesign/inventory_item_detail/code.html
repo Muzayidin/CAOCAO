@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Inventory Detail - Ethiopian Yirgacheffe</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "cafe-200": "#E5E1DE",
+                        "surface-container": "#f1edec",
+                        "inverse-primary": "#cec5c1",
+                        "inverse-surface": "#313030",
+                        "cafe-50": "#F9F8F7",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary-container": "#5f6732",
+                        "outline-variant": "#d0c4be",
+                        "secondary-container": "#dce5a3",
+                        "surface-tint": "#635d5a",
+                        "primary-container": "#1f1b19",
+                        "on-secondary": "#ffffff",
+                        "tertiary-container": "#1a1c1c",
+                        "on-tertiary-fixed": "#1a1c1c",
+                        "surface-dim": "#ddd9d8",
+                        "primary-fixed-dim": "#cec5c1",
+                        "espresso-900": "#1A1614",
+                        "secondary": "#5a632e",
+                        "on-error-container": "#93000a",
+                        "inverse-on-surface": "#f4f0ef",
+                        "primary": "#000000",
+                        "error-container": "#ffdad6",
+                        "on-secondary-fixed": "#191e00",
+                        "tertiary-fixed-dim": "#c6c6c6",
+                        "primary-fixed": "#eae1dd",
+                        "on-primary": "#ffffff",
+                        "earth-olive": "#4B5320",
+                        "secondary-fixed-dim": "#c3cc8c",
+                        "on-surface-variant": "#4d4541",
+                        "error": "#ba1a1a",
+                        "tertiary-fixed": "#e2e2e2",
+                        "surface-container-highest": "#e6e1e0",
+                        "outline": "#7f7570",
+                        "surface-container-low": "#f7f3f1",
+                        "surface-variant": "#e6e1e0",
+                        "surface-bright": "#fdf8f7",
+                        "on-surface": "#1c1b1b",
+                        "on-primary-fixed": "#1f1b19",
+                        "charcoal-text": "#121212",
+                        "background": "#fdf8f7",
+                        "surface": "#fdf8f7",
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "3xl": "1.5rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-desktop": "3rem",
+                        "touch-target-min": "48px",
+                        "touch-target-opt": "52px",
+                        "gutter": "1.5rem",
+                        "margin-tablet": "2rem",
+                        "margin-mobile": "1rem"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Manrope"],
+                        "label-md": ["Manrope"],
+                        "label-sm": ["Manrope"],
+                        "headline-lg": ["Manrope"],
+                        "headline-md": ["Manrope"],
+                        "headline-lg-mobile": ["Manrope"],
+                        "display-lg": ["Manrope"],
+                        "body-md": ["Manrope"],
+                        "title-lg": ["Manrope"]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { font-family: 'Manrope', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .premium-blur {
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+        }
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 1.5rem;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-cafe-50 text-on-surface min-h-screen pb-32">
+<!-- Top Navigation Bar -->
+<header class="sticky top-0 z-40 bg-surface/80 premium-blur shadow-sm flex justify-between items-center w-full px-margin-mobile md:px-margin-desktop py-4">
+<div class="flex items-center gap-4">
+<button class="p-2 hover:bg-cafe-200/50 rounded-full transition-colors active:scale-95 duration-200" onclick="window.history.back()">
+<span class="material-symbols-outlined text-on-surface">arrow_back</span>
+</button>
+<h1 class="text-title-lg font-title-lg text-espresso-900">Inventory Detail</h1>
+</div>
+<div class="flex items-center gap-3">
+<button class="bg-espresso-900 text-on-primary px-6 py-2.5 rounded-full font-label-md text-label-md flex items-center gap-2 active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-[18px]">edit</span>
+                Edit Item
+            </button>
+</div>
+</header>
+<main class="max-w-7xl mx-auto px-margin-mobile md:px-margin-desktop mt-8">
+<!-- Hero Section: Product Overview -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+<div class="md:col-span-2 bg-white rounded-3xl p-8 shadow-sm flex flex-col md:flex-row gap-8 items-start border border-cafe-200/50">
+<div class="w-full md:w-48 h-48 rounded-2xl overflow-hidden bg-cafe-50 flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="A macro close-up of dark-roasted, glossy Ethiopian coffee beans spilling out of a rustic burlap sack onto a clean, white marble surface. The lighting is warm and natural, casting soft shadows and highlighting the rich textures of the beans. The scene is shot in a premium, minimalist studio style with neutral earth tones, emphasizing the organic quality of the specialty coffee." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDDcD5k32hTjKES9OhkYhRqyvue9bDdeXF5aOh-UmSXZsQKV83y8CcdtybRsRois4bf4WFn6wuZJ-9lDJT3bydZGgVzz1JLWC9ytfhXUVXW124mViSS_QUskc4OCACc87AXpK1jrL1edVH8V-nM8KGzahoSW32L30YuB21oA6UpvVrZZprwemWvAf_9rRRCBj6bE3T_L8gnxQ5DIW3LZIv52jYzFcw-oNWAmPWhjDZzyg9FMH89nlGAVrqCgAqC0J434_8621w-6Cw"/>
+</div>
+<div class="flex-grow space-y-4">
+<div>
+<span class="text-label-sm font-label-sm text-earth-olive bg-secondary-container px-3 py-1 rounded-full uppercase tracking-wider">Premium Single Origin</span>
+<h2 class="text-headline-md font-headline-md text-espresso-900 mt-2">Ethiopian Yirgacheffe Coffee Beans</h2>
+<p class="text-body-md font-body-md text-on-surface-variant mt-1">Grade 1, Washed Process. Light-medium roast with notes of jasmine and lemon.</p>
+</div>
+<div class="flex flex-wrap gap-8 pt-4">
+<div class="flex flex-col">
+<span class="text-label-sm font-label-sm text-on-surface-variant uppercase">Current Stock</span>
+<span class="text-display-lg font-display-lg text-espresso-900">12.5 <span class="text-title-lg">kg</span></span>
+</div>
+<div class="flex flex-col">
+<span class="text-label-sm font-label-sm text-on-surface-variant uppercase">Reorder Point</span>
+<span class="text-display-lg font-display-lg text-error">5.0 <span class="text-title-lg">kg</span></span>
+</div>
+</div>
+</div>
+</div>
+<!-- Quick Action / Status Card -->
+<div class="bg-earth-olive text-on-tertiary rounded-3xl p-8 shadow-sm flex flex-col justify-between border border-earth-olive/10">
+<div>
+<h3 class="text-title-lg font-title-lg mb-2">Inventory Health</h3>
+<p class="text-body-md font-body-md opacity-80">Stock is currently sufficient but approaching reorder threshold.</p>
+</div>
+<div class="space-y-3 mt-6">
+<button class="w-full bg-white/10 hover:bg-white/20 premium-blur text-white border border-white/20 py-4 rounded-2xl font-label-md flex justify-center items-center gap-2 transition-all active:scale-95">
+<span class="material-symbols-outlined">add_circle</span>
+                        Quick Stock In
+                    </button>
+<button class="w-full bg-white text-espresso-900 py-4 rounded-2xl font-label-md flex justify-center items-center gap-2 shadow-lg transition-all active:scale-95">
+<span class="material-symbols-outlined">shopping_cart</span>
+                        Create Purchase Order
+                    </button>
+</div>
+</div>
+</div>
+<!-- Bento Grid Section -->
+<div class="bento-grid">
+<!-- Usage List (BOM) -->
+<div class="col-span-12 lg:col-span-7 bg-white rounded-3xl p-8 shadow-sm border border-cafe-200/50">
+<div class="flex justify-between items-center mb-6">
+<h3 class="text-title-lg font-title-lg text-espresso-900">Usage &amp; BOM List</h3>
+<span class="text-label-sm font-label-sm text-on-surface-variant">Used in 6 recipes</span>
+</div>
+<div class="space-y-2">
+<!-- BOM Item -->
+<div class="group flex items-center justify-between p-4 rounded-2xl hover:bg-cafe-50 transition-colors border border-transparent hover:border-cafe-200/50">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-xl bg-cafe-50 flex items-center justify-center text-espresso-900">
+<span class="material-symbols-outlined">coffee</span>
+</div>
+<div>
+<h4 class="text-body-lg font-bold text-espresso-900">Double Espresso</h4>
+<p class="text-label-sm font-label-sm text-on-surface-variant">Signature Espresso Base</p>
+</div>
+</div>
+<div class="text-right">
+<span class="block text-body-lg font-bold text-espresso-900">18g</span>
+<span class="text-label-sm font-label-sm text-on-surface-variant">per serving</span>
+</div>
+</div>
+<!-- BOM Item -->
+<div class="group flex items-center justify-between p-4 rounded-2xl hover:bg-cafe-50 transition-colors border border-transparent hover:border-cafe-200/50">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-xl bg-cafe-50 flex items-center justify-center text-espresso-900">
+<span class="material-symbols-outlined">local_cafe</span>
+</div>
+<div>
+<h4 class="text-body-lg font-bold text-espresso-900">Flat White</h4>
+<p class="text-label-sm font-label-sm text-on-surface-variant">Standard 8oz Cup</p>
+</div>
+</div>
+<div class="text-right">
+<span class="block text-body-lg font-bold text-espresso-900">18g</span>
+<span class="text-label-sm font-label-sm text-on-surface-variant">per serving</span>
+</div>
+</div>
+<!-- BOM Item -->
+<div class="group flex items-center justify-between p-4 rounded-2xl hover:bg-cafe-50 transition-colors border border-transparent hover:border-cafe-200/50">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-xl bg-cafe-50 flex items-center justify-center text-espresso-900">
+<span class="material-symbols-outlined">coffee_maker</span>
+</div>
+<div>
+<h4 class="text-body-lg font-bold text-espresso-900">V60 Pour Over</h4>
+<p class="text-label-sm font-label-sm text-on-surface-variant">Manual Brew Menu</p>
+</div>
+</div>
+<div class="text-right">
+<span class="block text-body-lg font-bold text-espresso-900">20g</span>
+<span class="text-label-sm font-label-sm text-on-surface-variant">per serving</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Activity Log -->
+<div class="col-span-12 lg:col-span-5 bg-white rounded-3xl p-8 shadow-sm border border-cafe-200/50">
+<h3 class="text-title-lg font-title-lg text-espresso-900 mb-6">Recent Adjustments</h3>
+<div class="space-y-6">
+<div class="flex gap-4 relative">
+<div class="absolute left-4 top-10 bottom-0 w-px bg-cafe-200"></div>
+<div class="w-8 h-8 rounded-full bg-secondary-container flex items-center justify-center flex-shrink-0 z-10">
+<span class="material-symbols-outlined text-secondary text-[16px]">add</span>
+</div>
+<div>
+<p class="text-body-md font-body-md text-espresso-900"><span class="font-bold">+15.0 kg</span> Stock In</p>
+<p class="text-label-sm font-label-sm text-on-surface-variant">Supplier: Highland Roastery • Oct 24, 09:15 AM</p>
+</div>
+</div>
+<div class="flex gap-4 relative">
+<div class="absolute left-4 top-10 bottom-0 w-px bg-cafe-200"></div>
+<div class="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center flex-shrink-0 z-10">
+<span class="material-symbols-outlined text-on-surface-variant text-[16px]">remove</span>
+</div>
+<div>
+<p class="text-body-md font-body-md text-espresso-900"><span class="font-bold">-0.5 kg</span> Daily Usage</p>
+<p class="text-label-sm font-label-sm text-on-surface-variant">System Auto-deduct • Oct 23, 10:00 PM</p>
+</div>
+</div>
+<div class="flex gap-4 relative">
+<div class="absolute left-4 top-10 bottom-0 w-px bg-cafe-200"></div>
+<div class="w-8 h-8 rounded-full bg-error-container flex items-center justify-center flex-shrink-0 z-10">
+<span class="material-symbols-outlined text-error text-[16px]">warning</span>
+</div>
+<div>
+<p class="text-body-md font-body-md text-espresso-900"><span class="font-bold">-1.2 kg</span> Wastage</p>
+<p class="text-label-sm font-label-sm text-on-surface-variant">Reason: Calibration Error • Oct 22, 02:30 PM</p>
+</div>
+</div>
+<div class="flex gap-4">
+<div class="w-8 h-8 rounded-full bg-secondary-container flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-secondary text-[16px]">add</span>
+</div>
+<div>
+<p class="text-body-md font-body-md text-espresso-900"><span class="font-bold">+10.0 kg</span> Stock In</p>
+<p class="text-label-sm font-label-sm text-on-surface-variant">Supplier: Highland Roastery • Oct 18, 11:45 AM</p>
+</div>
+</div>
+</div>
+<button class="w-full mt-8 text-label-md font-label-md text-espresso-900 hover:underline">View All History</button>
+</div>
+</div>
+</main>
+<!-- Bottom Navigation Bar (Hidden on Web as per hierarchy) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full h-[84px] bg-white/90 premium-blur flex justify-around items-center px-4 pb-safe z-50 shadow-[0_-4px_20px_0_rgba(0,0,0,0.03)] rounded-t-3xl">
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-6 py-2 transition-all" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="text-label-sm font-label-sm mt-1">Dashboard</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-6 py-2 transition-all" href="#">
+<span class="material-symbols-outlined">receipt_long</span>
+<span class="text-label-sm font-label-sm mt-1">Orders</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-6 py-2 transition-all" href="#">
+<span class="material-symbols-outlined">table_restaurant</span>
+<span class="text-label-sm font-label-sm mt-1">Tables</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-espresso-900 text-on-primary rounded-2xl px-6 py-2 transition-all scale-105" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">inventory_2</span>
+<span class="text-label-sm font-label-sm mt-1">Inventory</span>
+</a>
+</nav>
+<!-- Desktop Navigation Cluster (Top Bar Integrated) -->
+<div class="hidden md:flex fixed top-0 right-[250px] h-[72px] items-center gap-6 z-50">
+<a class="text-label-md font-label-md text-on-surface-variant hover:text-espresso-900 transition-colors" href="#">Dashboard</a>
+<a class="text-label-md font-label-md text-on-surface-variant hover:text-espresso-900 transition-colors" href="#">Orders</a>
+<a class="text-label-md font-label-md text-on-surface-variant hover:text-espresso-900 transition-colors" href="#">Tables</a>
+<a class="text-label-md font-label-md text-espresso-900 font-bold border-b-2 border-espresso-900 pb-1" href="#">Inventory</a>
+</div>
+</body></html>

@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Order Status | Cafe Experience</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-secondary-fixed-variant": "#434b18",
+                        "on-primary": "#ffffff",
+                        "on-surface": "#1c1b1b",
+                        "secondary-fixed": "#dfe8a6",
+                        "inverse-surface": "#313030",
+                        "inverse-on-surface": "#f4f0ef",
+                        "primary-fixed": "#eae1dd",
+                        "on-surface-variant": "#4d4541",
+                        "on-primary-fixed": "#1f1b19",
+                        "surface-container-low": "#f7f3f1",
+                        "on-primary-container": "#8a827f",
+                        "on-tertiary-container": "#838484",
+                        "primary-fixed-dim": "#cec5c1",
+                        "on-secondary-fixed": "#191e00",
+                        "surface-container-lowest": "#ffffff",
+                        "primary": "#000000",
+                        "outline": "#7f7570",
+                        "secondary-fixed-dim": "#c3cc8c",
+                        "tertiary": "#000000",
+                        "surface-bright": "#fdf8f7",
+                        "primary-container": "#1f1b19",
+                        "surface-container": "#f1edec",
+                        "tertiary-fixed-dim": "#c6c6c6",
+                        "surface-variant": "#e6e1e0",
+                        "on-background": "#1c1b1b",
+                        "on-error-container": "#93000a",
+                        "cafe-200": "#E5E1DE",
+                        "on-error": "#ffffff",
+                        "outline-variant": "#d0c4be",
+                        "espresso-900": "#1A1614",
+                        "on-secondary-container": "#5f6732",
+                        "cafe-50": "#F9F8F7",
+                        "on-tertiary-fixed": "#1a1c1c",
+                        "on-primary-fixed-variant": "#4b4643",
+                        "earth-olive": "#4B5320",
+                        "inverse-primary": "#cec5c1",
+                        "surface-tint": "#635d5a",
+                        "on-tertiary": "#ffffff",
+                        "secondary-container": "#dce5a3",
+                        "tertiary-fixed": "#e2e2e2",
+                        "on-secondary": "#ffffff",
+                        "background": "#fdf8f7",
+                        "surface-dim": "#ddd9d8",
+                        "surface-container-high": "#ece7e6",
+                        "secondary": "#5a632e",
+                        "on-tertiary-fixed-variant": "#454747",
+                        "error-container": "#ffdad6",
+                        "surface-container-highest": "#e6e1e0",
+                        "surface": "#fdf8f7",
+                        "tertiary-container": "#1a1c1c",
+                        "error": "#ba1a1a",
+                        "charcoal-text": "#121212"
+                    },
+                    "spacing": {
+                        "margin-tablet": "2rem",
+                        "margin-desktop": "3rem",
+                        "touch-target-opt": "52px",
+                        "touch-target-min": "48px",
+                        "gutter": "1.5rem",
+                        "margin-mobile": "1rem"
+                    },
+                    "fontFamily": {
+                        "label-md": ["Manrope"],
+                        "headline-lg": ["Manrope"],
+                        "body-lg": ["Manrope"],
+                        "headline-md": ["Manrope"],
+                        "body-md": ["Manrope"],
+                        "display-lg": ["Manrope"],
+                        "label-sm": ["Manrope"],
+                        "title-lg": ["Manrope"],
+                        "headline-lg-mobile": ["Manrope"]
+                    },
+                    "fontSize": {
+                        "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "500"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "600"}],
+                        "title-lg": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "600"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        .progress-pulse {
+            animation: pulse-ring 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        @keyframes pulse-ring {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface font-body-md selection:bg-secondary-container">
+<!-- TopAppBar -->
+<header class="w-full top-0 sticky z-40 bg-cafe-50 dark:bg-surface-container shadow-sm flex justify-between items-center px-margin-mobile h-touch-target-opt">
+<div class="flex items-center gap-4">
+<button class="active:scale-95 duration-200 text-espresso-900">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<h1 class="font-headline-md text-headline-md font-bold text-espresso-900">Cafe Experience</h1>
+</div>
+<div class="w-10 h-10 rounded-full bg-cafe-200 flex items-center justify-center overflow-hidden border border-cafe-200">
+<img alt="Guest Profile" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCufpYw1nq3n2_hLytDfMHp8injfVzRcDZZXBKDg3TemeRuG8j7sYqY0DTwJ2yOGfUgTZhCaIuURcU8P6ofTf1Y22Zp2IUY5AcquVgJVAmZLrHM2jfQQ6wZ0CcBNcG6-Uvb6hxNk4hhFKDqq2bBQbnbtmoSOvDh1dhwYw4TwVAMtCcff08uxM7JYy43b_sje0P5DmAAwGPMUb2iXxczumNz96vaxCaGufRjScA1yixODn8klkkEKvsZLEtTquSOFLbVFZgS0CXl-1U"/>
+</div>
+</header>
+<main class="max-w-4xl mx-auto px-margin-mobile py-8 pb-32">
+<!-- Status Hero -->
+<section class="mb-10 text-center">
+<div class="inline-flex items-center justify-center px-4 py-2 rounded-full bg-secondary-container text-on-secondary-container font-label-md text-label-md mb-6">
+<span class="material-symbols-outlined text-[18px] mr-2" style="font-variation-settings: 'FILL' 1;">table_restaurant</span>
+                Meja 04
+            </div>
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile md:font-headline-lg md:text-headline-lg text-espresso-900 mb-2">Preparing your order</h2>
+<p class="text-on-surface-variant font-body-md text-body-md">Estimated arrival in 8-12 minutes</p>
+</section>
+<!-- Dynamic Tracking Progress Bar -->
+<section class="mb-12 relative px-4">
+<div class="flex justify-between items-start relative z-10">
+<!-- Step 1: Received -->
+<div class="flex flex-col items-center flex-1">
+<div class="w-12 h-12 rounded-full bg-espresso-900 text-on-primary flex items-center justify-center mb-4 shadow-sm">
+<span class="material-symbols-outlined">check</span>
+</div>
+<span class="font-label-md text-label-md text-espresso-900 text-center">Order Received</span>
+</div>
+<!-- Connector Line 1 -->
+<div class="absolute top-6 left-[16.6%] w-[33.3%] h-[2px] bg-espresso-900 -z-0"></div>
+<!-- Step 2: Preparing (Active) -->
+<div class="flex flex-col items-center flex-1">
+<div class="w-12 h-12 rounded-full bg-white border-2 border-espresso-900 text-espresso-900 flex items-center justify-center mb-4 shadow-sm relative">
+<div class="absolute inset-0 rounded-full border-2 border-espresso-900 progress-pulse"></div>
+<span class="material-symbols-outlined">skillet</span>
+</div>
+<span class="font-label-md text-label-md text-espresso-900 font-bold text-center">Being Prepared</span>
+</div>
+<!-- Connector Line 2 -->
+<div class="absolute top-6 left-[50%] w-[33.3%] h-[2px] bg-cafe-200 -z-0"></div>
+<!-- Step 3: Ready -->
+<div class="flex flex-col items-center flex-1">
+<div class="w-12 h-12 rounded-full bg-cafe-200 text-on-surface-variant flex items-center justify-center mb-4 shadow-sm">
+<span class="material-symbols-outlined">restaurant</span>
+</div>
+<span class="font-label-md text-label-md text-on-surface-variant text-center">Ready to Serve</span>
+</div>
+</div>
+</section>
+<!-- Order Summary Card -->
+<section class="grid grid-cols-1 md:grid-cols-2 gap-gutter">
+<div class="bg-white rounded-3xl p-6 shadow-sm border border-cafe-200/50">
+<h3 class="font-title-lg text-title-lg text-espresso-900 mb-4">Order Details</h3>
+<div class="space-y-4">
+<div class="flex justify-between items-center">
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 rounded-2xl overflow-hidden bg-cafe-50">
+<img class="w-full h-full object-cover" data-alt="A premium artisanal latte with intricate heart-shaped foam art on top, served in a ceramic cup on a wooden table. The lighting is soft and golden, creating a warm and cozy cafe atmosphere. The image uses a palette of creamy whites, deep espresso browns, and warm wood tones, consistent with a minimalist and sophisticated coffee house aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAIC0IwegeZ5o5QsbSA6pYYwGIaR7nVZNm4SZUiOX8daIgGIezZCc629XqCRqIwaMtpp_9PhUs2fD8dfneoJyPTmDzvWXq4hVHzpH6m7XeJmbvirKgReEsMHB9BAQvdnqzijU_iPs8OeW4iC5dr3ptZuUGEV1gGigI8ckrGFB8KiHUd2yde28pafQqq-v35aGrCSYEnfnyU6sDMr_afdcDUNHjCv9mSEHOcvgxeFCnJR3UkRBczCcC4_WlrpUqcb4TOEbtm5nvy0wo"/>
+</div>
+<div>
+<p class="font-body-md text-body-md text-espresso-900 font-bold">Oat Milk Latte</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Hot • Regular Size</p>
+</div>
+</div>
+<span class="font-body-md text-body-md text-espresso-900">1x</span>
+</div>
+<div class="flex justify-between items-center">
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 rounded-2xl overflow-hidden bg-cafe-50">
+<img class="w-full h-full object-cover" data-alt="A flaky, golden-brown butter croissant served on a minimalist white ceramic plate. The texture is crisp and layered, catching the morning sunlight. The setting is a clean, modern cafe with a soft-focus background of neutral tones and marble surfaces. The aesthetic is warm, inviting, and emphasizes high-quality ingredients and craftsmanship." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBKi1lfZ1RXWKyZUzcl1krBwOMYYy1tWWFHg7QHY1k8IpUAQo1cAQFOmMzrONJpWDXUVKZDwE-OtOWm4Wznh7T19KzguIFBFsxUSvX--UVLbEb1S1xr0XO8x_kA0iJNAiBMs3HSPUGG6cU26U2qTV7AOF4xw2OvvBPs3Vuxa-rwSLBF9JzhpWglwREUbCSptP0wTIPOaxM8fF_BtUWlNhAyr1Ir4g9Eh5EPUaiex4lc-GmJSllgXBUx0DhZa2QdaSY_vi3GLSd5coo"/>
+</div>
+<div>
+<p class="font-body-md text-body-md text-espresso-900 font-bold">Almond Croissant</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Toasted</p>
+</div>
+</div>
+<span class="font-body-md text-body-md text-espresso-900">1x</span>
+</div>
+</div>
+<div class="mt-6 pt-4 border-t border-cafe-200/50">
+<div class="flex justify-between font-title-lg text-title-lg text-espresso-900">
+<span>Total</span>
+<span>$14.50</span>
+</div>
+</div>
+</div>
+<div class="flex flex-col gap-gutter">
+<!-- Support Panel -->
+<div class="bg-surface-container-low rounded-3xl p-6 border border-cafe-200/50 flex flex-col justify-between">
+<div>
+<h3 class="font-title-lg text-title-lg text-espresso-900 mb-2">Need Help?</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-6">Our team is here to ensure your experience is perfect. Tap below to call a server.</p>
+</div>
+<button class="w-full h-touch-target-opt bg-espresso-900 text-on-primary rounded-2xl flex items-center justify-center gap-2 font-label-md text-label-md hover:opacity-90 active:scale-95 transition-all shadow-sm">
+<span class="material-symbols-outlined">notifications_active</span>
+                        Request Assistance
+                    </button>
+</div>
+<!-- Environment/Vibe Visual -->
+<div class="relative h-40 rounded-3xl overflow-hidden shadow-sm">
+<img class="w-full h-full object-cover" data-alt="A wide-angle shot of a premium, modern cafe interior featuring minimalist wooden furniture, large windows with soft natural light, and lush green plants. The space is calm and professional, with a warm neutral color palette of cafe-50 and espresso-900. The atmosphere is serene and inviting, perfectly capturing a sophisticated urban workspace for coffee enthusiasts." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBEvI1S_VVBQT6VRJU9W86ttCUq6Mh2_7VRqPv3OZ5CMHg5tjJmy4H0_skldVnu4jYvHkROs8AdtIv428vgOTsDmZOrAg0iSp7BqfiW23ACxHHiXAnZzg74xgwzy3UMi40ABaZDmVLTcj8C0iUa5mDGyn5SA11ZE8mH73b3JdKRcVNwpNPaNUJE8kl-mx6nThZtzRRMdqSh8uYSEgCXusuqp7fi4gWinuD13fqmjhfINFVTTY4IHvNmLjkikcSUVEKNTy2CRx02rjQ"/>
+<div class="absolute inset-0 bg-gradient-to-t from-espresso-900/60 to-transparent flex flex-col justify-end p-4">
+<p class="text-white font-label-md text-label-md">Enjoy our free high-speed WiFi while you wait.</p>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- NavigationDrawer (Simulated Sidebar for Web) -->
+<nav class="hidden md:flex fixed left-0 top-touch-target-opt h-[calc(100vh-52px)] w-20 flex-col items-center py-6 space-y-8 bg-surface dark:bg-surface-container-low border-r border-cafe-200/50">
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-cafe-50 p-3 rounded-xl transition-all" href="#">
+<span class="material-symbols-outlined">restaurant_menu</span>
+<span class="text-[10px] mt-1">Menu</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-secondary-fixed text-on-secondary-fixed font-bold p-3 rounded-xl transition-all" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">receipt_long</span>
+<span class="text-[10px] mt-1">Orders</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-cafe-50 p-3 rounded-xl transition-all" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="text-[10px] mt-1">Profile</span>
+</a>
+<div class="mt-auto">
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-cafe-50 p-3 rounded-xl transition-all" href="#">
+<span class="material-symbols-outlined">help_outline</span>
+</a>
+</div>
+</nav>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 w-full z-50 rounded-t-3xl bg-surface/80 dark:bg-surface-container-highest/80 backdrop-blur-sm border-t border-cafe-200/50 shadow-sm flex justify-around items-center h-20 px-4 pb-safe">
+<button class="flex flex-col items-center justify-center text-on-surface-variant hover:opacity-80 transition-opacity active:scale-95">
+<span class="material-symbols-outlined">restaurant_menu</span>
+<span class="font-label-md text-label-md">Menu</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant hover:opacity-80 transition-opacity active:scale-95">
+<span class="material-symbols-outlined">shopping_bag</span>
+<span class="font-label-md text-label-md">Cart</span>
+</button>
+<button class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-full px-4 py-1 active:scale-95">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">receipt_long</span>
+<span class="font-label-md text-label-md">Orders</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant hover:opacity-80 transition-opacity active:scale-95">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-md text-label-md">Profile</span>
+</button>
+</nav>
+<script>
+        // Simple micro-interaction for the help button
+        const helpBtn = document.querySelector('button.bg-espresso-900');
+        if (helpBtn) {
+            helpBtn.addEventListener('click', () => {
+                const originalText = helpBtn.innerHTML;
+                helpBtn.innerHTML = `<span class="material-symbols-outlined animate-spin">sync</span> Calling Server...`;
+                helpBtn.classList.replace('bg-espresso-900', 'bg-earth-olive');
+                
+                setTimeout(() => {
+                    helpBtn.innerHTML = `<span class="material-symbols-outlined">check_circle</span> Server Notified`;
+                    setTimeout(() => {
+                        helpBtn.innerHTML = originalText;
+                        helpBtn.classList.replace('bg-earth-olive', 'bg-espresso-900');
+                    }, 3000);
+                }, 1500);
+            });
+        }
+    </script>
+</body></html>

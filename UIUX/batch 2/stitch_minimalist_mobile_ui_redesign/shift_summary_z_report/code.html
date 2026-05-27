@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>CAOCAO - Day End Summary</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+        }
+        @keyframes fadeInScale {
+            from { opacity: 0; transform: scale(0.98); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        .animate-appear {
+            animation: fadeInScale 0.4s ease-out forwards;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "cafe-200": "#E5E1DE",
+                        "surface-container": "#f1edec",
+                        "inverse-primary": "#cec5c1",
+                        "inverse-surface": "#313030",
+                        "cafe-50": "#F9F8F7",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary-container": "#5f6732",
+                        "outline-variant": "#d0c4be",
+                        "secondary-container": "#dce5a3",
+                        "surface-tint": "#635d5a",
+                        "primary-container": "#1f1b19",
+                        "on-secondary": "#ffffff",
+                        "tertiary-container": "#1a1c1c",
+                        "on-tertiary-fixed": "#1a1c1c",
+                        "surface-dim": "#ddd9d8",
+                        "primary-fixed-dim": "#cec5c1",
+                        "espresso-900": "#1A1614",
+                        "secondary": "#5a632e",
+                        "on-error-container": "#93000a",
+                        "inverse-on-surface": "#f4f0ef",
+                        "primary": "#000000",
+                        "error-container": "#ffdad6",
+                        "on-secondary-fixed": "#191e00",
+                        "tertiary-fixed-dim": "#c6c6c6",
+                        "primary-fixed": "#eae1dd",
+                        "on-primary": "#ffffff",
+                        "earth-olive": "#4B5320",
+                        "secondary-fixed-dim": "#c3cc8c",
+                        "on-surface-variant": "#4d4541",
+                        "error": "#ba1a1a",
+                        "tertiary-fixed": "#e2e2e2",
+                        "surface-container-highest": "#e6e1e0",
+                        "outline": "#7f7570",
+                        "surface-container-lowest": "#ffffff",
+                        "on-error": "#ffffff",
+                        "on-primary-fixed-variant": "#4b4643",
+                        "surface-container-high": "#ece7e6",
+                        "on-tertiary-fixed-variant": "#454747",
+                        "on-secondary-fixed-variant": "#434b18",
+                        "surface-container-low": "#f7f3f1",
+                        "surface-variant": "#e6e1e0",
+                        "surface-bright": "#fdf8f7",
+                        "secondary-fixed": "#dfe8a6",
+                        "on-surface": "#1c1b1b",
+                        "on-primary-fixed": "#1f1b19",
+                        "on-background": "#1c1b1b",
+                        "charcoal-text": "#121212",
+                        "tertiary": "#000000",
+                        "on-tertiary-container": "#838484",
+                        "background": "#fdf8f7",
+                        "surface": "#fdf8f7",
+                        "on-primary-container": "#8a827f"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-desktop": "3rem",
+                        "touch-target-min": "48px",
+                        "touch-target-opt": "52px",
+                        "gutter": "1.5rem",
+                        "margin-tablet": "2rem",
+                        "margin-mobile": "1rem"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Manrope"],
+                        "label-md": ["Manrope"],
+                        "label-sm": ["Manrope"],
+                        "headline-lg": ["Manrope"],
+                        "headline-md": ["Manrope"],
+                        "headline-lg-mobile": ["Manrope"],
+                        "display-lg": ["Manrope"],
+                        "body-md": ["Manrope"],
+                        "title-lg": ["Manrope"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "500"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "600"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "title-lg": ["20px", {"lineHeight": "28px", "fontWeight": "600"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-cafe-50 font-body-md text-on-surface min-h-screen pb-24">
+<!-- Top Navigation Shell (Contextual Back Only) -->
+<header class="bg-cafe-50/80 backdrop-blur-sm fixed top-0 left-0 w-full z-50 flex justify-between items-center px-4 h-touch-target-opt">
+<button class="flex items-center gap-2 text-espresso-900 active:scale-95 transition-transform" onclick="window.history.back()">
+<span class="material-symbols-outlined">arrow_back</span>
+<span class="font-label-md text-label-md">Close Shift</span>
+</button>
+<div class="text-headline-md font-headline-md font-bold tracking-tight text-espresso-900">CAOCAO</div>
+<div class="w-10"></div> <!-- Spacer for balance -->
+</header>
+<main class="max-w-5xl mx-auto px-4 pt-20 animate-appear">
+<!-- Hero Summary Section -->
+<section class="mt-8 mb-12 text-center">
+<span class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-secondary-container/30 text-earth-olive font-label-sm text-label-sm mb-4">
+<span class="material-symbols-outlined text-[18px]">verified</span>
+                Shift Successfully Closed
+            </span>
+<h1 class="font-headline-lg text-headline-lg text-espresso-900 mb-2">Z-Report Summary</h1>
+<p class="font-body-md text-body-md text-on-surface-variant">Wednesday, 24 Oct 2023 • Shift #829 (08:00 - 18:00)</p>
+</section>
+<!-- Bento Grid Report -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-start">
+<!-- Main Financial Breakdown -->
+<div class="md:col-span-8 space-y-6">
+<!-- Sales by Category -->
+<div class="bg-white rounded-3xl p-8 shadow-sm border border-cafe-200/50">
+<div class="flex items-center justify-between mb-8">
+<h2 class="font-title-lg text-title-lg text-espresso-900">Sales by Category</h2>
+<span class="material-symbols-outlined text-outline">pie_chart</span>
+</div>
+<div class="space-y-6">
+<div class="flex items-center gap-4">
+<div class="flex-1">
+<div class="flex justify-between mb-2">
+<span class="font-label-md text-label-md">Food</span>
+<span class="font-label-md text-label-md">IDR 4.250.000</span>
+</div>
+<div class="h-2 w-full bg-cafe-50 rounded-full overflow-hidden">
+<div class="h-full bg-espresso-900 rounded-full" style="width: 55%"></div>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="flex-1">
+<div class="flex justify-between mb-2">
+<span class="font-label-md text-label-md">Drink</span>
+<span class="font-label-md text-label-md">IDR 2.890.000</span>
+</div>
+<div class="h-2 w-full bg-cafe-50 rounded-full overflow-hidden">
+<div class="h-full bg-earth-olive rounded-full" style="width: 35%"></div>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="flex-1">
+<div class="flex justify-between mb-2">
+<span class="font-label-md text-label-md">Add-ons</span>
+<span class="font-label-md text-label-md">IDR 620.000</span>
+</div>
+<div class="h-2 w-full bg-cafe-50 rounded-full overflow-hidden">
+<div class="h-full bg-cafe-200 rounded-full" style="width: 10%"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Payment Methods -->
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+<div class="bg-white rounded-3xl p-6 shadow-sm border border-cafe-200/50">
+<span class="material-symbols-outlined text-earth-olive mb-3">payments</span>
+<div class="text-on-surface-variant text-label-sm font-label-sm mb-1">Cash</div>
+<div class="text-title-lg font-title-lg text-espresso-900">2.140k</div>
+</div>
+<div class="bg-white rounded-3xl p-6 shadow-sm border border-cafe-200/50">
+<span class="material-symbols-outlined text-earth-olive mb-3">qr_code_2</span>
+<div class="text-on-surface-variant text-label-sm font-label-sm mb-1">QRIS</div>
+<div class="text-title-lg font-title-lg text-espresso-900">4.520k</div>
+</div>
+<div class="bg-white rounded-3xl p-6 shadow-sm border border-cafe-200/50">
+<span class="material-symbols-outlined text-earth-olive mb-3">credit_card</span>
+<div class="text-on-surface-variant text-label-sm font-label-sm mb-1">Debit/CC</div>
+<div class="text-title-lg font-title-lg text-espresso-900">1.100k</div>
+</div>
+</div>
+</div>
+<!-- Tax & Discrepancies Column -->
+<div class="md:col-span-4 space-y-6">
+<!-- Final Totals Card -->
+<div class="bg-espresso-900 text-white rounded-3xl p-8 shadow-lg relative overflow-hidden">
+<div class="relative z-10">
+<h3 class="font-label-md text-label-md text-cafe-200 mb-6 uppercase tracking-wider">Gross Total</h3>
+<div class="font-display-lg text-display-lg mb-8">7.760k</div>
+<div class="space-y-4 pt-6 border-t border-white/10">
+<div class="flex justify-between text-label-md font-label-md">
+<span class="text-cafe-200/70">Tax (10%)</span>
+<span>776.000</span>
+</div>
+<div class="flex justify-between text-label-md font-label-md">
+<span class="text-cafe-200/70">Service (5%)</span>
+<span>388.000</span>
+</div>
+<div class="flex justify-between text-title-lg font-title-lg pt-4">
+<span>Net Total</span>
+<span>8.924k</span>
+</div>
+</div>
+</div>
+<!-- Decorative abstract shape -->
+<div class="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-full -mr-16 -mt-16"></div>
+</div>
+<!-- Reconciliation -->
+<div class="bg-white rounded-3xl p-6 shadow-sm border border-cafe-200/50">
+<div class="flex items-center gap-3 mb-6">
+<div class="w-10 h-10 rounded-full bg-error-container flex items-center justify-center">
+<span class="material-symbols-outlined text-error">warning</span>
+</div>
+<h3 class="font-title-lg text-title-lg text-espresso-900">Discrepancy</h3>
+</div>
+<div class="flex items-end justify-between">
+<div>
+<div class="text-label-sm font-label-sm text-on-surface-variant">Cash Difference</div>
+<div class="text-headline-md font-headline-md text-error">- 15.000</div>
+</div>
+<div class="text-label-sm font-label-sm text-outline mb-1 underline cursor-pointer">View Log</div>
+</div>
+<p class="mt-4 text-label-sm font-label-sm text-on-surface-variant leading-relaxed">
+                        Note: 1 small bill discrepancy noted during handover.
+                    </p>
+</div>
+</div>
+</div>
+<!-- Action Grid -->
+<section class="mt-12 grid grid-cols-1 sm:grid-cols-2 gap-4">
+<button class="flex items-center justify-center gap-3 h-touch-target-opt bg-white border border-cafe-200 text-espresso-900 rounded-2xl font-label-md text-label-md hover:bg-cafe-50 active:scale-95 transition-all">
+<span class="material-symbols-outlined">picture_as_pdf</span>
+                Download PDF Report
+            </button>
+<button class="flex items-center justify-center gap-3 h-touch-target-opt bg-earth-olive text-white rounded-2xl font-label-md text-label-md hover:bg-opacity-90 active:scale-95 transition-all">
+<span class="material-symbols-outlined" data-weight="fill">share</span>
+                Share to Owner
+            </button>
+</section>
+<!-- Decorative Footer Image -->
+<div class="mt-16 rounded-3xl overflow-hidden h-48 relative">
+<img alt="Cafe Interior" class="w-full h-full object-cover grayscale opacity-20" data-alt="A sophisticated wide shot of a minimalist coffee shop interior during closing time. The lighting is low and warm, creating a serene and professional atmosphere with high-end architectural lines. The furniture is made of warm light wood and dark stone, reflecting a premium F&amp;B brand identity. No people are present, emphasizing the calm efficiency of a shift end." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDUoKIzxi6Cn3RTOD42oTXZgVmsroYjASeQ7LXx9O7lQas4yOKShDW1KblQGsZWs-EJJzzvGiMqVbUmnZwRQ_4JO_TYaekPZhLRA36NDgfYw2U1o0IP9v3eKF_U1f5HTEdXPhMBS0FVZeG1_9KW0IifQL0F2iInSs_2BbKJUUQDfFmtvnwuUXhMabkgifzWLux819uqDavB9qWhT23t5MwQRGm-Gi6SRJqb8vrsu75IWjelE4-ySatWtB_q2oEI3Rkpxf6Gd5lDE68"/>
+<div class="absolute inset-0 bg-gradient-to-t from-cafe-50 to-transparent"></div>
+</div>
+</main>
+<!-- Contextual Sync Feedback (Floating) -->
+<div class="fixed bottom-8 left-1/2 -translate-x-1/2 flex items-center gap-4 bg-espresso-900/90 backdrop-blur-md text-white px-6 py-3 rounded-full shadow-2xl z-50">
+<span class="material-symbols-outlined animate-spin text-[20px]">sync</span>
+<span class="font-label-md text-label-md">Report Synced to Cloud</span>
+</div>
+<script>
+        // Simple micro-interaction for share button
+        const shareBtn = document.querySelector('button:last-child');
+        shareBtn.addEventListener('click', () => {
+            const originalContent = shareBtn.innerHTML;
+            shareBtn.innerHTML = '<span class="material-symbols-outlined">check_circle</span> Sent';
+            shareBtn.classList.replace('bg-earth-olive', 'bg-green-700');
+            
+            setTimeout(() => {
+                shareBtn.innerHTML = originalContent;
+                shareBtn.classList.replace('bg-green-700', 'bg-earth-olive');
+            }, 2000);
+        });
+    </script>
+</body></html>

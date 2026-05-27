@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<title>CAOCAO - Staff Attendance</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface": "#fdf8f7",
+                        "surface-container-highest": "#e6e1e0",
+                        "tertiary-container": "#1a1c1c",
+                        "error": "#ba1a1a",
+                        "charcoal-text": "#121212",
+                        "surface-dim": "#ddd9d8",
+                        "surface-container-high": "#ece7e6",
+                        "secondary": "#5a632e",
+                        "on-tertiary-fixed-variant": "#454747",
+                        "error-container": "#ffdad6",
+                        "background": "#fdf8f7",
+                        "tertiary-fixed": "#e2e2e2",
+                        "on-secondary": "#ffffff",
+                        "secondary-container": "#dce5a3",
+                        "on-primary-fixed-variant": "#4b4643",
+                        "inverse-primary": "#cec5c1",
+                        "earth-olive": "#4B5320",
+                        "on-tertiary": "#ffffff",
+                        "surface-tint": "#635d5a",
+                        "outline-variant": "#d0c4be",
+                        "espresso-900": "#1A1614",
+                        "on-tertiary-fixed": "#1a1c1c",
+                        "on-secondary-container": "#5f6732",
+                        "cafe-50": "#F9F8F7",
+                        "on-error-container": "#93000a",
+                        "on-error": "#ffffff",
+                        "cafe-200": "#E5E1DE",
+                        "surface-container": "#f1edec",
+                        "tertiary-fixed-dim": "#c6c6c6",
+                        "on-background": "#1c1b1b",
+                        "surface-variant": "#e6e1e0",
+                        "primary": "#000000",
+                        "outline": "#7f7570",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-bright": "#fdf8f7",
+                        "tertiary": "#000000",
+                        "secondary-fixed-dim": "#c3cc8c",
+                        "primary-container": "#1f1b19",
+                        "on-tertiary-container": "#838484",
+                        "primary-fixed-dim": "#cec5c1",
+                        "on-secondary-fixed": "#191e00",
+                        "inverse-surface": "#313030",
+                        "inverse-on-surface": "#f4f0ef",
+                        "secondary-fixed": "#dfe8a6",
+                        "on-surface-variant": "#4d4541",
+                        "primary-fixed": "#eae1dd",
+                        "on-primary-fixed": "#1f1b19",
+                        "surface-container-low": "#f7f3f1",
+                        "on-primary-container": "#8a827f",
+                        "on-primary": "#ffffff",
+                        "on-surface": "#1c1b1b",
+                        "on-secondary-fixed-variant": "#434b18"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-tablet": "2rem",
+                        "touch-target-opt": "52px",
+                        "margin-desktop": "3rem",
+                        "gutter": "1.5rem",
+                        "touch-target-min": "48px",
+                        "margin-mobile": "1rem"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Manrope"],
+                        "label-md": ["Manrope"],
+                        "headline-lg": ["Manrope"],
+                        "title-lg": ["Manrope"],
+                        "headline-lg-mobile": ["Manrope"],
+                        "label-sm": ["Manrope"],
+                        "display-lg": ["Manrope"],
+                        "headline-md": ["Manrope"],
+                        "body-md": ["Manrope"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "500"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                        "title-lg": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "600"}],
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .qr-timer-ring {
+            transition: stroke-dashoffset 1s linear, stroke 1s linear;
+            transform: rotate(-90deg);
+            transform-origin: 50% 50%;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Manrope', sans-serif; -webkit-font-smoothing: antialiased; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface min-h-screen pb-32">
+<!-- TopAppBar -->
+<header class="bg-cafe-50/80 dark:bg-espresso-900/80 backdrop-blur-sm flex justify-between items-center w-full px-margin-mobile h-touch-target-opt z-50 fixed top-0">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-cafe-200 flex items-center justify-center overflow-hidden">
+<img alt="Staff Profile" class="w-full h-full object-cover" data-alt="A clean and professional profile avatar of a cafe staff member with a friendly expression, set against a soft beige studio background. The lighting is warm and natural, reflecting a high-end coffee house aesthetic. The visual style is minimalist and contemporary, using a palette of soft neutrals." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAB4y-lOVRAGunC0AhyU27TSdPHylgveUf4ncY0kT4kqLYqnnE_EeYLGJi99VyHRQdbKQnS7YV5i7UL-y_lXoGFgzEe-F0N7chyhvTEpLawfGIA7mt3DzYMGMdzTXzTzKeGiCoJwTjZdz08ahNIxGTOlDrxMZFevl1aSatk8ggLTix6KQrqNSSCYrNHvNhudrVADv4st1EitfEIZM4kGMsHax8rOCUJOXX7uP1gR9Zampj9koZwFiGu72yVw1gC74LsL-UyaQN_0eg"/>
+</div>
+<span class="text-headline-md font-headline-md font-bold tracking-tight text-espresso-900 dark:text-cafe-50">CAOCAO</span>
+</div>
+<button class="text-espresso-900 dark:text-cafe-50 active:scale-95 transition-transform duration-200">
+<span class="material-symbols-outlined" data-icon="sync">sync</span>
+</button>
+</header>
+<main class="px-margin-mobile pt-20 flex flex-col gap-6">
+<!-- Greeting Header -->
+<section class="mt-4">
+<h1 class="text-headline-lg-mobile font-headline-lg-mobile text-espresso-900">Good Morning, Alex</h1>
+<p class="text-body-md font-body-md text-on-surface-variant" id="current-time">08:45 AM • Monday, Oct 23</p>
+</section>
+<!-- Dynamic QR Section -->
+<section class="flex flex-col items-center">
+<div class="bg-white rounded-[32px] p-8 shadow-sm w-full max-w-[340px] flex flex-col items-center relative border border-cafe-200/50">
+<div class="relative w-56 h-56 flex items-center justify-center">
+<!-- SVG Timer Ring -->
+<svg class="absolute inset-0 w-full h-full" viewbox="0 0 100 100">
+<circle cx="50" cy="50" fill="none" r="48" stroke="#F1EDEC" stroke-width="4"></circle>
+<circle class="qr-timer-ring" cx="50" cy="50" fill="none" id="timer-circle" r="48" stroke="#4B5320" stroke-dasharray="301.59" stroke-dashoffset="0" stroke-width="4"></circle>
+</svg>
+<!-- QR Code Placeholder -->
+<div class="bg-white p-2 rounded-xl z-10">
+<img alt="Dynamic QR Code" class="w-40 h-40" data-alt="A high-contrast, clean QR code displayed on a digital screen, surrounded by a minimalist UI with soft olive and espresso tones. The image captures the crisp lines of the code against a pristine white background, with soft depth-of-field effects that emphasize a premium technology experience in a modern cafe environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDlvLSYiW2xHd-4TBLf1bBaYneKhXCdboICIx9ohWehfUztY1W8LKS-iMZz5gpScF0fcAROVfVsZ3sEQA62qLHVB5epsuVvmxuyWdmf21A3NwIbD4AhpA-FkVHZEZi4FncTREm6HB9SXp5PtG4wwXE9MG5842MfITeElvnG5YWUkr2PyCD2oqj0SRbf5xVjuL_KN8cSoICrFj4he_WTPfNFNUIFvb63_HLWkS-x2kLUzPUheF5kuzyxvII0HuYpK78kqtvaZHAepNg"/>
+</div>
+</div>
+<p class="mt-6 text-label-md font-label-md text-on-surface-variant">Scan to Clock In</p>
+<div class="text-label-sm font-label-sm text-outline mt-1 uppercase tracking-wider" id="seconds-counter">Refreshing in 60s</div>
+</div>
+</section>
+<!-- Geofencing Status Card -->
+<section class="bg-white rounded-3xl p-5 shadow-sm border border-cafe-200/50">
+<div class="flex justify-between items-start mb-4">
+<div>
+<h3 class="text-title-lg font-title-lg text-espresso-900">Geofencing Status</h3>
+<p class="text-label-sm font-label-sm text-outline mt-1">40.7128° N, 74.0060° W</p>
+</div>
+<span class="bg-secondary-container/50 text-on-secondary-container px-3 py-1 rounded-full text-label-sm font-label-sm flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-earth-olive animate-pulse"></span>
+                    VALID (IN RADIUS)
+                </span>
+</div>
+<div class="h-24 w-full rounded-2xl overflow-hidden grayscale">
+<img alt="Location Map" class="w-full h-full object-cover opacity-60" data-alt="A minimalist and stylised map view of a modern urban city center with clean geometric lines and a soft, muted color palette. The map shows simplified street layouts with a single highlight pin, captured in a bright, professional light-mode aesthetic that feels calm and organized." data-location="New York City" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDttI8RmvtHy1U0E6Lf6ybOtiHFhN4FNSY_THBBNOP8yo_fP031ol5d2vBCOvY7qmYE0U8z6OctBwuWYprw6KhEJXVKqyONxXEkDEg5HR_DHaVnVzKXpp5uoYGUNTAR-coFpOUPWCog2Etn9E_b7JuV7FHHmJPhHLW_Tniizyq5fsGc26_HWBWjde9aimW8T-cK0dYDjpfg9UlhdMC6-Wla82rApviL4S9rb6Cq_m-iB9g1xS_Bo-S8J3gyg78PqjAMld7GIWMwtMg"/>
+</div>
+</section>
+<!-- Secondary Action: PIN Entry -->
+<button class="flex items-center justify-between w-full h-[64px] bg-white rounded-2xl px-6 border border-cafe-200/50 shadow-sm active:scale-[0.98] transition-all duration-200">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-espresso-900" data-icon="dialpad">dialpad</span>
+<span class="text-body-md font-body-md font-semibold text-espresso-900">Enter PIN Manually</span>
+</div>
+<span class="material-symbols-outlined text-outline" data-icon="chevron_right">chevron_right</span>
+</button>
+<!-- Attendance History -->
+<section class="mb-4">
+<div class="flex justify-between items-center mb-4">
+<h3 class="text-title-lg font-title-lg text-espresso-900">Recent Shifts</h3>
+<button class="text-label-md font-label-md text-earth-olive">View All</button>
+</div>
+<div class="flex flex-col gap-3">
+<!-- History Item 1 -->
+<div class="bg-cafe-50/50 rounded-2xl p-4 flex items-center justify-between border border-cafe-200/20">
+<div class="flex items-center gap-4">
+<div class="bg-secondary-container/20 p-2 rounded-xl">
+<span class="material-symbols-outlined text-earth-olive" data-icon="login">login</span>
+</div>
+<div>
+<p class="text-body-md font-body-md font-semibold text-espresso-900">Yesterday</p>
+<p class="text-label-sm font-label-sm text-outline">Oct 22, 09:02 AM</p>
+</div>
+</div>
+<p class="text-label-md font-label-md text-on-surface">Main Bar</p>
+</div>
+<!-- History Item 2 -->
+<div class="bg-cafe-50/50 rounded-2xl p-4 flex items-center justify-between border border-cafe-200/20">
+<div class="flex items-center gap-4">
+<div class="bg-cafe-200/30 p-2 rounded-xl text-outline">
+<span class="material-symbols-outlined" data-icon="logout">logout</span>
+</div>
+<div>
+<p class="text-body-md font-body-md font-semibold text-espresso-900">Oct 21</p>
+<p class="text-label-sm font-label-sm text-outline">05:30 PM Shift End</p>
+</div>
+</div>
+<p class="text-label-md font-label-md text-on-surface">Kitchen</p>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-safe h-[72px] bg-white dark:bg-espresso-900 shadow-[0_-4px_20px_0_rgba(0,0,0,0.05)] rounded-t-3xl">
+<button class="flex flex-col items-center justify-center text-outline dark:text-outline-variant px-3 py-1 hover:text-espresso-900 dark:hover:text-cafe-50 active:scale-90 transition-all duration-200">
+<span class="material-symbols-outlined" data-icon="restaurant_menu">restaurant_menu</span>
+<span class="text-label-sm font-label-sm mt-1">Orders</span>
+</button>
+<button class="flex flex-col items-center justify-center text-outline dark:text-outline-variant px-3 py-1 hover:text-espresso-900 dark:hover:text-cafe-50 active:scale-90 transition-all duration-200">
+<span class="material-symbols-outlined" data-icon="receipt_long">receipt_long</span>
+<span class="text-label-sm font-label-sm mt-1">KDS</span>
+</button>
+<button class="flex flex-col items-center justify-center text-earth-olive dark:text-secondary-fixed bg-secondary-container/30 dark:bg-secondary-container/10 rounded-xl px-3 py-1 active:scale-90 transition-all duration-200">
+<span class="material-symbols-outlined" data-icon="schedule" style="font-variation-settings: 'FILL' 1;">schedule</span>
+<span class="text-label-sm font-label-sm mt-1">Clock In</span>
+</button>
+<button class="flex flex-col items-center justify-center text-outline dark:text-outline-variant px-3 py-1 hover:text-espresso-900 dark:hover:text-cafe-50 active:scale-90 transition-all duration-200">
+<span class="material-symbols-outlined" data-icon="cloud_sync">cloud_sync</span>
+<span class="text-label-sm font-label-sm mt-1">Sync</span>
+</button>
+</nav>
+<script>
+        // Update Time
+        function updateTime() {
+            const now = new Date();
+            const timeStr = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+            const dateStr = now.toLocaleDateString([], { weekday: 'long', month: 'short', day: 'numeric' });
+            document.getElementById('current-time').innerText = `${timeStr} • ${dateStr}`;
+        }
+        setInterval(updateTime, 1000);
+        updateTime();
+
+        // QR Timer Animation
+        let timeLeft = 60;
+        const totalTime = 60;
+        const circle = document.getElementById('timer-circle');
+        const counter = document.getElementById('seconds-counter');
+        const radius = 48;
+        const circumference = 2 * Math.PI * radius;
+
+        function animateTimer() {
+            if (timeLeft <= 0) {
+                timeLeft = 60;
+                // Imagine QR code refresh logic here
+            }
+            
+            const offset = circumference - (timeLeft / totalTime) * circumference;
+            circle.style.strokeDashoffset = offset;
+            
+            // Color Transition
+            if (timeLeft > 30) {
+                circle.style.stroke = '#4B5320'; // Olive
+            } else if (timeLeft > 10) {
+                circle.style.stroke = '#5a632e'; // Secondary
+            } else {
+                circle.style.stroke = '#ba1a1a'; // Error Red
+            }
+
+            counter.innerText = `Refreshing in ${timeLeft}s`;
+            timeLeft--;
+        }
+
+        setInterval(animateTimer, 1000);
+        animateTimer();
+    </script>
+</body></html>

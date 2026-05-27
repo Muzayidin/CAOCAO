@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>CAOCAO | Business Intelligence</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "outline": "#7f7570",
+                        "inverse-primary": "#cec5c1",
+                        "tertiary": "#000000",
+                        "surface-dim": "#ddd9d8",
+                        "error": "#ba1a1a",
+                        "on-tertiary-fixed": "#1a1c1c",
+                        "inverse-on-surface": "#f4f0ef",
+                        "surface-container-lowest": "#ffffff",
+                        "background": "#fdf8f7",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary-fixed-variant": "#434b18",
+                        "surface-container": "#f1edec",
+                        "tertiary-fixed-dim": "#c6c6c6",
+                        "tertiary-container": "#1a1c1c",
+                        "surface": "#fdf8f7",
+                        "on-tertiary-fixed-variant": "#454747",
+                        "primary-fixed": "#eae1dd",
+                        "on-primary-fixed": "#1f1b19",
+                        "outline-variant": "#d0c4be",
+                        "surface-bright": "#fdf8f7",
+                        "on-primary": "#ffffff",
+                        "surface-container-high": "#ece7e6",
+                        "surface-tint": "#635d5a",
+                        "secondary-container": "#dce5a3",
+                        "primary": "#000000",
+                        "surface-variant": "#e6e1e0",
+                        "charcoal-text": "#121212",
+                        "tertiary-fixed": "#e2e2e2",
+                        "secondary-fixed": "#dfe8a6",
+                        "on-surface-variant": "#4d4541",
+                        "cafe-50": "#F9F8F7",
+                        "secondary-fixed-dim": "#c3cc8c",
+                        "on-primary-container": "#8a827f",
+                        "on-error": "#ffffff",
+                        "on-background": "#1c1b1b",
+                        "on-secondary-container": "#5f6732",
+                        "espresso-900": "#1A1614",
+                        "secondary": "#5a632e",
+                        "inverse-surface": "#313030",
+                        "error-container": "#ffdad6",
+                        "earth-olive": "#4B5320",
+                        "on-secondary-fixed": "#191e00",
+                        "primary-container": "#1f1b19",
+                        "surface-container-highest": "#e6e1e0",
+                        "on-tertiary-container": "#838484",
+                        "on-primary-fixed-variant": "#4b4643",
+                        "surface-container-low": "#f7f3f1",
+                        "on-surface": "#1c1b1b",
+                        "cafe-200": "#E5E1DE",
+                        "primary-fixed-dim": "#cec5c1",
+                        "on-secondary": "#ffffff",
+                        "on-error-container": "#93000a"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-tablet": "2rem",
+                        "touch-target-min": "48px",
+                        "margin-desktop": "3rem",
+                        "margin-mobile": "1rem",
+                        "gutter": "1.5rem",
+                        "touch-target-opt": "52px"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["Manrope"],
+                        "display-lg": ["Manrope"],
+                        "body-lg": ["Manrope"],
+                        "label-md": ["Manrope"],
+                        "headline-lg-mobile": ["Manrope"],
+                        "label-sm": ["Manrope"],
+                        "body-md": ["Manrope"],
+                        "title-lg": ["Manrope"],
+                        "headline-md": ["Manrope"]
+                    },
+                    "fontSize": {
+                        "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "500"}],
+                        "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "title-lg": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #E5E1DE;
+            border-radius: 10px;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body-md min-h-screen pb-24 md:pb-0">
+<!-- Top Navigation Anchor -->
+<header class="w-full top-0 sticky bg-surface shadow-sm flex justify-between items-center px-margin-mobile h-touch-target-opt z-50">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-cafe-200 overflow-hidden flex items-center justify-center">
+<img alt="Owner" class="w-full h-full object-cover" data-alt="A professional close-up portrait of a sophisticated restaurant owner in a high-end cafe environment. The lighting is warm and cinematic, emphasizing a modern, professional atmosphere with soft bokeh of espresso machines in the background. The aesthetic is clean, light-mode, and minimalist with organic textures of wood and marble." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDKtFRVyeZnYC9syiVxSaMj8gcXIYwEIu6O-JFby4xezn346hlIEvkEnBj4vjbrfnqQ82nYe8ApngH3Cslwam3t6Kb61djSEudjWZWkmxMqIPxH-3Ndx_TjkEnGJpw_gra3K-7nEqlk5g27PPan2bJ9copIMvAI1zIs-3qK9cqN_fbczfu7KWRqo5MfpLn-7rU0eTqoKQE_CK9Yo2BxfKVKJVEOk7iLlf50GxZw26E7mgO8bBw8ku-IQCYvBea7ssuqlDS2y8UePqM"/>
+</div>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile font-bold text-espresso-900">CAOCAO</h1>
+</div>
+<div class="flex items-center gap-2">
+<button class="p-2 hover:bg-cafe-50 rounded-full transition-colors active:scale-95 text-on-surface-variant">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="p-2 hover:bg-cafe-50 rounded-full transition-colors active:scale-95 text-on-surface-variant">
+<span class="material-symbols-outlined">search</span>
+</button>
+</div>
+</header>
+<main class="max-w-7xl mx-auto px-margin-mobile md:px-margin-desktop py-8 space-y-8">
+<!-- Welcome & Date Picker -->
+<section class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+<div>
+<p class="font-label-md text-label-md text-on-surface-variant mb-1">DASHBOARD OVERVIEW</p>
+<h2 class="font-headline-lg text-headline-lg text-espresso-900">Analytics Intelligence</h2>
+</div>
+<div class="flex items-center bg-white border border-cafe-200/50 rounded-2xl p-2 shadow-sm">
+<button class="px-4 py-2 font-label-md text-label-md bg-espresso-900 text-white rounded-xl">Month</button>
+<button class="px-4 py-2 font-label-md text-label-md text-on-surface-variant hover:bg-cafe-50 transition-colors rounded-xl">Quarter</button>
+<button class="px-4 py-2 font-label-md text-label-md text-on-surface-variant hover:bg-cafe-50 transition-colors rounded-xl">Year</button>
+</div>
+</section>
+<!-- Financial Summary Grid -->
+<section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter">
+<!-- Gross Revenue -->
+<div class="bg-white p-6 rounded-3xl shadow-sm border border-cafe-200/20 group hover:shadow-md transition-all duration-300">
+<div class="flex justify-between items-start mb-4">
+<div class="p-3 bg-secondary-container text-on-secondary-container rounded-2xl">
+<span class="material-symbols-outlined">payments</span>
+</div>
+<span class="text-green-600 font-label-sm text-label-sm flex items-center gap-1">
+                        +12.4% <span class="material-symbols-outlined text-[14px]">trending_up</span>
+</span>
+</div>
+<p class="font-label-md text-label-md text-on-surface-variant">Gross Revenue</p>
+<h3 class="font-headline-md text-headline-md text-espresso-900">$142,850.00</h3>
+</div>
+<!-- HPP Ratio -->
+<div class="bg-white p-6 rounded-3xl shadow-sm border border-cafe-200/20 group hover:shadow-md transition-all duration-300">
+<div class="flex justify-between items-start mb-4">
+<div class="p-3 bg-cafe-50 text-espresso-900 rounded-2xl">
+<span class="material-symbols-outlined">inventory_2</span>
+</div>
+<span class="text-on-surface-variant font-label-sm text-label-sm">Target &lt; 28%</span>
+</div>
+<p class="font-label-md text-label-md text-on-surface-variant">HPP Ratio</p>
+<h3 class="font-headline-md text-headline-md text-espresso-900">31.2%</h3>
+</div>
+<!-- Labor Cost -->
+<div class="bg-white p-6 rounded-3xl shadow-sm border border-cafe-200/20 group hover:shadow-md transition-all duration-300">
+<div class="flex justify-between items-start mb-4">
+<div class="p-3 bg-cafe-50 text-espresso-900 rounded-2xl">
+<span class="material-symbols-outlined">badge</span>
+</div>
+<span class="text-green-600 font-label-sm text-label-sm flex items-center gap-1">
+                        -2.1% <span class="material-symbols-outlined text-[14px]">trending_down</span>
+</span>
+</div>
+<p class="font-label-md text-label-md text-on-surface-variant">Labor Cost</p>
+<h3 class="font-headline-md text-headline-md text-espresso-900">22.5%</h3>
+</div>
+<!-- Waste Loss -->
+<div class="bg-white p-6 rounded-3xl shadow-sm border border-cafe-200/20 group hover:shadow-md transition-all duration-300">
+<div class="flex justify-between items-start mb-4">
+<div class="p-3 bg-error-container text-on-error-container rounded-2xl">
+<span class="material-symbols-outlined">delete_sweep</span>
+</div>
+<span class="text-error font-label-sm text-label-sm flex items-center gap-1">
+                        +4.5% <span class="material-symbols-outlined text-[14px]">warning</span>
+</span>
+</div>
+<p class="font-label-md text-label-md text-on-surface-variant">Waste Loss</p>
+<h3 class="font-headline-md text-headline-md text-espresso-900">$3,120.40</h3>
+</div>
+</section>
+<!-- Middle Row: Health Ratios & Decision Engine -->
+<section class="grid grid-cols-1 lg:grid-cols-3 gap-gutter">
+<!-- Business Health & BEP -->
+<div class="lg:col-span-1 bg-white p-8 rounded-3xl shadow-sm border border-cafe-200/20">
+<h4 class="font-title-lg text-title-lg text-espresso-900 mb-6">Health Ratios</h4>
+<div class="space-y-6">
+<div>
+<div class="flex justify-between mb-2">
+<span class="font-label-md text-label-md text-on-surface-variant">Break-Even Point (BEP)</span>
+<span class="font-label-md text-label-md text-espresso-900">82% Achieved</span>
+</div>
+<div class="h-2 w-full bg-cafe-50 rounded-full overflow-hidden">
+<div class="h-full bg-earth-olive rounded-full" style="width: 82%"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between mb-2">
+<span class="font-label-md text-label-md text-on-surface-variant">Net Profit Margin</span>
+<span class="font-label-md text-label-md text-espresso-900">18.4%</span>
+</div>
+<div class="h-2 w-full bg-cafe-50 rounded-full overflow-hidden">
+<div class="h-full bg-secondary rounded-full" style="width: 18.4%"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between mb-2">
+<span class="font-label-md text-label-md text-on-surface-variant">Operational Efficiency</span>
+<span class="font-label-md text-label-md text-espresso-900">94%</span>
+</div>
+<div class="h-2 w-full bg-cafe-50 rounded-full overflow-hidden">
+<div class="h-full bg-espresso-900 rounded-full" style="width: 94%"></div>
+</div>
+</div>
+</div>
+<div class="mt-8 p-4 bg-cafe-50 rounded-2xl border border-cafe-200/50">
+<p class="font-body-md text-body-md text-on-surface-variant italic">
+                        "Your BEP is projected to be reached by Day 24 this month. Higher HPP on coffee beans is being offset by lower waste in pastries."
+                    </p>
+</div>
+</div>
+<!-- BI Decision Engine: Menu Profitability -->
+<div class="lg:col-span-2 bg-espresso-900 text-white p-8 rounded-3xl shadow-lg relative overflow-hidden group">
+<div class="absolute top-0 right-0 p-12 opacity-10 pointer-events-none group-hover:scale-110 transition-transform duration-700">
+<span class="material-symbols-outlined text-[180px]">insights</span>
+</div>
+<div class="relative z-10">
+<div class="flex justify-between items-center mb-6">
+<h4 class="font-title-lg text-title-lg text-white">Menu Profitability Engine</h4>
+<span class="bg-earth-olive px-3 py-1 rounded-full font-label-sm text-label-sm text-white">AI-POWERED</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+<!-- Card 1: Excellent -->
+<div class="bg-white/10 backdrop-blur-md p-5 rounded-2xl border border-white/10">
+<div class="flex justify-between items-center mb-4">
+<span class="text-secondary-container font-label-sm text-label-sm tracking-widest uppercase">Excellent</span>
+<span class="material-symbols-outlined text-secondary-container">verified</span>
+</div>
+<h5 class="font-body-lg text-body-lg mb-1">Cold Brew Nitro</h5>
+<p class="font-label-sm text-label-sm text-white/60">Margin: 82% | Volume: High</p>
+<button class="mt-4 w-full py-2 bg-white text-espresso-900 rounded-xl font-label-md text-label-md active:scale-95 transition-transform">Promote Item</button>
+</div>
+<!-- Card 2: Healthy -->
+<div class="bg-white/10 backdrop-blur-md p-5 rounded-2xl border border-white/10">
+<div class="flex justify-between items-center mb-4">
+<span class="text-white/80 font-label-sm text-label-sm tracking-widest uppercase">Healthy</span>
+<span class="material-symbols-outlined text-white/80">check_circle</span>
+</div>
+<h5 class="font-body-lg text-body-lg mb-1">Avocado Tartine</h5>
+<p class="font-label-sm text-label-sm text-white/60">Margin: 64% | Volume: Mid</p>
+<button class="mt-4 w-full py-2 bg-white/20 text-white rounded-xl font-label-md text-label-md active:scale-95 transition-transform">View Trends</button>
+</div>
+<!-- Card 3: Critical -->
+<div class="bg-error/20 backdrop-blur-md p-5 rounded-2xl border border-error/30">
+<div class="flex justify-between items-center mb-4">
+<span class="text-error-container font-label-sm text-label-sm tracking-widest uppercase">Critical</span>
+<span class="material-symbols-outlined text-error-container">error</span>
+</div>
+<h5 class="font-body-lg text-body-lg mb-1">Oat Latte</h5>
+<p class="font-label-sm text-label-sm text-white/60">Margin: 12% | Cost Spike</p>
+<button class="mt-4 w-full py-2 bg-error text-white rounded-xl font-label-md text-label-md active:scale-95 transition-transform">Adjust Price</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- PnL Ledger Table -->
+<section class="bg-white rounded-3xl shadow-sm border border-cafe-200/20 overflow-hidden">
+<div class="px-8 py-6 border-b border-cafe-200/50 flex flex-col md:flex-row md:items-center justify-between gap-4">
+<h4 class="font-title-lg text-title-lg text-espresso-900">Profit &amp; Loss Ledger</h4>
+<div class="flex gap-2">
+<button class="flex items-center gap-2 px-4 py-2 bg-cafe-50 rounded-xl font-label-md text-label-md text-on-surface-variant hover:bg-cafe-200/50 transition-colors">
+<span class="material-symbols-outlined text-[18px]">download</span> Export PDF
+                    </button>
+<button class="flex items-center gap-2 px-4 py-2 bg-cafe-50 rounded-xl font-label-md text-label-md text-on-surface-variant hover:bg-cafe-200/50 transition-colors">
+<span class="material-symbols-outlined text-[18px]">filter_list</span> Filter
+                    </button>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left">
+<thead>
+<tr class="bg-cafe-50/50">
+<th class="px-8 py-4 font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Account Category</th>
+<th class="px-8 py-4 font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Budgeted</th>
+<th class="px-8 py-4 font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Actual</th>
+<th class="px-8 py-4 font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Variance</th>
+<th class="px-8 py-4 font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider text-right">Status</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-cafe-200/30">
+<!-- Row 1 -->
+<tr class="hover:bg-cafe-50/30 transition-colors">
+<td class="px-8 py-5">
+<p class="font-body-md text-body-md text-espresso-900">COGS - Beverages</p>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Roasted Beans &amp; Milk</span>
+</td>
+<td class="px-8 py-5 font-body-md text-body-md text-on-surface-variant">$12,000</td>
+<td class="px-8 py-5 font-body-md text-body-md text-espresso-900">$13,240</td>
+<td class="px-8 py-5 font-body-md text-body-md text-error">+10.3%</td>
+<td class="px-8 py-5 text-right">
+<span class="px-3 py-1 bg-error-container text-on-error-container rounded-full text-[10px] font-bold uppercase">Over Budget</span>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-cafe-50/30 transition-colors">
+<td class="px-8 py-5">
+<p class="font-body-md text-body-md text-espresso-900">Labor - Front of House</p>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Barista &amp; Host Wages</span>
+</td>
+<td class="px-8 py-5 font-body-md text-body-md text-on-surface-variant">$18,500</td>
+<td class="px-8 py-5 font-body-md text-body-md text-espresso-900">$17,920</td>
+<td class="px-8 py-5 font-body-md text-body-md text-secondary">-3.1%</td>
+<td class="px-8 py-5 text-right">
+<span class="px-3 py-1 bg-secondary-container text-on-secondary-container rounded-full text-[10px] font-bold uppercase">Optimized</span>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-cafe-50/30 transition-colors">
+<td class="px-8 py-5">
+<p class="font-body-md text-body-md text-espresso-900">Facility - Utilities</p>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Electric, Water &amp; HVAC</span>
+</td>
+<td class="px-8 py-5 font-body-md text-body-md text-on-surface-variant">$2,400</td>
+<td class="px-8 py-5 font-body-md text-body-md text-espresso-900">$2,450</td>
+<td class="px-8 py-5 font-body-md text-body-md text-on-surface-variant">+2.0%</td>
+<td class="px-8 py-5 text-right">
+<span class="px-3 py-1 bg-cafe-200 text-on-surface-variant rounded-full text-[10px] font-bold uppercase">On Track</span>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-cafe-50/30 transition-colors">
+<td class="px-8 py-5">
+<p class="font-body-md text-body-md text-espresso-900">Marketing &amp; PR</p>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Social &amp; Influencers</span>
+</td>
+<td class="px-8 py-5 font-body-md text-body-md text-on-surface-variant">$3,000</td>
+<td class="px-8 py-5 font-body-md text-body-md text-espresso-900">$2,100</td>
+<td class="px-8 py-5 font-body-md text-body-md text-secondary">-30.0%</td>
+<td class="px-8 py-5 text-right">
+<span class="px-3 py-1 bg-secondary-container text-on-secondary-container rounded-full text-[10px] font-bold uppercase">Savings</span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</main>
+<!-- Bottom Navigation Shell (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pt-2 pb-6 bg-white dark:bg-inverse-surface shadow-[0_-4px_12px_rgba(0,0,0,0.02)] rounded-t-3xl">
+<a class="flex flex-col items-center justify-center bg-secondary-container dark:bg-secondary text-on-secondary-container dark:text-on-secondary rounded-xl px-3 py-1 transition-all duration-200 active:scale-95" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-sm text-label-sm">Dashboard</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant px-3 py-1 hover:opacity-80 transition-opacity active:scale-95" href="#">
+<span class="material-symbols-outlined">point_of_sale</span>
+<span class="font-label-sm text-label-sm">Orders</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant px-3 py-1 hover:opacity-80 transition-opacity active:scale-95" href="#">
+<span class="material-symbols-outlined">inventory_2</span>
+<span class="font-label-sm text-label-sm">Inventory</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant px-3 py-1 hover:opacity-80 transition-opacity active:scale-95" href="#">
+<span class="material-symbols-outlined">badge</span>
+<span class="font-label-sm text-label-sm">Staff</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant px-3 py-1 hover:opacity-80 transition-opacity active:scale-95" href="#">
+<span class="material-symbols-outlined">payments</span>
+<span class="font-label-sm text-label-sm">Payroll</span>
+</a>
+</nav>
+<script>
+        // Micro-interactions for numbers and cards
+        document.querySelectorAll('.group').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                // Potential for adding data visualization refreshes here
+            });
+        });
+
+        // Simple mock for "Switch View"
+        const buttons = document.querySelectorAll('.flex.items-center.bg-white button');
+        buttons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                buttons.forEach(b => {
+                    b.classList.remove('bg-espresso-900', 'text-white');
+                    b.classList.add('text-on-surface-variant', 'hover:bg-cafe-50');
+                });
+                btn.classList.add('bg-espresso-900', 'text-white');
+                btn.classList.remove('text-on-surface-variant', 'hover:bg-cafe-50');
+            });
+        });
+    </script>
+</body></html>

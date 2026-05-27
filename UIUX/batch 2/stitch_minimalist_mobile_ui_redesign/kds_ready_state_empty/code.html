@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>CAOCAO | Kitchen Display System</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "cafe-200": "#E5E1DE",
+                        "surface-container": "#f1edec",
+                        "inverse-primary": "#cec5c1",
+                        "inverse-surface": "#313030",
+                        "cafe-50": "#F9F8F7",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary-container": "#5f6732",
+                        "outline-variant": "#d0c4be",
+                        "secondary-container": "#dce5a3",
+                        "surface-tint": "#635d5a",
+                        "primary-container": "#1f1b19",
+                        "on-secondary": "#ffffff",
+                        "tertiary-container": "#1a1c1c",
+                        "on-tertiary-fixed": "#1a1c1c",
+                        "surface-dim": "#ddd9d8",
+                        "primary-fixed-dim": "#cec5c1",
+                        "espresso-900": "#1A1614",
+                        "secondary": "#5a632e",
+                        "on-error-container": "#93000a",
+                        "inverse-on-surface": "#f4f0ef",
+                        "primary": "#000000",
+                        "error-container": "#ffdad6",
+                        "on-secondary-fixed": "#191e00",
+                        "tertiary-fixed-dim": "#c6c6c6",
+                        "primary-fixed": "#eae1dd",
+                        "on-primary": "#ffffff",
+                        "earth-olive": "#4B5320",
+                        "secondary-fixed-dim": "#c3cc8c",
+                        "on-surface-variant": "#4d4541",
+                        "error": "#ba1a1a",
+                        "tertiary-fixed": "#e2e2e2",
+                        "surface-container-highest": "#e6e1e0",
+                        "outline": "#7f7570",
+                        "surface-container-lowest": "#ffffff",
+                        "on-error": "#ffffff",
+                        "on-primary-fixed-variant": "#4b4643",
+                        "surface-container-high": "#ece7e6",
+                        "on-tertiary-fixed-variant": "#454747",
+                        "on-secondary-fixed-variant": "#434b18",
+                        "surface-container-low": "#f7f3f1",
+                        "surface-variant": "#e6e1e0",
+                        "surface-bright": "#fdf8f7",
+                        "secondary-fixed": "#dfe8a6",
+                        "on-surface": "#1c1b1b",
+                        "on-primary-fixed": "#1f1b19",
+                        "on-background": "#1c1b1b",
+                        "charcoal-text": "#121212",
+                        "tertiary": "#000000",
+                        "on-tertiary-container": "#838484",
+                        "background": "#fdf8f7",
+                        "surface": "#fdf8f7",
+                        "on-primary-container": "#8a827f"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px",
+                        "3xl": "1.5rem"
+                    },
+                    "spacing": {
+                        "margin-desktop": "3rem",
+                        "touch-target-min": "48px",
+                        "touch-target-opt": "52px",
+                        "gutter": "1.5rem",
+                        "margin-tablet": "2rem",
+                        "margin-mobile": "1rem"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Manrope"],
+                        "label-md": ["Manrope"],
+                        "label-sm": ["Manrope"],
+                        "headline-lg": ["Manrope"],
+                        "headline-md": ["Manrope"],
+                        "headline-lg-mobile": ["Manrope"],
+                        "display-lg": ["Manrope"],
+                        "body-md": ["Manrope"],
+                        "title-lg": ["Manrope"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "500"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "600"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "title-lg": ["20px", {"lineHeight": "28px", "fontWeight": "600"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        @keyframes subtle-float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        .float-anim {
+            animation: subtle-float 6s ease-in-out infinite;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface font-body-md text-on-surface min-h-screen flex flex-col overflow-hidden">
+<!-- TopAppBar -->
+<header class="w-full top-0 sticky bg-surface dark:bg-surface-dim shadow-sm flex justify-between items-center px-margin-mobile md:px-margin-desktop h-touch-target-opt z-50">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-cafe-200 flex items-center justify-center overflow-hidden border border-outline/10">
+<img alt="Owner profile photo" class="w-full h-full object-cover" data-alt="A professional headshot of a head chef wearing a clean white double-breasted jacket against a soft, neutral studio background. The lighting is bright and warm, emphasizing a modern cafe aesthetic. The chef has a friendly, professional expression, reflecting a premium hospitality environment with high-end tones." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBblhc2uBSEHTef8DhbReX-uYYeUrfo5QI_1_7cPyQMTBgWzfHtXsHx71L0H2SjsB5SRo6ruQBLOf6G8U6ROOiJwkkaURvAj7aoUwtLygcm1267V_fnEM7fyJDcOkiMW7NJKu4J_UjnA-IPGc4Wg00TJdOY0XRa0MUVEJH0lK-CszPwEpMk6RpHQt12l_T4UnPw6FqqEl02QOPBL5hTD9k6dgRgWYUoltdJzlSs1ULbArdwWOmVfvOoLQ-tziospOsG2RC1hlsPnWk"/>
+</div>
+<h1 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg font-bold text-espresso-900 dark:text-inverse-primary tracking-tight">CAOCAO</h1>
+</div>
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined p-2 text-on-surface-variant dark:text-on-surface-variant hover:bg-cafe-50 dark:hover:bg-surface-variant transition-colors rounded-full active:scale-95">notifications</button>
+<button class="hidden md:flex items-center gap-2 bg-espresso-900 text-white px-6 py-2 rounded-full font-label-md active:scale-95 transition-all">
+<span class="material-symbols-outlined text-[20px]">add</span>
+                Manual Order
+            </button>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-grow flex items-center justify-center px-6 pb-24 md:pb-6">
+<div class="max-w-xl w-full text-center flex flex-col items-center">
+<!-- Premium Minimalist Illustration -->
+<div class="relative mb-12 float-anim">
+<div class="absolute inset-0 bg-cafe-200/30 rounded-full blur-3xl transform scale-150"></div>
+<div class="relative bg-white/40 border border-cafe-200/50 p-12 rounded-full shadow-sm glass-effect">
+<span class="material-symbols-outlined text-[96px] text-cafe-200" style="font-variation-settings: 'wght' 200;">coffee</span>
+</div>
+<!-- Floating geometric accents for a professional minimalist feel -->
+<div class="absolute -top-4 -right-4 w-12 h-12 bg-secondary-container/20 rounded-xl blur-md"></div>
+<div class="absolute -bottom-2 -left-6 w-8 h-8 bg-cafe-200/40 rounded-full blur-sm"></div>
+</div>
+<!-- Empty State Text -->
+<div class="space-y-4 mb-10">
+<h2 class="font-headline-lg text-headline-lg text-espresso-900 font-bold tracking-tight">No Active Orders</h2>
+<p class="font-body-lg text-on-surface-variant max-w-sm mx-auto">
+                    Everything is up to date. Ready for the next rush.
+                </p>
+</div>
+<!-- Action Button -->
+<button class="group flex items-center gap-3 bg-espresso-900 text-white px-10 py-4 rounded-full font-label-md text-label-md active:scale-95 transition-all duration-300 shadow-sm hover:bg-black" id="sync-btn" onclick="handleSync()">
+<span class="material-symbols-outlined transition-transform duration-700 group-active:rotate-180" id="sync-icon">sync</span>
+<span>Sync Now</span>
+</button>
+<!-- Connection Status (Subtle) -->
+<div class="mt-8 flex items-center gap-2 text-on-surface-variant/60 font-label-sm text-label-sm">
+<span class="w-1.5 h-1.5 bg-earth-olive rounded-full animate-pulse"></span>
+                KDS System Connected
+            </div>
+</div>
+</main>
+<!-- BottomNavBar (Mobile Layout Only as per design rules) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pt-2 pb-6 bg-white dark:bg-inverse-surface shadow-[0_-4px_12px_rgba(0,0,0,0.02)] rounded-t-3xl">
+<a class="flex flex-col items-center justify-center bg-secondary-container dark:bg-secondary text-on-secondary-container dark:text-on-secondary rounded-xl px-3 py-1 active:scale-95 transition-all duration-200" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-sm text-label-sm">Dashboard</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant px-3 py-1 hover:opacity-80 transition-opacity active:scale-95" href="#">
+<span class="material-symbols-outlined">point_of_sale</span>
+<span class="font-label-sm text-label-sm">Orders</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant px-3 py-1 hover:opacity-80 transition-opacity active:scale-95" href="#">
+<span class="material-symbols-outlined">inventory_2</span>
+<span class="font-label-sm text-label-sm">Inventory</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant px-3 py-1 hover:opacity-80 transition-opacity active:scale-95" href="#">
+<span class="material-symbols-outlined">badge</span>
+<span class="font-label-sm text-label-sm">Staff</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant px-3 py-1 hover:opacity-80 transition-opacity active:scale-95" href="#">
+<span class="material-symbols-outlined">payments</span>
+<span class="font-label-sm text-label-sm">Payroll</span>
+</a>
+</nav>
+<!-- Desktop Sidebar/Nav Mockup (Hidden on mobile) -->
+<div class="hidden md:flex fixed left-margin-desktop top-32 flex-col gap-8 z-40">
+<div class="flex flex-col gap-6">
+<button class="w-12 h-12 rounded-2xl bg-secondary-container text-on-secondary-container flex items-center justify-center shadow-sm active:scale-90 transition-transform">
+<span class="material-symbols-outlined">dashboard</span>
+</button>
+<button class="w-12 h-12 rounded-2xl bg-white text-on-surface-variant flex items-center justify-center border border-cafe-200/50 hover:bg-cafe-50 transition-colors active:scale-90">
+<span class="material-symbols-outlined">point_of_sale</span>
+</button>
+<button class="w-12 h-12 rounded-2xl bg-white text-on-surface-variant flex items-center justify-center border border-cafe-200/50 hover:bg-cafe-50 transition-colors active:scale-90">
+<span class="material-symbols-outlined">inventory_2</span>
+</button>
+<button class="w-12 h-12 rounded-2xl bg-white text-on-surface-variant flex items-center justify-center border border-cafe-200/50 hover:bg-cafe-50 transition-colors active:scale-90">
+<span class="material-symbols-outlined">badge</span>
+</button>
+</div>
+</div>
+<script>
+        function handleSync() {
+            const btn = document.getElementById('sync-btn');
+            const icon = document.getElementById('sync-icon');
+            const originalContent = btn.innerHTML;
+            
+            // Visual feedback
+            icon.classList.add('animate-spin');
+            btn.classList.add('opacity-80', 'pointer-events-none');
+            
+            // Mock sync delay
+            setTimeout(() => {
+                icon.classList.remove('animate-spin');
+                btn.classList.remove('opacity-80', 'pointer-events-none');
+                
+                // Show brief success state
+                const span = btn.querySelector('span:last-child');
+                const originalText = span.textContent;
+                span.textContent = 'Updated';
+                
+                setTimeout(() => {
+                    span.textContent = originalText;
+                }, 2000);
+            }, 1200);
+        }
+
+        // Add glassmorphism variation to background based on mouse movement (very subtle)
+        document.addEventListener('mousemove', (e) => {
+            const main = document.querySelector('main');
+            const x = e.clientX / window.innerWidth;
+            const y = e.clientY / window.innerHeight;
+            
+            const gradientX = x * 10;
+            const gradientY = y * 10;
+            
+            main.style.background = `radial-gradient(circle at ${50 + gradientX}% ${50 + gradientY}%, rgba(229, 225, 222, 0.1) 0%, transparent 80%)`;
+        });
+    </script>
+</body></html>

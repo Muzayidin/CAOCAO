@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<title>CAOCAO Waiter Portal</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface": "#fdf8f7",
+                    "surface-container-highest": "#e6e1e0",
+                    "tertiary-container": "#1a1c1c",
+                    "error": "#ba1a1a",
+                    "charcoal-text": "#121212",
+                    "surface-dim": "#ddd9d8",
+                    "surface-container-high": "#ece7e6",
+                    "secondary": "#5a632e",
+                    "on-tertiary-fixed-variant": "#454747",
+                    "error-container": "#ffdad6",
+                    "background": "#fdf8f7",
+                    "tertiary-fixed": "#e2e2e2",
+                    "on-secondary": "#ffffff",
+                    "secondary-container": "#dce5a3",
+                    "on-primary-fixed-variant": "#4b4643",
+                    "inverse-primary": "#cec5c1",
+                    "earth-olive": "#4B5320",
+                    "on-tertiary": "#ffffff",
+                    "surface-tint": "#635d5a",
+                    "outline-variant": "#d0c4be",
+                    "espresso-900": "#1A1614",
+                    "on-tertiary-fixed": "#1a1c1c",
+                    "on-secondary-container": "#5f6732",
+                    "cafe-50": "#F9F8F7",
+                    "on-error-container": "#93000a",
+                    "on-error": "#ffffff",
+                    "cafe-200": "#E5E1DE",
+                    "surface-container": "#f1edec",
+                    "tertiary-fixed-dim": "#c6c6c6",
+                    "on-background": "#1c1b1b",
+                    "surface-variant": "#e6e1e0",
+                    "primary": "#000000",
+                    "outline": "#7f7570",
+                    "surface-container-lowest": "#ffffff",
+                    "surface-bright": "#fdf8f7",
+                    "tertiary": "#000000",
+                    "secondary-fixed-dim": "#c3cc8c",
+                    "primary-container": "#1f1b19",
+                    "on-tertiary-container": "#838484",
+                    "primary-fixed-dim": "#cec5c1",
+                    "on-secondary-fixed": "#191e00",
+                    "inverse-surface": "#313030",
+                    "inverse-on-surface": "#f4f0ef",
+                    "secondary-fixed": "#dfe8a6",
+                    "on-surface-variant": "#4d4541",
+                    "primary-fixed": "#eae1dd",
+                    "on-primary-fixed": "#1f1b19",
+                    "surface-container-low": "#f7f3f1",
+                    "on-primary-container": "#8a827f",
+                    "on-primary": "#ffffff",
+                    "on-surface": "#1c1b1b",
+                    "on-secondary-fixed-variant": "#434b18"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "margin-tablet": "2rem",
+                    "touch-target-opt": "52px",
+                    "margin-desktop": "3rem",
+                    "gutter": "1.5rem",
+                    "touch-target-min": "48px",
+                    "margin-mobile": "1rem"
+            },
+            "fontFamily": {
+                    "body-lg": ["Manrope"],
+                    "label-md": ["Manrope"],
+                    "headline-lg": ["Manrope"],
+                    "title-lg": ["Manrope"],
+                    "headline-lg-mobile": ["Manrope"],
+                    "label-sm": ["Manrope"],
+                    "display-lg": ["Manrope"],
+                    "headline-md": ["Manrope"],
+                    "body-md": ["Manrope"]
+            },
+            "fontSize": {
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "500"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                    "title-lg": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "600"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Manrope', sans-serif; -webkit-tap-highlight-color: transparent; }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        .safe-bottom { padding-bottom: env(safe-area-inset-bottom); }
+        .sheet-transition { transition: transform 0.4s cubic-bezier(0.32, 0.72, 0, 1); }
+        .backdrop-blur-sm { backdrop-filter: blur(8px); }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface overflow-x-hidden">
+<!-- TopAppBar -->
+<header class="bg-cafe-50/80 dark:bg-espresso-900/80 backdrop-blur-sm flex justify-between items-center w-full px-margin-mobile h-touch-target-opt z-50 fixed top-0 left-0">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-cafe-200 flex items-center justify-center overflow-hidden">
+<img alt="Staff Profile" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAg6dRiAa5MUYx6BBPzmR5BdN0898iTpNhHCz3jFFCsb1voiG02ln3GGgBBwmBlkcygR0-8GABPQ28qRbkR2mCZxX99Ki4SxPR4pK_BAllWgzQp6OMy8jEmzf-oW1mGmvxVU6GPMRgwTNNqwjMmdyfUBES6co3H4n8h4pYiaD2dMTCezUMtI8IBeZockZ03aWwTAdIRHzexySMC3m78xNI6oS1QXU2KlcD_2bCJDB268b6MVLyQY978gGWkamvaHyICQDlJ8ZxqdJM"/>
+</div>
+<span class="text-headline-md font-headline-md font-bold tracking-tight text-espresso-900 dark:text-cafe-50">CAOCAO</span>
+</div>
+<button class="active:scale-95 transition-transform duration-200 text-espresso-900 dark:text-cafe-50">
+<span class="material-symbols-outlined">sync</span>
+</button>
+</header>
+<main class="pt-16 pb-32 px-4 space-y-6">
+<!-- Floating Header: Table & Search -->
+<section class="sticky top-[52px] z-40 py-2 bg-surface/95 backdrop-blur-md -mx-4 px-4 flex gap-3 items-center">
+<button class="flex items-center gap-2 bg-white px-4 h-12 rounded-2xl shadow-sm border border-cafe-200/50 active:scale-95 transition-all">
+<span class="material-symbols-outlined text-earth-olive">table_restaurant</span>
+<span class="font-title-lg text-title-lg text-espresso-900">Table 04</span>
+<span class="material-symbols-outlined text-outline">expand_more</span>
+</button>
+<div class="flex-1 relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline">search</span>
+<input class="w-full h-12 pl-10 pr-4 bg-cafe-50 border-none rounded-2xl focus:ring-2 focus:ring-earth-olive/20 font-body-md text-body-md" placeholder="Search menu..." type="text"/>
+</div>
+</section>
+<!-- Category Tabs -->
+<nav class="flex overflow-x-auto no-scrollbar gap-2 py-1 -mx-4 px-4">
+<button class="flex-shrink-0 px-6 py-2 rounded-full bg-espresso-900 text-cafe-50 font-label-md text-label-md shadow-lg transition-all active:scale-95">All</button>
+<button class="flex-shrink-0 px-6 py-2 rounded-full bg-white text-on-surface-variant font-label-md text-label-md border border-cafe-200/50 hover:bg-cafe-50 active:scale-95">Coffee</button>
+<button class="flex-shrink-0 px-6 py-2 rounded-full bg-white text-on-surface-variant font-label-md text-label-md border border-cafe-200/50 hover:bg-cafe-50 active:scale-95">Non-Coffee</button>
+<button class="flex-shrink-0 px-6 py-2 rounded-full bg-white text-on-surface-variant font-label-md text-label-md border border-cafe-200/50 hover:bg-cafe-50 active:scale-95">Food</button>
+<button class="flex-shrink-0 px-6 py-2 rounded-full bg-white text-on-surface-variant font-label-md text-label-md border border-cafe-200/50 hover:bg-cafe-50 active:scale-95">Bakery</button>
+</nav>
+<!-- Product List (2-column grid) -->
+<section class="grid grid-cols-2 gap-4">
+<!-- Item 1 -->
+<div class="bg-white rounded-3xl overflow-hidden shadow-sm border border-cafe-200/50 active:scale-[0.98] transition-all group">
+<div class="aspect-square relative overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A professional close-up shot of a creamy latte with intricate leaf latte art in a textured ceramic cup. The setting is a dimly lit, high-end cafe with warm, soft lighting reflecting off a dark wooden surface. The visual style is premium and artisanal, featuring deep espresso tones and soft cream colors. The atmosphere is quiet and sophisticated." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAZ6djTQJI382XUMkalB2G4kxioHlFLPfN2LtB7A-yK4wox_YdcjjOSZiZ7cc7cIyWXYlza62ancbwqoZ4wUdPLQX-eYIs41yXfTed1Nfp3qnX1AGlwRaglvPrwGFlLoRpPCKqH0vqMubXmcSzjhL_f_823mja_kU7TIyFlOePVlu-Cav0KTZKgpeiX1tVo6FgQDW9YSJvzvmUsHBeEo3BcYUqQ-WNnmpkWfL89eSe_sqmwDGiHWrrruuD5gGEhq1b0q3m_7cguG1g"/>
+</div>
+<div class="p-4 space-y-2">
+<h3 class="font-title-lg text-title-lg text-espresso-900 truncate">Iced Latte</h3>
+<div class="flex justify-between items-end">
+<span class="font-bold text-headline-md text-espresso-900">$5.50</span>
+<button class="w-12 h-12 rounded-2xl bg-earth-olive text-white flex items-center justify-center active:scale-90 transition-all shadow-md" onclick="addToCart('Iced Latte', 5.50)">
+<span class="material-symbols-outlined">add</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Item 2 -->
+<div class="bg-white rounded-3xl overflow-hidden shadow-sm border border-cafe-200/50 active:scale-[0.98] transition-all group">
+<div class="aspect-square relative overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A moody, atmospheric shot of three different coffee drinks in clear glassware, including a flat white and a cold brew. The beverages are arranged on a minimalist stone counter in a modern, clean-lined cafe. The lighting is focused and soft, highlighting the textures of the foam and the rich dark colors of the coffee. The mood is calm, professional, and contemporary." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCk0U7mM5LpZvtAABVUIFEN8VcEbbMV0UnqYOHJqvT9VHwGFoSpC_Q-JCD_y0U327dK6m1nEdAXwqlN4wPZ-eCBju1oZA5a1Hg3C0_qZQAVzPH-_fG2VuRQiDazderWWzmPDpSlpYTg0FO4SygzELIv1ix_uTIepYUM_WSu1cpU8d87lvjjUcMTOGrLM1V-RZmSM3k2lRDHXMH1Ap-eUFK_L-Xhfg6fJPinTp6m_CBsPUZIisEeZzGJq9Ytsr-U4v_PjGQvJowsvfk"/>
+</div>
+<div class="p-4 space-y-2">
+<h3 class="font-title-lg text-title-lg text-espresso-900 truncate">Flat White</h3>
+<div class="flex justify-between items-end">
+<span class="font-bold text-headline-md text-espresso-900">$4.80</span>
+<button class="w-12 h-12 rounded-2xl bg-earth-olive text-white flex items-center justify-center active:scale-90 transition-all shadow-md" onclick="addToCart('Flat White', 4.80)">
+<span class="material-symbols-outlined">add</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Item 3 -->
+<div class="bg-white rounded-3xl overflow-hidden shadow-sm border border-cafe-200/50 active:scale-[0.98] transition-all group">
+<div class="aspect-square relative overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A top-down view of a classic espresso in a small white porcelain cup with a golden spoon on a marble saucer. The background is a crisp white linen tablecloth in a high-light environment. The style is clean, elegant, and high-end, emphasizing the dark crema of the espresso against the bright white surroundings. The aesthetic is minimal and premium." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCwko6BxchMt_jL5ZYFgMahkWpVSzwHfaMZEBySsbUBDkrw7CH40ECKvTlRJVnUtLNyG0lLeAnI5sDQyHC9ZIyfjFCCPnn-vgVimpysknk07lfCkUe7PULmZTtrgEVktxZy3mzqsWikM84FcqHNuueJW8NE0bpenWW8zhuVGr9nzazrUpRLq5-nG2fEiw4H7Ayg-WZ_dgoX3ueyiPXU_gTFSMgeGu4zQUdJnYAaLHgt06evyufRQ6QSQHh1Ui_KxetpxVnVG1cut5s"/>
+</div>
+<div class="p-4 space-y-2">
+<h3 class="font-title-lg text-title-lg text-espresso-900 truncate">Double Espresso</h3>
+<div class="flex justify-between items-end">
+<span class="font-bold text-headline-md text-espresso-900">$3.20</span>
+<button class="w-12 h-12 rounded-2xl bg-earth-olive text-white flex items-center justify-center active:scale-90 transition-all shadow-md">
+<span class="material-symbols-outlined">add</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Item 4 -->
+<div class="bg-white rounded-3xl overflow-hidden shadow-sm border border-cafe-200/50 active:scale-[0.98] transition-all group">
+<div class="aspect-square relative overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Two freshly baked, golden-brown croissants with flaky layers served on a simple white ceramic plate. The scene is set on a light wood cafe table with natural morning sunlight streaming in, creating soft shadows. The visual aesthetic is warm, inviting, and organic, emphasizing the tactile texture of the pastry. The overall feel is modern hospitality." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBXY6MmayVs6Tju5PysCbgB8U99tf7e4w6_ZemaedtP7FixLk2xbIVstHOY3YDdrYjc1d9BLXY2BgjLwfk3GINBZxHvk2Ji--umSfflEt8mL-sgOM-sGiIuLNPTnjtUYKghNr5aKLJBgvGCCd9q6Q1U28M7bePSxrs7H2BlPY-gIJIfPGWk2sj_PdJON9pDsub9vIeg5qVOIiu1qjSyYc-1wCmFI44sGuaopAPxcWqnsplfHCKO_Vpz8UkSCJfN_uV0dy2nbay8lrk"/>
+</div>
+<div class="p-4 space-y-2">
+<h3 class="font-title-lg text-title-lg text-espresso-900 truncate">Butter Croissant</h3>
+<div class="flex justify-between items-end">
+<span class="font-bold text-headline-md text-espresso-900">$4.00</span>
+<button class="w-12 h-12 rounded-2xl bg-earth-olive text-white flex items-center justify-center active:scale-90 transition-all shadow-md">
+<span class="material-symbols-outlined">add</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Bottom Cart Summary Bar (Persistent) -->
+<div class="fixed bottom-[72px] left-0 w-full px-4 z-40 transition-transform duration-300 translate-y-0" id="cartBar" onclick="toggleSheet()">
+<div class="bg-espresso-900 text-white rounded-3xl p-4 flex items-center justify-between shadow-2xl active:scale-[0.98] transition-all">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center relative">
+<span class="material-symbols-outlined">shopping_basket</span>
+<span class="absolute -top-2 -right-2 bg-earth-olive text-white text-[10px] w-5 h-5 flex items-center justify-center rounded-full border-2 border-espresso-900" id="cartCount">3</span>
+</div>
+<div>
+<p class="text-label-sm font-label-sm text-cafe-200 uppercase tracking-wider">Cart Total</p>
+<p class="text-title-lg font-title-lg" id="cartTotal">$10.30</p>
+</div>
+</div>
+<button class="bg-earth-olive px-6 h- touch-target-opt rounded-2xl font-label-md text-label-md flex items-center gap-2">
+                Review Order
+                <span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</div>
+<!-- Bottom Sheet (Cart Details) -->
+<div class="fixed inset-0 bg-black/40 backdrop-blur-[2px] z-[55] hidden transition-opacity duration-300 opacity-0" id="sheetOverlay" onclick="toggleSheet()"></div>
+<div class="fixed bottom-0 left-0 w-full h-[751px] bg-surface rounded-t-[40px] z-[60] sheet-transition translate-y-full shadow-[0_-20px_40px_rgba(0,0,0,0.1)] flex flex-col" id="bottomSheet">
+<!-- Handle -->
+<div class="w-full flex justify-center pt-4 pb-2" onclick="toggleSheet()">
+<div class="w-12 h-1.5 bg-cafe-200 rounded-full"></div>
+</div>
+<div class="px-6 flex justify-between items-center pb-6 border-b border-cafe-200/30">
+<h2 class="text-headline-md font-headline-md text-espresso-900">Current Order</h2>
+<button class="w-10 h-10 rounded-full bg-cafe-50 flex items-center justify-center" onclick="toggleSheet()">
+<span class="material-symbols-outlined text-outline">close</span>
+</button>
+</div>
+<div class="flex-1 overflow-y-auto p-6 space-y-6">
+<!-- Order Item -->
+<div class="flex gap-4">
+<div class="w-16 h-16 rounded-2xl overflow-hidden bg-cafe-50">
+<img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCZgzRk0S21ta0FZNYdWGavY9cWULkgslUUiCBKuNxMdsIXVNdb5oEqwhAUyBReaBRmf4N-4gGV1jEfe0WAWPwI0tgljTS-nqeI9JPF7jhCs8aIP604OBp-xGldTPNAbHFVvbzXNEL7LsWwNgWiuN50CdC2RAus-NFVAOi4scglR7xC-K28SyzHXMPj9nVxIOUq6c_hm5w-QVn3lKGoKfrCXvloNbV2Feyj9rmMwDV7baW9dgfhoRR7Z0N4EJ7swIXUhKY7wm7U9BY"/>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start">
+<div>
+<h4 class="font-title-lg text-title-lg text-espresso-900">Iced Latte</h4>
+<p class="text-label-sm text-outline flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">edit</span>
+                                Less Sugar, Oat Milk
+                            </p>
+</div>
+<span class="font-bold text-body-lg text-espresso-900">$5.50</span>
+</div>
+<div class="flex items-center gap-3 mt-2">
+<button class="w-8 h-8 rounded-lg border border-cafe-200 flex items-center justify-center text-outline"><span class="material-symbols-outlined text-sm">remove</span></button>
+<span class="font-title-lg">1</span>
+<button class="w-8 h-8 rounded-lg border border-cafe-200 flex items-center justify-center text-outline"><span class="material-symbols-outlined text-sm">add</span></button>
+</div>
+</div>
+</div>
+<!-- Order Item -->
+<div class="flex gap-4">
+<div class="w-16 h-16 rounded-2xl overflow-hidden bg-cafe-50">
+<img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBTunrag4JSs-smOwtBed4A-VozYTD8EZWsllQGKJWsDp_6WZ4AnNboAikpAISeW6b7fFZETDyJj2Mllj3Kg5n6UuU3c8ssL0ZjkRsra1UsP771y1BlS2LLvtSV1WAjOTp7iAqLItspdbbzxH4XSgL_aW4WywtDOlytHyJOCOMavLZROl0q4nW1L8IMnJPLS4Zc6J5ymzsCGba8piuxjn-BaH9O79rhnBW7fgQboJ8PyitmTEmGThJ0fb6L2OJezS3AFbUsvkszPP4"/>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start">
+<div>
+<h4 class="font-title-lg text-title-lg text-espresso-900">Flat White</h4>
+<p class="text-label-sm text-outline flex items-center gap-1">
+                                Regular Milk
+                            </p>
+</div>
+<span class="font-bold text-body-lg text-espresso-900">$4.80</span>
+</div>
+<div class="flex items-center gap-3 mt-2">
+<button class="w-8 h-8 rounded-lg border border-cafe-200 flex items-center justify-center text-outline"><span class="material-symbols-outlined text-sm">remove</span></button>
+<span class="font-title-lg">1</span>
+<button class="w-8 h-8 rounded-lg border border-cafe-200 flex items-center justify-center text-outline"><span class="material-symbols-outlined text-sm">add</span></button>
+</div>
+</div>
+</div>
+</div>
+<!-- Sheet Footer -->
+<div class="p-6 bg-cafe-50 rounded-t-[32px] space-y-4 safe-bottom">
+<div class="flex justify-between items-center text-espresso-900">
+<span class="text-body-lg">Subtotal</span>
+<span class="font-bold text-headline-md">$10.30</span>
+</div>
+<button class="w-full h- touch-target-opt bg-earth-olive text-white rounded-2xl font-title-lg flex items-center justify-center gap-2 shadow-xl active:scale-[0.98] transition-transform">
+<span class="material-symbols-outlined">send</span>
+                Send to Kitchen
+            </button>
+</div>
+</div>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-safe h-[72px] bg-white/90 dark:bg-espresso-900/90 shadow-[0_-4px_20px_0_rgba(0,0,0,0.05)] rounded-t-3xl backdrop-blur-md">
+<button class="flex flex-col items-center justify-center text-earth-olive dark:text-secondary-fixed bg-secondary-container/30 dark:bg-secondary-container/10 rounded-xl px-3 py-1 active:scale-90 transition-all duration-200 ease-in-out">
+<span class="material-symbols-outlined" data-weight="fill">restaurant_menu</span>
+<span class="text-label-sm font-label-sm">Orders</span>
+</button>
+<button class="flex flex-col items-center justify-center text-outline dark:text-outline-variant px-3 py-1 hover:text-espresso-900 dark:hover:text-cafe-50 active:scale-90 transition-all duration-200 ease-in-out">
+<span class="material-symbols-outlined">receipt_long</span>
+<span class="text-label-sm font-label-sm">KDS</span>
+</button>
+<button class="flex flex-col items-center justify-center text-outline dark:text-outline-variant px-3 py-1 hover:text-espresso-900 dark:hover:text-cafe-50 active:scale-90 transition-all duration-200 ease-in-out">
+<span class="material-symbols-outlined">schedule</span>
+<span class="text-label-sm font-label-sm">Clock In</span>
+</button>
+<button class="flex flex-col items-center justify-center text-outline dark:text-outline-variant px-3 py-1 hover:text-espresso-900 dark:hover:text-cafe-50 active:scale-90 transition-all duration-200 ease-in-out">
+<span class="material-symbols-outlined">cloud_sync</span>
+<span class="text-label-sm font-label-sm">Sync</span>
+</button>
+</nav>
+<script>
+        const sheet = document.getElementById('bottomSheet');
+        const overlay = document.getElementById('sheetOverlay');
+        const cartBar = document.getElementById('cartBar');
+        let isSheetOpen = false;
+
+        function toggleSheet() {
+            isSheetOpen = !isSheetOpen;
+            if (isSheetOpen) {
+                sheet.classList.remove('translate-y-full');
+                overlay.classList.remove('hidden');
+                setTimeout(() => overlay.classList.add('opacity-100'), 10);
+                cartBar.classList.add('translate-y-24');
+            } else {
+                sheet.classList.add('translate-y-full');
+                overlay.classList.remove('opacity-100');
+                setTimeout(() => {
+                    overlay.classList.add('hidden');
+                }, 300);
+                cartBar.classList.remove('translate-y-24');
+            }
+        }
+
+        function addToCart(name, price) {
+            // Visual feedback
+            const btn = event.currentTarget;
+            btn.innerHTML = '<span class="material-symbols-outlined animate-ping">done</span>';
+            setTimeout(() => {
+                btn.innerHTML = '<span class="material-symbols-outlined">add</span>';
+            }, 600);
+
+            // Update UI
+            const countEl = document.getElementById('cartCount');
+            const totalEl = document.getElementById('cartTotal');
+            let count = parseInt(countEl.innerText);
+            let total = parseFloat(totalEl.innerText.replace('$', ''));
+            
+            countEl.innerText = count + 1;
+            totalEl.innerText = `$${(total + price).toFixed(2)}`;
+            
+            // Pulse animation for bar
+            cartBar.classList.add('scale-105');
+            setTimeout(() => cartBar.classList.remove('scale-105'), 200);
+        }
+    </script>
+</body></html>

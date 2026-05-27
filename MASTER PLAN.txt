@@ -1,0 +1,77 @@
+Role: Expert Full-Stack Developer & UI/UX Design Specialist
+Task: Build a production-ready, comprehensive, multi-tenant POS (Point of Sale) Web Application tailored for Cafes (Food & Beverages) using Next.js (latest App Router), Tailwind CSS, and Shadcn UI.
+
+The application must be fully responsive and meticulously optimized for three distinct viewports:
+1. Mobile (Smartphone): Single-hand navigation optimized for Waiters taking orders at tables.
+2. Tablet: Split-screen grid layout optimized for Cashier checkout counter and Kitchen/Bar displays.
+3. Desktop: Rich dashboard interface with sidebars and data-visualizations for Owners and Admins.
+
+---
+
+### 1. MULTI-TENANT & ROLE-BASED ACCESS CONTROL (RBAC)
+- Multi-Tenant: Allow new users to register on a Landing Page. Registration automatically creates a new "Cafe Profile" and assigns the user as the "Owner".
+- RBAC Sub-system: Owner can invite/add users with specific roles:
+  * Owner: Full root access to financial reports, profit/loss analysis, payroll configurations, and all settings.
+  * Admin: Access to POS, Stock management, Menu configurations, Shift scheduling, and operational logs.
+  * Cashier: Strict access to the POS checkout screen and shift open/close logs.
+  * Waiter: Restricted access to mobile order-taking interface and table status.
+  * Kitchen / Bar Staff: Access only to their respective production queue screens.
+
+---
+
+### 2. CORE FEATURES REQUIREMENT
+
+#### A. Advanced POS & Ordering Interface
+- Modern menu grid filtering by categories (Food, Drinks, Add-ons) with a quick-search bar.
+- Cart functionality supporting: Discounts (percentage or fixed nominal), Tax (PPN 11%), Service Charge, and custom notes per item (e.g., "less sugar", "no ice").
+- Split Bill and Join Bill functionality for flexible customer seating.
+- Table Management: Visual map grid showing layout status (Available, Occupied, Reserved, Bill Printed).
+- Receipt Printing: Generate semantic, CSS-optimized receipt designs for thermal receipt printers (58mm and 80mm) using native browser print utility triggers.
+
+#### B. Kitchen & Bar Display System (KDS)
+- Separate dedicated UI screens: `/dashboard/kitchen` and `/dashboard/bar`.
+- Real-time order routing: When an order is placed at the POS, items categorized as 'Food' instantly router to the Kitchen screen, and 'Drinks' router to the Bar screen.
+- Layout: Kanban-style order ticket cards containing Table Number, Waiter Name, Elapsed Timer (with visual amber/red warnings if an order takes >15 mins), and item list with checkboxes.
+- State Management: Items can be checked off individually, and a "Complete Ticket" button archives the card and alerts the cashier.
+
+#### C. Partial Offline Mode (Reliability Engineering)
+- Implement client-side storage architecture using IndexedDB (or localforage) to sync local cache.
+- System must cache Product Menus, Pricing, and Table states locally.
+- When connection drops (window offline event): POS remains 100% functional for checkout. Transactions are stored locally with a `pending_sync` status flag.
+- Include a dynamic visual indicator in the Navbar (e.g., Green cloud icon for Online, Amber/Red disconnected warning for Offline).
+- When internet connection resumes: Automatically trigger a background sync background worker to push `pending_sync` orders to the database in chronological order to update main inventories. Restrict access to analytical dashboards or payroll editing when offline.
+
+#### D. Inventory & Ingredients Management (Bill of Materials - BOM)
+- Raw Materials Directory: Track bulk ingredients in native metrics (e.g., Coffee Beans in grams, Fresh Milk in milliliters, Cups in units).
+- Menu Recipe Binding (BOM): Link menu items to specific ingredient reductions. (e.g., Selling 1 cup of Cafe Latte must automatically deduct 20g of Coffee Beans and 150ml of Fresh Milk from stock).
+- Low Stock Alerts: Visual indicators and system notifications when raw inventory drops below safety thresholds.
+
+#### E. Shift System & Cash Drawer Control
+- Shift Management: Cashiers must perform an "Open Shift" by inputting the starting physical cash drawer capital.
+- End Shift: At closing, the cashier inputs the actual ending physical cash. The system automatically cross-references and generates a reconciliation report showing Expected Cash (Sales + Initial Capital) vs Actual Cash, flagging any discrepancies (Shortages/Overages).
+
+#### F. Employee Scheduling & Payroll System
+- Work Schedules: Admin/Owner can set shift schedules for all employees.
+- Clock-In/Clock-Out: Simple attendance module for employees logging into their shifts.
+- Automated Payroll: Calculate monthly basic salary, hourly wages, or shift incentives based on verified attendance records, and generate digital downloadable payslips.
+
+#### G. Data Import/Export System
+- Provide full Excel/CSV template integration. Allow users to bulk upload Product Menus, Raw Ingredients lists, and Customer databases via file drop zones, and export historical sales spreadsheets.
+
+#### H. Analytics & Owner Reports
+- Financial Dashboard: Render historical analytics using charts (e.g., Recharts) covering Gross Revenue, Net Profit (Sales minus Menu BOM costs and operational expenses), Best-selling items matrix, and Ingredient waste tracking.
+
+---
+
+### 3. UI/UX & STYLING GUIDELINES
+- Styling Engine: Tailwind CSS.
+- Color Palette: Professional cafe aesthetics. Use warm neutral tones, deep charcoal text, earthy accents (slate/forest green), and soft interfaces. (CRITICAL: Do NOT use gold gradients or gold color palettes).
+- Typography & Targets: Clean sans-serif font family. Ensure mobile interfaces have a minimum tap-target size of 48x48px for fast, error-free operations in fast-paced cafe environments.
+
+---
+
+### 4. EXPECTED OUTPUT DELIVERABLES
+Please generate:
+1. The comprehensive Next.js modular folder architecture (App Router) mapping these features.
+2. The complete Database Schema structure (Prisma ORM schema syntax preferred) showing proper relational constraints between Users, Tenants, Items, Ingredients, Recipes, Shifts, and Orders.
+3. The codebase implementation starting with the Multi-role authentication flow and the Core POS checkout UI layout.

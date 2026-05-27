@@ -1,0 +1,75 @@
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../src/generated/client"
+}
+
+model Table {
+  id        String   @id @default(uuid())
+  tenantId  String
+  name      String
+  status    String   @default("AVAILABLE") // AVAILABLE, OCCUPIED, RESERVED, BILL_PRINTED
+  x         Int      @default(0)
+  y         Int      @default(0)
+}
+
+model Order {
+  id            String      @id @default(uuid())
+  tenantId      String
+  tableId       String?
+  waiterId      String
+  waiterName    String
+  status        String      @default("PENDING") // PENDING, PAID, CANCELLED
+  totalBefore   Float
+  discountType  String?
+  discountVal   Float       @default(0)
+  taxAmount     Float
+  serviceAmount Float
+  totalAfter    Float
+  paymentMethod String
+  createdAt     DateTime    @default(now())
+  updatedAt     DateTime    @updatedAt
+  items         OrderItem[]
+  tickets       KDSTicket[]
+}
+
+model OrderItem {
+  id          String   @id @default(uuid())
+  orderId     String
+  order       Order    @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  productId   String
+  productName String
+  quantity    Int
+  unitPrice   Float
+  totalPrice  Float
+  notes       String?
+}
+
+model KDSTicket {
+  id         String   @id @default(uuid())
+  tenantId   String
+  orderId    String
+  order      Order    @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  tableName  String
+  waiterName String
+  status     String   @default("QUEUED") // QUEUED, IN_PROGRESS, READY, SERVED
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+  items      KDSTicketItem[]
+}
+
+model KDSTicketItem {
+  id          String   @id @default(uuid())
+  ticketId    String
+  ticket      KDSTicket @relation(fields: [ticketId], references: [id], onDelete: Cascade)
+  productId   String
+  productName String
+  quantity    Int
+  category    String   // FOOD, DRINK, ADD_ON
+  notes       String?
+  isCompleted Boolean  @default(false)
+}

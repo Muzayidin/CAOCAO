@@ -1,0 +1,55 @@
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../src/generated/client"
+}
+
+model Ingredient {
+  id              String           @id @default(uuid())
+  tenantId        String
+  name            String
+  category        String           // "BAR" or "KITCHEN"
+  stockLevel      Float
+  unit            String           // "gram", "ml", "pcs"
+  safetyThreshold Float            @default(500.0)
+  createdAt       DateTime         @default(now())
+  updatedAt       DateTime         @updatedAt
+  recipeItems     RecipeItem[]
+  wasteLogs       WasteLog[]
+}
+
+model Product {
+  id          String       @id @default(uuid())
+  tenantId    String
+  name        String
+  category    String       // "FOOD" or "DRINK"
+  price       Float
+  imageUrl    String?
+  isActive    Boolean      @default(true)
+  isBOM       Boolean      @default(false) // Differentiates "Menu BOM" vs "Menu Biasa"
+  recipeItems RecipeItem[]
+}
+
+model RecipeItem {
+  id           String     @id @default(uuid())
+  productId    String
+  product      Product    @relation(fields: [productId], references: [id], onDelete: Cascade)
+  ingredientId String
+  ingredient   Ingredient @relation(fields: [ingredientId], references: [id], onDelete: Cascade)
+  quantity     Float
+}
+
+model WasteLog {
+  id           String     @id @default(uuid())
+  tenantId     String
+  ingredientId String
+  ingredient   Ingredient @relation(fields: [ingredientId], references: [id], onDelete: Cascade)
+  quantity     Float
+  reason       String     // "EXPIRED", "SPILLED", "DEFECTIVE"
+  loggedBy     String     // Staf name
+  createdAt    DateTime   @default(now())
+}

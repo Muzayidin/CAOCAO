@@ -1,0 +1,22 @@
+{
+  "name": "pos-caocao-monorepo",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Multi-tenant Cafe POS Monorepo with Microservices Architecture",
+  "workspaces": [
+    "apps/*",
+    "services/*"
+  ],
+  "scripts": {
+    "dev:web": "npm run dev --workspace=apps/web",
+    "dev:auth": "npm run dev --workspace=services/auth-service",
+    "dev:order": "npm run dev --workspace=services/order-service",
+    "dev:inventory": "npm run dev --workspace=services/inventory-service",
+    "dev:shift": "npm run dev --workspace=services/shift-service",
+    "dev:employee": "npm run dev --workspace=services/employee-service",
+    "dev:all": "concurrently \"npm run dev:auth\" \"npm run dev:order\" \"npm run dev:inventory\" \"npm run dev:shift\" \"npm run dev:employee\" \"npm run dev:web\""
+  },
+  "dependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
